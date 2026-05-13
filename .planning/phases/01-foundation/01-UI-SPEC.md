@@ -25,7 +25,7 @@ created: 2026-05-12
 | Preset | not applicable |
 | Component library | none — hand-built Tailwind utility components |
 | Icon library | none in Phase 1 (SVG inline where needed) |
-| Font | Nunito (Google Fonts CDN) — all weights 400/600/700/800 |
+| Font | Nunito (Google Fonts CDN) — weights 400/700 |
 
 **Rationale (from D-11):** Nunito is rounded, highly legible for early readers, and
 covers the full weight range needed without a secondary typeface. No shadcn because
@@ -65,7 +65,7 @@ Applied globally via `--font-sans` in `@theme {}` and `font-family: var(--font-s
 | Role | Size | Weight | Line Height | Usage |
 |------|------|--------|-------------|-------|
 | Body | 16px | 400 (Regular) | 1.5 | Stub screen placeholder text, parent entry label |
-| Label | 20px | 600 (SemiBold) | 1.4 | Home screen heading tagline, stub screen status text |
+| Label | 20px | 700 (Bold) | 1.4 | Home screen heading tagline, stub screen status text |
 | Heading | 32px | 700 (Bold) | 1.2 | Home screen primary heading ("Math Time!") |
 | Display | 24px | 700 (Bold) | 1.2 | Primary CTA button label ("Start Learning") |
 
@@ -168,7 +168,7 @@ No `tailwind.config.js` — Tailwind v4 CSS-first configuration.
 │  [safe-area-inset-top]                 │
 │                                        │
 │         "Lesson"                       │  ← Heading 32px/700
-│    "Coming in Phase 2..."              │  ← Label 20px/600, on-surface/60%
+│    "Coming in Phase 2..."              │  ← Label 20px/700, on-surface/60%
 │                                        │
 │  ┌──────────────────────────────────┐  │
 │  │  [Sample math problem visual]    │  │  ← Stub content block
@@ -194,7 +194,7 @@ Must feel intentional, not placeholder-ugly — use the design tokens and a styl
 ┌────────────────────────────────────────┐
 │                                        │
 │         "Practice"                     │  ← Heading 32px/700
-│    "Coming in Phase 4..."              │  ← Label 20px/600, on-surface/60%
+│    "Coming in Phase 4..."              │  ← Label 20px/700, on-surface/60%
 │                                        │
 │  [4 placeholder answer tiles]          │  ← 2×2 grid, each 120px min
 │  (rounded squares, surface white)      │
@@ -378,7 +378,7 @@ No third-party component registries in Phase 1. All UI is hand-built with Tailwi
 The complete `@theme {}` block for `src/index.css` (from RESEARCH.md Pattern 2):
 
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,400&display=swap');
 
 @import "tailwindcss";
 
@@ -475,7 +475,7 @@ button, [role="button"], a {
 | CTA label: "Start Learning" | CONTEXT.md specifics | Locked copy |
 | Routes: /lesson /practice /parent | Claude discretion (CONTEXT.md) | Clean obvious paths |
 | Font sizes: 16/20/24/32px | Claude discretion | 4-size scale for age group |
-| Font weights: 400/700 | Claude discretion | Regular + Bold (SemiBold 600 for one role) |
+| Font weights: 400/700 | Claude discretion | Regular (400) + Bold (700) only |
 | CTA min-height: 64px | Claude discretion | Exceeds 44px — child age group |
 | Stub card: white card with math | Claude discretion | "Intentional, not placeholder-ugly" |
 | Color-scheme meta: light | Claude discretion (Assumption A4 in RESEARCH.md) | Prevents dark mode inversion |
