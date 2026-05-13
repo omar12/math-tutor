@@ -1,0 +1,45 @@
+/* 1. Google Fonts — MUST come before @import "tailwindcss" */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+
+/* 2. Tailwind v4 — single directive replaces @tailwind base/components/utilities */
+@import "tailwindcss";
+
+/* 3. Theme tokens (CSS-first; no tailwind.config.js) */
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary:    #FF6B35;
+  --color-secondary:  #FFD23F;
+  --color-accent:     #3B82F6;
+  --color-success:    #22C55E;
+  --color-surface:    #FFF8F0;
+  --color-on-surface: #1C1917;
+}
+
+/* 4. Full-screen shell reset — use 100dvh NOT 100vh (PLAT-02) */
+html, body, #root {
+  height: 100dvh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
+}
+
+/* 5. iPad safe-area — requires viewport-fit=cover in index.html */
+body {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 6. Global touch optimizations (PLAT-01) */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, [role="button"], a {
+  touch-action: manipulation;
+  user-select: none;
+  min-height: 44px;
+  min-width: 44px;
+}
