@@ -122,10 +122,10 @@
 | FEED-04 | Phase 4 | Pending |
 | PROG-01 | Phase 5 | Pending |
 | PROG-02 | Phase 5 | Pending |
-| PAR-01 | Phase 6 | Pending |
-| PAR-02 | Phase 6 | Pending |
-| PWA-01 | Phase 7 | Pending |
-| PWA-02 | Phase 7 | Pending |
+| PAR-01 | Phase 5 | Pending |
+| PAR-02 | Phase 5 | Pending |
+| PWA-01 | Phase 6 | Pending |
+| PWA-02 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 24 total
@@ -134,4 +134,4 @@
 
 ---
 *Requirements defined: 2026-05-12*
-*Last updated: 2026-05-12 after initial definition*
+*Last updated: 2026-05-12 after roadmap creation (6 phases)*
