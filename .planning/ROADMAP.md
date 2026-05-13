@@ -12,7 +12,7 @@ Six phases take this project from a bare Vite+React scaffold to a fully offline-
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - App shell, routing, IndexedDB storage, iPad viewport, PWA scaffold
+- [~] **Phase 1: Foundation** - App shell, routing, IndexedDB storage, iPad viewport, PWA scaffold *(2 plans — Ready to execute)*
 - [ ] **Phase 2: Curriculum & Content** - JSON-driven curriculum schema and grade 1–3 lesson content
 - [ ] **Phase 3: Lesson Player** - Audio manager, narration playback, guided worked example, tap-to-replay
 - [ ] **Phase 4: Practice Engine** - Multiple choice, digit grid input, feedback escalation, session celebration
@@ -31,8 +31,17 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Navigating between stub routes (home, lesson, practice, parent) works without page reload
   3. A test record written to IndexedDB via Dexie persists after the browser tab is closed and reopened
   4. Child can open the app and reach the home screen with zero login or setup prompts
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+
+**Wave 1** — 01-01: Scaffold, Tailwind v4, Dexie singleton, React Router wiring, Vitest + fake-indexeddb
+
+**Wave 2** *(blocked on Wave 1 completion)* — 01-02: HomeScreen + Remy, styled stub screens, routing tests, human verification checkpoint
+
+**Cross-cutting constraints:** `100dvh` (not `100vh`) on all screen containers; `db` singleton in `src/db/db.ts` is the only Dexie instantiation; imports from `react-router` not `react-router-dom`
+
+Plans:
+- [ ] 01-01-PLAN.md — Scaffold, Tailwind v4, Dexie singleton, React Router wiring, and Vitest test infrastructure
+- [ ] 01-02-PLAN.md — HomeScreen with Remy the Fox, styled stub screens, routing tests, and human verification checkpoint
 
 ### Phase 2: Curriculum & Content
 **Goal**: All grade 1–3 math content exists as static JSON that the app can load, so lesson and practice phases have real data to render without any code changes to add new topics.
@@ -105,7 +114,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/2 | Ready to execute | - |
 | 2. Curriculum & Content | 0/TBD | Not started | - |
 | 3. Lesson Player | 0/TBD | Not started | - |
 | 4. Practice Engine | 0/TBD | Not started | - |
