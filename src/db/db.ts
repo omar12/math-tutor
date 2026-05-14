@@ -50,3 +50,28 @@ db.version(1).stores({
 })
 
 export { db }
+
+// --- PIN helpers (CR-01: enforce hashing at the storage boundary) ---
+
+/**
+ * Hashes a raw PIN string using SHA-256 via the Web Crypto API.
+ * Always call this before storePinHash — never pass raw digits to the DB.
+ */
+export async function hashPin(pin: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pin))
+  return Array.from(new Uint8Array(buf))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('')
+}
+
+/**
+ * Stores a PIN hash in the database.
+ * Throws if the argument is not a valid SHA-256 hex digest (64 hex chars).
+ * Call hashPin(rawPin) first — never pass the raw PIN here.
+ */
+export async function storePinHash(hexDigest: string): Promise<void> {
+  if (!/^[0-9a-f]{64}$/.test(hexDigest)) {
+    throw new Error('storePinHash: argument must be a SHA-256 hex digest (64 hex chars)')
+  }
+  await db.appConfig.put({ key: 'pinHash', value: hexDigest })
+}
