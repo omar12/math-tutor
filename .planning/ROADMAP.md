@@ -53,7 +53,15 @@ Plans:
   2. Adding a new lesson requires only a new JSON entry — no TypeScript changes needed
   3. Word problem entries include a narration field that the lesson player will later read aloud
   4. All Common Core standard identifiers for grade 1–3 addition and subtraction are represented in the curriculum data
-**Plans**: TBD
+**Plans**: 2 plans
+
+**Wave 1** — 02-01: TypeScript type contract (types.ts), Dexie topic narrowing (db.ts), and data integrity test suite (curriculum.test.ts)
+
+**Wave 2** *(blocked on Wave 1 completion)* — 02-02: Curriculum loader module (index.ts) and full 27-lesson + ~135-problem curriculum.json content
+
+Plans:
+- [ ] 02-01-PLAN.md — TypeScript types, Dexie topic narrowing, and data integrity test suite (tests RED until Wave 2)
+- [ ] 02-02-PLAN.md — Curriculum loader (index.ts with satisfies) and full curriculum.json data (27 lessons, ~135 problems)
 
 ### Phase 3: Lesson Player
 **Goal**: A child can work through a narrated, guided lesson from start to finish — audio plays automatically after the first tap, narrated steps advance in sequence, and the child can replay any segment by tapping it.
@@ -115,7 +123,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 0/2 | Ready to execute | - |
-| 2. Curriculum & Content | 0/TBD | Not started | - |
+| 2. Curriculum & Content | 0/2 | Ready to execute | - |
 | 3. Lesson Player | 0/TBD | Not started | - |
 | 4. Practice Engine | 0/TBD | Not started | - |
 | 5. Progress & Parent Section | 0/TBD | Not started | - |

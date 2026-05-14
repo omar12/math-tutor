@@ -538,7 +538,7 @@ Research on elementary math practice (ages 6–9) recommends quality over quanti
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Dexie `topic: string` vs `topic: Topic` alignment**
    - What we know: `src/db/db.ts` currently types `Session.topic` and `TopicProgress.topic` as `string`
