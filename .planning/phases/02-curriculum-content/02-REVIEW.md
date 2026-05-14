@@ -1,236 +1,203 @@
 ---
 phase: 02-curriculum-content
-reviewed: 2026-05-13T10:00:00Z
+reviewed: 2026-05-14T00:00:00Z
 depth: standard
 files_reviewed: 5
 files_reviewed_list:
-  - src/curriculum/types.ts
-  - src/curriculum/index.ts
-  - src/curriculum/curriculum.test.ts
-  - src/db/db.ts
   - src/curriculum/curriculum.json
+  - src/curriculum/curriculum.test.ts
+  - src/curriculum/index.ts
+  - src/curriculum/types.ts
+  - src/db/db.ts
 findings:
   critical: 1
-  warning: 5
+  warning: 4
   info: 3
-  total: 9
+  total: 8
 status: issues_found
 ---
 
-# Phase 02: Code Review Report
+# Phase 2: Code Review Report
 
-**Reviewed:** 2026-05-13T10:00:00Z
+**Reviewed:** 2026-05-14
 **Depth:** standard
 **Files Reviewed:** 5
 **Status:** issues_found
 
 ## Summary
 
-Reviewed the full curriculum content layer: TypeScript type definitions, the module re-export, the Vitest integrity test suite, the Dexie database schema, and the 2100-line curriculum JSON. All 27 lessons and all 135 problems (75 multiple-choice, 60 digit-grid) were verified for arithmetic correctness — every answer is mathematically accurate and every MC answer is present in its choices array. The type discriminated union in `types.ts` is sound and `satisfies CurriculumData` in `index.ts` is correct. The major findings center on: a test suite gap that allows a permanently-unsolvable multiple-choice problem to ship undetected; a schema-architecture conflict between `db.ts` and `CLAUDE.md`; and several missing test assertions and type-safety gaps that will cause silent failures at runtime in future phases.
+Five files reviewed covering the curriculum data layer: type definitions (`types.ts`), the curriculum JSON fixture (`curriculum.json`), the module re-export (`index.ts`), the integrity test suite (`curriculum.test.ts`), and the Dexie database schema (`db.ts`).
+
+The math content and data structures are largely sound — all arithmetic answers verify correctly, no duplicate IDs, and the TypeScript type hierarchy is coherent. However, one critical security gap exists in the PIN storage schema, and several quality issues weaken the test suite and type safety in ways that will permit silent bugs in later phases.
 
 ---
 
 ## Critical Issues
 
-### CR-01: Test Suite Does Not Verify Answer Is Contained in MC Choices
+### CR-01: PIN stored with no enforced hashing — plaintext PIN risk
 
-**File:** `src/curriculum/curriculum.test.ts:118-123`
+**File:** `src/db/db.ts:22–24`
 
-**Issue:** The test checks that every `multiple-choice` problem has exactly 4 choices, but never checks that `problem.answer` is one of those 4 choices. A misconfigured problem where the correct answer is absent from the choices array would make it impossible for any child to answer correctly — Phase 4 compares user input to `answer` using `===`, and the correct tile would never be rendered. A full cross-check of all 75 MC problems in the current JSON shows no instance of this bug today, but the test does not protect against it in future edits.
+**Issue:** `AppConfig` stores the parent PIN under the key `'pinHash'` as a plain `string`. The schema, type definition, and the rest of Phase 2 contain no hashing implementation. The key name implies hashing is intended, but nothing enforces it — a Phase 4 implementer could write `db.appConfig.put({ key: 'pinHash', value: pin })` with the raw PIN and the schema will silently accept it. If the device is backed up or inspected, the PIN is exposed. For a children's app gating parental controls, this is the primary trust boundary.
 
-**Fix:**
+**Fix:** Enforce hashing at the storage boundary by providing a typed helper that accepts only pre-hashed values, or at minimum add a JSDoc contract and runtime assertion:
+
 ```typescript
-it('multiple-choice problems contain the correct answer in choices', () => {
-  for (const p of curriculum.problems) {
-    if (p.type === 'multiple-choice') {
-      expect(
-        p.choices,
-        `problem ${p.id}: answer ${p.answer} is not in choices ${JSON.stringify(p.choices)}`
-      ).toContain(p.answer)
-    }
+// db.ts — add a typed write helper so callers cannot bypass hashing
+import { db } from './db'
+
+/**
+ * Stores a PIN. MUST be called with a SHA-256 hex digest — never the raw PIN.
+ * Call hashPin(rawPin) first.
+ */
+export async function storePinHash(hexDigest: string): Promise<void> {
+  if (!/^[0-9a-f]{64}$/.test(hexDigest)) {
+    throw new Error('storePinHash: argument must be a SHA-256 hex digest')
   }
-})
+  await db.appConfig.put({ key: 'pinHash', value: hexDigest })
+}
+
+// Companion utility (uses Web Crypto — never Math.random or btoa):
+export async function hashPin(pin: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pin))
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('')
+}
 ```
 
 ---
 
 ## Warnings
 
-### WR-01: `db.ts` AppConfig Schema Contradicts CLAUDE.md Storage Architecture
+### WR-01: Test suite has no assertion that MC answer is present in its choices array
 
-**File:** `src/db/db.ts:22-38`
+**File:** `src/curriculum/curriculum.test.ts:118–124`
 
-**Issue:** `AppConfig` is a Dexie/IndexedDB entity with a comment explicitly listing `'pinHash' | 'lastLessonId' | 'onboardingComplete'` as its keys. But `CLAUDE.md` specifies that PIN hash and last lesson ID belong in `localStorage` (native synchronous key/value). If different phases each implement against their own interpretation of this document conflict, PIN authentication (Phase 3) and lesson resumption (Phase 4) will silently fail to find each other's data: one phase writes to IndexedDB, the next reads from `localStorage`, and both succeed without error.
+**Issue:** The test at line 118 checks that multiple-choice problems have exactly 4 choices, but it never asserts that the declared `answer` value is one of those choices. A problem with `answer: 42` and `choices: [1, 2, 3, 4]` would pass all existing tests and be completely unanswerable at runtime. Phase 4 will compare the user's selected choice against `answer` with `===`; if the correct answer is absent from the choices, the problem can never be completed.
 
-**Fix:** Decide on one canonical storage location for each key and update the other document. If IndexedDB is preferred, remove the `localStorage` spec for `pinHash` / `lastLessonId` from CLAUDE.md. If `localStorage` is preferred, remove `AppConfig` from `db.ts` and provide a typed wrapper:
+**Fix:** Add an assertion inside a new test block:
 
 ```typescript
-// src/storage/config.ts
-const CONFIG_KEYS = ['pinHash', 'lastLessonId', 'onboardingComplete'] as const
-type ConfigKey = typeof CONFIG_KEYS[number]
-
-export const getConfig = (key: ConfigKey): string | null =>
-  localStorage.getItem(key)
-
-export const setConfig = (key: ConfigKey, value: string): void =>
-  localStorage.setItem(key, value)
-```
-
-### WR-02: Narration Audio Path Regex Does Not Validate the `lessonId` Segment
-
-**File:** `src/curriculum/curriculum.test.ts:81`
-
-**Issue:** The regex `^\/audio\/lessons\/.+\/step-\d+\.mp3$` uses `.+` for the path segment that should contain the owning lesson's ID. It permits any non-empty string, so a step whose `narrationAudio` points to a different lesson's directory (e.g., `/audio/lessons/wrong-lesson-id/step-1.mp3`) will pass. Copy-paste errors in the JSON would be invisible to the test. The unescaped `.` before `mp3` also allows strings like `/audio/lessons/x/step-1Xmp3` to pass.
-
-**Fix:**
-```typescript
-it('every lesson step narrationAudio follows /audio/lessons/{lessonId}/step-{N}.mp3 convention', () => {
-  for (const lesson of curriculum.lessons) {
-    for (const step of lesson.workedExample.steps) {
-      const expected = new RegExp(
-        `^/audio/lessons/${lesson.id}/step-\\d+\\.mp3$`
-      )
-      expect(step.narrationAudio).toMatch(expected)
+it('multiple-choice problems have the correct answer in their choices', () => {
+  for (const p of curriculum.problems) {
+    if (p.type === 'multiple-choice') {
+      expect(
+        p.choices.includes(p.answer),
+        `problem ${p.id}: answer ${p.answer} is not in choices ${JSON.stringify(p.choices)}`
+      ).toBe(true)
     }
   }
 })
 ```
 
-### WR-03: `Session` and `TopicProgress` Both Lack a `grade` Field — Parent Dashboard Will Be Too Coarse
+### WR-02: `AppConfig.key` is typed as `string` instead of a literal union
 
-**File:** `src/db/db.ts:6-19`
+**File:** `src/db/db.ts:21–24`
 
-**Issue:** `Session` stores `topic`, `date`, `correctCount`, and `totalCount`, but no `lessonId` or `grade`. `TopicProgress` stores `topic`-level accuracy but no `grade`. The project goal (CLAUDE.md) is to surface "exactly what their child understands and what they don't" for parents. At this schema granularity, the parent dashboard can only show topic-level accuracy across all grades combined (e.g., "addition: 60%") — it cannot distinguish a child who struggles with Grade 3 three-digit addition from one who struggles with Grade 1 single-digit addition. There is also no way to query session history for a specific grade after data is written.
+**Issue:** The comment documents the only valid keys as `'pinHash' | 'lastLessonId' | 'onboardingComplete'`, but the field is typed as `string`. Any arbitrary string is accepted by TypeScript without error, meaning typos like `'pinhash'` or new undocumented keys silently succeed at compile time. With Dexie's upsert semantics (`put`), a misspelled key creates a ghost record that is never read, causing hard-to-diagnose "settings not saved" bugs.
 
-**Fix:** Add `lessonId` and `grade` to `Session`, add `grade` to `TopicProgress`, and update the Dexie index:
+**Fix:**
+
+```typescript
+export interface AppConfig {
+  key: 'pinHash' | 'lastLessonId' | 'onboardingComplete'
+  value: string
+}
+```
+
+Dexie's `EntityTable` and schema definition are compatible with literal-typed primary keys.
+
+### WR-03: `Session` has no `lessonId` field — per-lesson progress is untrackable
+
+**File:** `src/db/db.ts:6–12`
+
+**Issue:** `Session` records only `topic`, not `lessonId`. The stated project goal is for parents to see "exactly what their child understands and what they don't," but with the current schema accuracy is only knowable at the topic level across all grades. A child struggling with Grade 3 regrouping but excelling at Grade 1 facts both contribute identically to the `addition` topic accuracy. Retrofitting `lessonId` in Phase 4 or 5 requires a Dexie schema version migration (`db.version(2)`), which is more disruptive than adding the field now.
+
+**Fix:** Add `lessonId` while the schema is still at version 1:
 
 ```typescript
 export interface Session {
   id?: number
-  lessonId: string       // foreign key -> Lesson.id
+  lessonId: string        // foreign key -> Lesson.id
   topic: Topic
-  grade: 1 | 2 | 3
+  grade: 1 | 2 | 3       // denormalized for easy filtering
   date: string
   correctCount: number
   totalCount: number
 }
 
-export interface TopicProgress {
-  topic: Topic
-  grade: 1 | 2 | 3      // separate row per grade
-  accuracy: number
-  attemptCount: number
-  lastPracticed: string
-}
-
-// Dexie schema update — also bump the version since schema changes
-db.version(2).stores({
-  sessions:      '++id, lessonId, topic, grade, date',
-  topicProgress: '[topic+grade]',   // compound primary key
+// Schema:
+db.version(1).stores({
+  sessions: '++id, lessonId, topic, grade, date',
+  topicProgress: 'topic',
   appConfig:     'key',
 })
 ```
 
-### WR-04: `AppConfig.key` Is Typed as `string`, Not as the Literal Union
+### WR-04: `date` / `lastPracticed` string format is unenforced — silent sort failures
 
-**File:** `src/db/db.ts:21-24`
+**File:** `src/db/db.ts:9, 19`
 
-**Issue:** The `AppConfig` interface comments list the intended keys as `'pinHash' | 'lastLessonId' | 'onboardingComplete'`, but the `key` field is typed as `string`. Any caller can write `db.appConfig.put({ key: 'pinhash', value: 'x' })` (note the typo), and TypeScript will not catch it. The correct key `'pinHash'` would then never be found by a reader, causing a silent auth or state failure at runtime.
+**Issue:** Both `Session.date` and `TopicProgress.lastPracticed` are declared as `string` with a comment "ISO date string," but nothing enforces whether callers store `'2026-05-14'` (date-only) or `'2026-05-14T12:00:00Z'` (full datetime). If Phase 4 stores full datetimes and the parent dashboard sorts or filters using string comparison, mixed formats will produce wrong ordering. String comparison of ISO dates works only when all values share the same format and length.
 
-**Fix:**
+**Fix:** Define a branded alias and a centralised formatter to prevent format drift across phases:
+
 ```typescript
-type AppConfigKey = 'pinHash' | 'lastLessonId' | 'onboardingComplete'
+/** ISO 8601 date-only string: YYYY-MM-DD */
+type ISODateString = string & { readonly _brand: 'ISODateString' }
 
-export interface AppConfig {
-  key: AppConfigKey   // primary key: type-safe config key
-  value: string
+export function toISODateString(d: Date): ISODateString {
+  return d.toISOString().slice(0, 10) as ISODateString
 }
 ```
 
-### WR-05: Test Does Not Verify Topic Consistency Between Problem and Its Referenced Lesson
-
-**File:** `src/curriculum/curriculum.test.ts:22-26`
-
-**Issue:** The test `every problem.lessonId resolves to a real lesson` confirms only that the referenced lesson ID exists. It does not check that `problem.topic === lesson.topic` or `problem.grade === lesson.grade`. A problem could reference a valid lesson while having mismatched metadata (e.g., a `subtraction` problem referencing an `addition` lesson). The parent dashboard and progress tracking depend on these fields being consistent; a mismatch would silently miscredit practice to the wrong topic.
-
-**Fix:**
-```typescript
-it('every problem topic and grade matches its referenced lesson', () => {
-  const lessonMap = new Map(curriculum.lessons.map(l => [l.id, l]))
-  for (const p of curriculum.problems) {
-    const lesson = lessonMap.get(p.lessonId)!
-    expect(p.topic, `problem ${p.id} topic mismatch`).toBe(lesson.topic)
-    expect(p.grade, `problem ${p.id} grade mismatch`).toBe(lesson.grade)
-  }
-})
-```
+Replace `string` with `ISODateString` in `Session.date` and `TopicProgress.lastPracticed`.
 
 ---
 
 ## Info
 
-### IN-01: ccStandard Prefix Validation Mixes Granularity Levels and Permits Future False Positives
+### IN-01: `ccStandards` prefix whitelist uses inconsistent matching strategy
 
-**File:** `src/curriculum/curriculum.test.ts:59-66`
+**File:** `src/curriculum/curriculum.test.ts:59–66`
 
-**Issue:** The valid prefix list `['1.OA', '2.OA', '3.NBT', '3.OA.D.8']` mixes levels of specificity. Using `'3.OA.D.8'` as a prefix also allows `'3.OA.D.80'` or `'3.OA.D.8xyz'` to pass. More practically, any other valid Grade 3 OA standard (e.g., `3.OA.A.1`) would be incorrectly rejected if added to a future lesson, causing false test failures that have no real content problem.
+**Issue:** `validPrefixes` mixes broad prefixes (`'1.OA'`, `'2.OA'`, `'3.NBT'`) with a single fully-qualified standard (`'3.OA.D.8'`). The `startsWith` check means `'3.OA.D.8'` technically also accepts strings like `'3.OA.D.80'`. More practically, if a future lesson needs any other Grade 3 OA standard (e.g., `3.OA.A.3`), the test will fail because neither `'3.NBT'` nor `'3.OA.D.8'` will match it, and the intent behind the restriction will not be obvious.
 
-**Fix:** Use consistent granularity — either all domain prefixes, or an explicit allowlist of exact IDs:
+**Fix:** Make the two-tier strategy explicit:
+
 ```typescript
-// Option A: domain-level prefixes (permissive but consistent)
-const validPrefixes = ['1.OA', '2.OA', '3.NBT', '3.OA']
+const validGrade3OA = new Set(['3.OA.D.8'])
 
-// Option B: exact standard allowlist (strictest)
-const validStandards = new Set([
-  '1.OA.A.1', '1.OA.A.2', '1.OA.B.4', '1.OA.C.5', '1.OA.C.6', '1.OA.D.8',
-  '2.OA.A.1', '2.OA.B.2', '2.OA.C.4',
-  '3.NBT.A.2', '3.OA.D.8',
-])
-for (const lesson of curriculum.lessons) {
-  for (const std of lesson.ccStandards) {
-    expect(validStandards.has(std), `lesson ${lesson.id}: unknown standard ${std}`).toBe(true)
-  }
-}
+const valid = std.startsWith('1.OA') ||
+              std.startsWith('2.OA') ||
+              std.startsWith('3.NBT') ||
+              validGrade3OA.has(std)
 ```
 
-### IN-02: `WorkedExample.steps` Type Allows Empty Arrays — Type Does Not Match Intent
+### IN-02: Lesson `addition-grade3-01` introduces round-hundred addition but includes mixed-addend problems
 
-**File:** `src/curriculum/types.ts:12-14`
+**File:** `src/curriculum/curriculum.json:183–211, 1136–1161`
 
-**Issue:** `WorkedExample` is defined as `{ steps: LessonStep[] }`. TypeScript allows `steps: []` — an empty array — which would produce a lesson with no narration or worked content to display. The test catches this at runtime, but the type itself permits the bad state. TypeScript 4.0+ supports non-empty tuple types.
+**Issue:** The lesson "Adding Hundreds (Place Value)" uses `300 + 400` as its worked example — pure round-hundred arithmetic. However, problems p3 and p4 for this lesson present `150 + 250` and `320 + 180`, which require tens-digit addition that the lesson never demonstrates. A child who absorbed only the lesson's worked example will encounter a technique gap when reaching these problems.
 
-**Fix:** Use a tuple minimum type or add a runtime non-empty check:
+**Fix:** Either adjust the lesson worked example to include a non-round-hundred example (e.g., `250 + 150`), or replace p3/p4 with problems consistent with round-hundred scope (e.g., `100 + 600`, `200 + 700`).
+
+### IN-03: `TopicProgress.accuracy` has no 0–1 range guard at the storage layer
+
+**File:** `src/db/db.ts:14–19`
+
+**Issue:** `accuracy: number` is commented as "0–1 float" but TypeScript's `number` accepts `NaN`, `Infinity`, negative values, and values above 1. A divide-by-zero in Phase 4 (e.g., `correctCount / totalCount` when `totalCount === 0`) would silently store `NaN`. The parent dashboard would then display `NaN%` or render broken progress indicators.
+
+**Fix:** Add a guard in any function that writes `TopicProgress`:
+
 ```typescript
-export interface WorkedExample {
-  steps: [LessonStep, ...LessonStep[]]  // at least one step required by the type
+function clampAccuracy(raw: number): number {
+  if (!isFinite(raw)) return 0
+  return Math.max(0, Math.min(1, raw))
 }
 ```
-
-### IN-03: `Session.id` Optional Type Is Misleading After Database Read
-
-**File:** `src/db/db.ts:7`
-
-**Issue:** `Session.id` is typed as `id?: number` (optional) to accommodate pre-insert objects. However, after a Dexie `add()` or `get()` call, the returned object always has `id` set. Code that reads sessions from the database must guard against `undefined` even though `undefined` can never actually occur in practice, leading to defensive coding that obscures intent.
-
-**Fix:** Use a separate type for the insert shape vs. the persisted shape, which is the pattern Dexie's `EntityTable` is designed to support:
-```typescript
-// Insert-time shape (id absent)
-export interface NewSession {
-  topic: Topic
-  date: string
-  correctCount: number
-  totalCount: number
-}
-
-// Persisted shape (id always present)
-export interface Session extends NewSession {
-  id: number
-}
-```
-Or, if keeping a single interface, document that `id` is only undefined at insert time, not at read time.
 
 ---
 
-_Reviewed: 2026-05-13T10:00:00Z_
+_Reviewed: 2026-05-14_
 _Reviewer: Claude (gsd-code-reviewer)_
 _Depth: standard_
