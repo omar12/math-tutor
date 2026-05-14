@@ -5,7 +5,9 @@ import type { Topic } from '../curriculum/types'
 
 export interface Session {
   id?: number           // auto-incremented primary key
+  lessonId: string      // foreign key -> Lesson.id
   topic: Topic          // canonical Topic union from src/curriculum/types
+  grade: 1 | 2 | 3     // denormalized for easy filtering
   date: string          // ISO date string
   correctCount: number
   totalCount: number
@@ -32,7 +34,7 @@ const db = new Dexie('MathTutorDB') as Dexie & {
 }
 
 db.version(1).stores({
-  sessions:      '++id, topic, date',
+  sessions:      '++id, lessonId, topic, grade, date',
   topicProgress: 'topic',
   appConfig:     'key',
 })
