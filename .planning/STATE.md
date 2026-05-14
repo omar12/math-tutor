@@ -4,14 +4,14 @@ milestone: v1.0
 milestone_name: milestone
 status: executing
 stopped_at: Phase 2 context gathered
-last_updated: "2026-05-14T04:04:14.838Z"
+last_updated: "2026-05-14T04:08:52.965Z"
 last_activity: 2026-05-14 -- Phase 2 planning complete
 progress:
   total_phases: 6
   completed_phases: 1
   total_plans: 4
-  completed_plans: 2
-  percent: 50
+  completed_plans: 3
+  percent: 75
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-05-12)
 ## Current Position
 
 Phase: 2 of 6 (Curriculum & Content)
-Plan: 0 of ? in current phase (planning in progress)
-Status: Ready to execute
-Last activity: 2026-05-14 -- Phase 2 planning complete
+Plan: 1 of ? in current phase (02-01 complete)
+Status: Executing
+Last activity: 2026-05-13 -- Plan 02-01 complete (types, db narrowing, test wiring)
 
-Progress: [██░░░░░░░░] 17%
+Progress: [███░░░░░░░] 25%
 
 ## Performance Metrics
 
@@ -68,6 +68,8 @@ Recent decisions affecting current work:
 - [01-01]: fake-indexeddb wired in src/test/setup.ts — no per-test mock needed
 - [01-02]: RemyFox className prop interface frozen — Phase 3 replaces internals with Lottie
 - [01-02]: ParentScreen has no PIN gate — deferred to Phase 5
+- [02-01]: Topic union is canonical source of truth — db.ts imports from curriculum/types.ts
+- [02-01]: curriculum.test.ts intentionally RED until Plan 02 ships index.ts + curriculum.json
 
 ### Pending Todos
 
@@ -88,5 +90,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-13
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-curriculum-content/02-CONTEXT.md
+Stopped at: Completed 02-01-PLAN.md
+Resume file: None

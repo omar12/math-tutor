@@ -60,7 +60,7 @@ Plans:
 **Wave 2** *(blocked on Wave 1 completion)* — 02-02: Curriculum loader module (index.ts) and full 27-lesson + ~135-problem curriculum.json content
 
 Plans:
-- [ ] 02-01-PLAN.md — TypeScript types, Dexie topic narrowing, and data integrity test suite (tests RED until Wave 2)
+- [x] 02-01-PLAN.md — TypeScript types, Dexie topic narrowing, and data integrity test suite (tests RED until Wave 2)
 - [ ] 02-02-PLAN.md — Curriculum loader (index.ts with satisfies) and full curriculum.json data (27 lessons, ~135 problems)
 
 ### Phase 3: Lesson Player
@@ -122,8 +122,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Ready to execute | - |
-| 2. Curriculum & Content | 0/2 | Ready to execute | - |
+| 1. Foundation | 2/2 | Complete | 2026-05-13 |
+| 2. Curriculum & Content | 1/2 | Executing | - |
 | 3. Lesson Player | 0/TBD | Not started | - |
 | 4. Practice Engine | 0/TBD | Not started | - |
 | 5. Progress & Parent Section | 0/TBD | Not started | - |
