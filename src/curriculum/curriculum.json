@@ -1,0 +1,2119 @@
+{
+  "lessons": [
+    {
+      "id": "addition-grade1-01",
+      "title": "Adding to 10",
+      "grade": 1,
+      "topic": "addition",
+      "order": 1,
+      "ccStandards": ["1.OA.C.5", "1.OA.C.6"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Hi there! I'm Remy the Fox, and today we're going to learn about adding numbers! Adding means putting things together to find out how many there are in all.",
+            "narrationAudio": "/audio/lessons/addition-grade1-01/step-1.mp3"
+          },
+          {
+            "text": "Let's try adding 3 and 4. Imagine you have 3 apples and someone gives you 4 more apples. How many do you have now?",
+            "narrationAudio": "/audio/lessons/addition-grade1-01/step-2.mp3",
+            "equation": "3 + 4 = ?"
+          },
+          {
+            "text": "Count with me! Start at 3 and count 4 more: 4, 5, 6, 7. So 3 plus 4 equals 7! You're doing amazing!",
+            "narrationAudio": "/audio/lessons/addition-grade1-01/step-3.mp3",
+            "equation": "3 + 4 = 7"
+          },
+          {
+            "text": "Great work! You just learned how to add numbers to 10. Let's practice together!",
+            "narrationAudio": "/audio/lessons/addition-grade1-01/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "addition-grade1-02",
+      "title": "Adding to 20",
+      "grade": 1,
+      "topic": "addition",
+      "order": 2,
+      "ccStandards": ["1.OA.A.1", "1.OA.C.6"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Excellent! Now that you can add to 10, let's try adding bigger numbers — all the way up to 20! You're going to be a superstar at this.",
+            "narrationAudio": "/audio/lessons/addition-grade1-02/step-1.mp3"
+          },
+          {
+            "text": "Let's add 8 and 7. We can start at 8 and count on 7 more. Ready? Here we go!",
+            "narrationAudio": "/audio/lessons/addition-grade1-02/step-2.mp3",
+            "equation": "8 + 7 = ?"
+          },
+          {
+            "text": "Count with me from 8: 9, 10, 11, 12, 13, 14, 15. That's 7 steps, so 8 plus 7 equals 15!",
+            "narrationAudio": "/audio/lessons/addition-grade1-02/step-3.mp3",
+            "equation": "8 + 7 = 15"
+          },
+          {
+            "text": "Wonderful! You can add numbers up to 20. Let's practice some problems to make you even better!",
+            "narrationAudio": "/audio/lessons/addition-grade1-02/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "addition-grade1-03",
+      "title": "Adding Three Numbers",
+      "grade": 1,
+      "topic": "addition",
+      "order": 3,
+      "ccStandards": ["1.OA.A.2"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Wow, you're getting so good! Now let's try something fun — adding THREE numbers together at the same time!",
+            "narrationAudio": "/audio/lessons/addition-grade1-03/step-1.mp3"
+          },
+          {
+            "text": "Here's a tricky one: 2 plus 3 plus 4. We can add the first two numbers first. 2 plus 3 equals 5.",
+            "narrationAudio": "/audio/lessons/addition-grade1-03/step-2.mp3",
+            "equation": "2 + 3 + 4 = ?"
+          },
+          {
+            "text": "Now take that 5 and add 4 more. 5 plus 4 equals 9! So 2 plus 3 plus 4 equals 9. You did it!",
+            "narrationAudio": "/audio/lessons/addition-grade1-03/step-3.mp3",
+            "equation": "5 + 4 = 9"
+          },
+          {
+            "text": "Amazing! You can add three numbers together. Let's practice and show off your skills!",
+            "narrationAudio": "/audio/lessons/addition-grade1-03/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "addition-grade2-01",
+      "title": "Adding Within 100 (No Regrouping)",
+      "grade": 2,
+      "topic": "addition",
+      "order": 1,
+      "ccStandards": ["2.OA.A.1", "2.OA.B.2"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Welcome back! Now we're going to add bigger numbers — up to 100! This is going to be so fun. Let's start with numbers that don't need regrouping.",
+            "narrationAudio": "/audio/lessons/addition-grade2-01/step-1.mp3"
+          },
+          {
+            "text": "Let's add 34 and 23. We add the ones place first: 4 plus 3 equals 7.",
+            "narrationAudio": "/audio/lessons/addition-grade2-01/step-2.mp3",
+            "equation": "34 + 23 = ?"
+          },
+          {
+            "text": "Then we add the tens place: 3 tens plus 2 tens equals 5 tens, which is 50. Put them together: 57!",
+            "narrationAudio": "/audio/lessons/addition-grade2-01/step-3.mp3",
+            "equation": "34 + 23 = 57"
+          },
+          {
+            "text": "Fantastic! Adding big numbers works the same way — just add each place value. Let's practice!",
+            "narrationAudio": "/audio/lessons/addition-grade2-01/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "addition-grade2-02",
+      "title": "Adding Within 100 (With Regrouping)",
+      "grade": 2,
+      "topic": "addition",
+      "order": 2,
+      "ccStandards": ["2.OA.A.1"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Great job! Now let's try adding when we need to regroup — that means carrying a number to the next place. You've got this!",
+            "narrationAudio": "/audio/lessons/addition-grade2-02/step-1.mp3"
+          },
+          {
+            "text": "Let's add 47 and 35. Start with the ones: 7 plus 5 equals 12. That's more than 9, so we write 2 and carry 1 ten.",
+            "narrationAudio": "/audio/lessons/addition-grade2-02/step-2.mp3",
+            "equation": "47 + 35 = ?"
+          },
+          {
+            "text": "Now the tens: 4 tens plus 3 tens plus the 1 we carried equals 8 tens. So 47 plus 35 equals 82!",
+            "narrationAudio": "/audio/lessons/addition-grade2-02/step-3.mp3",
+            "equation": "47 + 35 = 82"
+          },
+          {
+            "text": "Superstar! You just learned regrouping. It might seem tricky but you're doing brilliantly. Practice time!",
+            "narrationAudio": "/audio/lessons/addition-grade2-02/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "addition-grade2-03",
+      "title": "Adding to Find Totals in Arrays",
+      "grade": 2,
+      "topic": "addition",
+      "order": 3,
+      "ccStandards": ["2.OA.C.4"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Here's something really cool! We can use addition to count objects arranged in rows and columns — we call that an array!",
+            "narrationAudio": "/audio/lessons/addition-grade2-03/step-1.mp3"
+          },
+          {
+            "text": "Imagine 3 rows of stickers with 4 stickers in each row. We can add: 4 plus 4 plus 4. That's adding the same number three times!",
+            "narrationAudio": "/audio/lessons/addition-grade2-03/step-2.mp3",
+            "equation": "4 + 4 + 4 = ?"
+          },
+          {
+            "text": "4 plus 4 equals 8, then 8 plus 4 equals 12. So 3 rows of 4 stickers gives us 12 stickers in all!",
+            "narrationAudio": "/audio/lessons/addition-grade2-03/step-3.mp3",
+            "equation": "4 + 4 + 4 = 12"
+          },
+          {
+            "text": "Brilliant! Adding equal groups is a powerful math skill. Let's practice finding totals in arrays!",
+            "narrationAudio": "/audio/lessons/addition-grade2-03/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "addition-grade3-01",
+      "title": "Adding Hundreds (Place Value)",
+      "grade": 3,
+      "topic": "addition",
+      "order": 1,
+      "ccStandards": ["3.NBT.A.2"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "You're in third grade now — let's add really big numbers! We'll use place value to break numbers into hundreds, tens, and ones.",
+            "narrationAudio": "/audio/lessons/addition-grade3-01/step-1.mp3"
+          },
+          {
+            "text": "Let's add 300 and 400. Think of it as 3 hundreds plus 4 hundreds. 3 plus 4 equals 7, so that's 7 hundreds!",
+            "narrationAudio": "/audio/lessons/addition-grade3-01/step-2.mp3",
+            "equation": "300 + 400 = ?"
+          },
+          {
+            "text": "300 plus 400 equals 700. Place value makes big addition easy — you're amazing!",
+            "narrationAudio": "/audio/lessons/addition-grade3-01/step-3.mp3",
+            "equation": "300 + 400 = 700"
+          },
+          {
+            "text": "Perfect! Now let's practice adding hundreds together. You're going to ace this!",
+            "narrationAudio": "/audio/lessons/addition-grade3-01/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "addition-grade3-02",
+      "title": "Adding Within 1000",
+      "grade": 3,
+      "topic": "addition",
+      "order": 2,
+      "ccStandards": ["3.NBT.A.2"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Ready to add numbers up to one thousand? This is where your math skills really shine! Let's add a three-digit number.",
+            "narrationAudio": "/audio/lessons/addition-grade3-02/step-1.mp3"
+          },
+          {
+            "text": "Let's add 245 and 138. Start with the ones: 5 plus 8 equals 13. Write 3, carry 1.",
+            "narrationAudio": "/audio/lessons/addition-grade3-02/step-2.mp3",
+            "equation": "245 + 138 = ?"
+          },
+          {
+            "text": "Tens: 4 plus 3 plus 1 carried equals 8. Hundreds: 2 plus 1 equals 3. So 245 plus 138 equals 383!",
+            "narrationAudio": "/audio/lessons/addition-grade3-02/step-3.mp3",
+            "equation": "245 + 138 = 383"
+          },
+          {
+            "text": "Outstanding! Adding within 1000 uses the same place-value steps. Let's practice and build your speed!",
+            "narrationAudio": "/audio/lessons/addition-grade3-02/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "addition-grade3-03",
+      "title": "Two-Step Addition Problems",
+      "grade": 3,
+      "topic": "addition",
+      "order": 3,
+      "ccStandards": ["3.OA.D.8"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Wow, you're a math champion! Now let's try problems with two steps — where you need to add twice to get to the answer.",
+            "narrationAudio": "/audio/lessons/addition-grade3-03/step-1.mp3"
+          },
+          {
+            "text": "A school library has 350 books. They get 120 new books in the morning, and 85 more in the afternoon. How many books are there now?",
+            "narrationAudio": "/audio/lessons/addition-grade3-03/step-2.mp3",
+            "equation": "350 + 120 + 85 = ?"
+          },
+          {
+            "text": "Step one: 350 plus 120 equals 470. Step two: 470 plus 85 equals 555. The library has 555 books!",
+            "narrationAudio": "/audio/lessons/addition-grade3-03/step-3.mp3",
+            "equation": "350 + 120 = 470"
+          },
+          {
+            "text": "Then 470 + 85 = 555. Two steps done — you solved it! You're an incredible mathematician!",
+            "narrationAudio": "/audio/lessons/addition-grade3-03/step-4.mp3",
+            "equation": "470 + 85 = 555"
+          }
+        ]
+      }
+    },
+    {
+      "id": "subtraction-grade1-01",
+      "title": "Taking Away (Within 10)",
+      "grade": 1,
+      "topic": "subtraction",
+      "order": 1,
+      "ccStandards": ["1.OA.C.5", "1.OA.C.6"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Now let's learn about taking away — that's called subtraction! When we subtract, we start with a number and take some away.",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-01/step-1.mp3"
+          },
+          {
+            "text": "Imagine you have 7 grapes and you eat 3 of them. How many are left? That's 7 take away 3.",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-01/step-2.mp3",
+            "equation": "7 - 3 = ?"
+          },
+          {
+            "text": "Count back from 7: 6, 5, 4. That's 3 steps back. So 7 minus 3 equals 4! You have 4 grapes left.",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-01/step-3.mp3",
+            "equation": "7 - 3 = 4"
+          },
+          {
+            "text": "Wonderful! Subtraction is just counting back. Let's practice and you'll be a subtraction star!",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-01/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "subtraction-grade1-02",
+      "title": "Taking Away (Within 20)",
+      "grade": 1,
+      "topic": "subtraction",
+      "order": 2,
+      "ccStandards": ["1.OA.A.1", "1.OA.C.6"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Excellent subtraction skills! Now let's subtract with bigger numbers — up to 20. You're ready for this challenge!",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-02/step-1.mp3"
+          },
+          {
+            "text": "Here's a problem: 15 minus 6. Start at 15 and count back 6 steps.",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-02/step-2.mp3",
+            "equation": "15 - 6 = ?"
+          },
+          {
+            "text": "15... count back: 14, 13, 12, 11, 10, 9. Six steps back lands on 9. So 15 minus 6 equals 9!",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-02/step-3.mp3",
+            "equation": "15 - 6 = 9"
+          },
+          {
+            "text": "You're brilliant! Counting back works for bigger numbers too. Let's do some practice problems!",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-02/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "subtraction-grade1-03",
+      "title": "Subtraction as Unknown Addend",
+      "grade": 1,
+      "topic": "subtraction",
+      "order": 3,
+      "ccStandards": ["1.OA.B.4", "1.OA.D.8"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Here's a cool math trick! Subtraction and addition are related — they're like best friends. We can turn a subtraction problem into a missing number problem!",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-03/step-1.mp3"
+          },
+          {
+            "text": "If we have 10 minus 3, we can think: 3 plus what number equals 10? That unknown number is what we're looking for!",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-03/step-2.mp3",
+            "equation": "10 - 3 = ?"
+          },
+          {
+            "text": "Think: 3 plus 7 equals 10. So 10 minus 3 equals 7! Addition helps us with subtraction. That's so clever!",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-03/step-3.mp3",
+            "equation": "3 + 7 = 10"
+          },
+          {
+            "text": "Amazing thinking! Seeing subtraction as a missing addend makes it so much easier. Let's practice!",
+            "narrationAudio": "/audio/lessons/subtraction-grade1-03/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "subtraction-grade2-01",
+      "title": "Subtracting Within 100 (No Regrouping)",
+      "grade": 2,
+      "topic": "subtraction",
+      "order": 1,
+      "ccStandards": ["2.OA.A.1", "2.OA.B.2"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Time to subtract bigger numbers! Let's start with subtraction within 100 when we don't need to regroup. You can do this!",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-01/step-1.mp3"
+          },
+          {
+            "text": "Let's try 68 minus 24. Start with the ones: 8 minus 4 equals 4.",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-01/step-2.mp3",
+            "equation": "68 - 24 = ?"
+          },
+          {
+            "text": "Now the tens: 6 tens minus 2 tens equals 4 tens. Put it together: 44! So 68 minus 24 equals 44.",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-01/step-3.mp3",
+            "equation": "68 - 24 = 44"
+          },
+          {
+            "text": "Great work! Subtracting by place value is so powerful. Let's practice some more!",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-01/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "subtraction-grade2-02",
+      "title": "Subtracting Within 100 (With Regrouping)",
+      "grade": 2,
+      "topic": "subtraction",
+      "order": 2,
+      "ccStandards": ["2.OA.A.1"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Now for the trickier kind — subtracting with regrouping! Sometimes we need to borrow from the tens place. Let's see how it works.",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-02/step-1.mp3"
+          },
+          {
+            "text": "Let's try 52 minus 37. Look at the ones: we have 2 and need to take away 7. We can't do that, so we borrow from the tens!",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-02/step-2.mp3",
+            "equation": "52 - 37 = ?"
+          },
+          {
+            "text": "Borrow 1 ten from the 5, making it 4. Now the ones become 12. 12 minus 7 equals 5. Then 4 tens minus 3 tens equals 1 ten. So the answer is 15!",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-02/step-3.mp3",
+            "equation": "52 - 37 = 15"
+          },
+          {
+            "text": "You handled regrouping like a champ! That was the hard part — and you got it. Practice makes perfect!",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-02/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "subtraction-grade2-03",
+      "title": "One- and Two-Step Subtraction Word Problems",
+      "grade": 2,
+      "topic": "subtraction",
+      "order": 3,
+      "ccStandards": ["2.OA.A.1"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Now let's use subtraction to solve stories! Reading carefully is a big part of math. Let's find out what to subtract.",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-03/step-1.mp3"
+          },
+          {
+            "text": "Mia has 73 stickers. She gives 28 stickers to her friend Leo. How many stickers does Mia have left? We subtract: 73 minus 28.",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-03/step-2.mp3",
+            "equation": "73 - 28 = ?"
+          },
+          {
+            "text": "Regroup: borrow from the 7. Ones: 13 minus 8 equals 5. Tens: 6 minus 2 equals 4. So Mia has 45 stickers left!",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-03/step-3.mp3",
+            "equation": "73 - 28 = 45"
+          },
+          {
+            "text": "You solved a real story problem! That's amazing math. Let's practice reading and solving more word problems!",
+            "narrationAudio": "/audio/lessons/subtraction-grade2-03/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "subtraction-grade3-01",
+      "title": "Subtracting Hundreds (Place Value)",
+      "grade": 3,
+      "topic": "subtraction",
+      "order": 1,
+      "ccStandards": ["3.NBT.A.2"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Third grade subtraction — let's go big! We'll subtract numbers in the hundreds using place value. This is where your brain really gets to shine.",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-01/step-1.mp3"
+          },
+          {
+            "text": "Let's try 700 minus 300. Think of it as 7 hundreds minus 3 hundreds. 7 minus 3 equals 4 hundreds.",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-01/step-2.mp3",
+            "equation": "700 - 300 = ?"
+          },
+          {
+            "text": "700 minus 300 equals 400. Just like subtracting ones, but with hundreds! You're doing brilliantly.",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-01/step-3.mp3",
+            "equation": "700 - 300 = 400"
+          },
+          {
+            "text": "Fantastic! Place value makes subtracting hundreds so clear. Let's practice big number subtraction!",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-01/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "subtraction-grade3-02",
+      "title": "Subtracting Within 1000",
+      "grade": 3,
+      "topic": "subtraction",
+      "order": 2,
+      "ccStandards": ["3.NBT.A.2"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Now let's subtract numbers up to 1000 with multiple place values. You've been practicing place value — now let's put it all together!",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-02/step-1.mp3"
+          },
+          {
+            "text": "Let's subtract 583 minus 247. Ones: 3 minus 7 — we need to regroup! Borrow from the tens. Now 13 minus 7 equals 6.",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-02/step-2.mp3",
+            "equation": "583 - 247 = ?"
+          },
+          {
+            "text": "Tens: 7 minus 4 equals 3 (remember we borrowed one ten). Hundreds: 5 minus 2 equals 3. So 583 minus 247 equals 336!",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-02/step-3.mp3",
+            "equation": "583 - 247 = 336"
+          },
+          {
+            "text": "Outstanding work! Subtracting within 1000 is a big skill and you nailed it. Time to practice!",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-02/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "subtraction-grade3-03",
+      "title": "Two-Step Subtraction Problems",
+      "grade": 3,
+      "topic": "subtraction",
+      "order": 3,
+      "ccStandards": ["3.OA.D.8"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Two-step problems with subtraction! These need two math steps to solve. Read carefully and we'll work through it together.",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-03/step-1.mp3"
+          },
+          {
+            "text": "Zara has 850 points in a game. She loses 200 points, then loses 150 more. How many points does she have now?",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-03/step-2.mp3",
+            "equation": "850 - 200 - 150 = ?"
+          },
+          {
+            "text": "Step one: 850 minus 200 equals 650. Step two: 650 minus 150 equals 500. Zara has 500 points!",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-03/step-3.mp3",
+            "equation": "850 - 200 = 650"
+          },
+          {
+            "text": "Then 650 - 150 = 500. Two steps, one amazing answer! You're an incredible math thinker!",
+            "narrationAudio": "/audio/lessons/subtraction-grade3-03/step-4.mp3",
+            "equation": "650 - 150 = 500"
+          }
+        ]
+      }
+    },
+    {
+      "id": "word-problems-grade1-01",
+      "title": "Adding Story Problems (Within 10)",
+      "grade": 1,
+      "topic": "word-problems",
+      "order": 1,
+      "ccStandards": ["1.OA.A.1"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Story problems are math hiding inside little stories! Let's listen to the story and figure out what we need to add.",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-01/step-1.mp3"
+          },
+          {
+            "text": "Here's our story: Mia found 4 seashells on the beach. Then she found 3 more seashells. How many seashells does she have in all?",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-01/step-2.mp3",
+            "equation": "4 + 3 = ?"
+          },
+          {
+            "text": "The words 'in all' tell us to add! 4 plus 3 equals 7. Mia has 7 seashells. You found the math in the story!",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-01/step-3.mp3",
+            "equation": "4 + 3 = 7"
+          },
+          {
+            "text": "You're a fantastic story-problem solver! Let's practice reading stories and finding the addition.",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-01/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "word-problems-grade1-02",
+      "title": "Taking Away Story Problems (Within 10)",
+      "grade": 1,
+      "topic": "word-problems",
+      "order": 2,
+      "ccStandards": ["1.OA.A.1"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Now let's find subtraction hiding in stories! Listen for words that mean taking away.",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-02/step-1.mp3"
+          },
+          {
+            "text": "Here's the story: Remy the Fox had 8 blueberries. He ate 3 blueberries for a snack. How many blueberries does he have left?",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-02/step-2.mp3",
+            "equation": "8 - 3 = ?"
+          },
+          {
+            "text": "The word 'left' tells us to subtract! 8 minus 3 equals 5. Remy has 5 blueberries. You spotted the subtraction!",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-02/step-3.mp3",
+            "equation": "8 - 3 = 5"
+          },
+          {
+            "text": "Brilliant detective work! You found the math hiding in the story. Let's practice more taking-away stories!",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-02/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "word-problems-grade1-03",
+      "title": "Comparing Story Problems",
+      "grade": 1,
+      "topic": "word-problems",
+      "order": 3,
+      "ccStandards": ["1.OA.A.1"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Sometimes a story asks us to compare — to find out how many more or how many fewer. Let's learn how to solve comparing stories!",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-03/step-1.mp3"
+          },
+          {
+            "text": "Leo has 9 crayons. Zara has 6 crayons. How many more crayons does Leo have than Zara?",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-03/step-2.mp3",
+            "equation": "9 - 6 = ?"
+          },
+          {
+            "text": "To compare, we subtract the smaller number from the bigger one. 9 minus 6 equals 3. Leo has 3 more crayons than Zara!",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-03/step-3.mp3",
+            "equation": "9 - 6 = 3"
+          },
+          {
+            "text": "You compared two amounts and found the difference. That's such smart math thinking! Let's practice!",
+            "narrationAudio": "/audio/lessons/word-problems-grade1-03/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "word-problems-grade2-01",
+      "title": "One-Step Word Problems (Within 100)",
+      "grade": 2,
+      "topic": "word-problems",
+      "order": 1,
+      "ccStandards": ["2.OA.A.1"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Second-grade story problems have bigger numbers! The strategy is the same — read the story, find the key words, and decide whether to add or subtract.",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-01/step-1.mp3"
+          },
+          {
+            "text": "Mia collects 46 trading cards. Her friend gives her 27 more. How many cards does Mia have in all?",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-01/step-2.mp3",
+            "equation": "46 + 27 = ?"
+          },
+          {
+            "text": "We add because Mia is getting more cards. 6 plus 7 equals 13, carry the 1. 4 plus 2 plus 1 equals 7 tens. Mia has 73 cards!",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-01/step-3.mp3",
+            "equation": "46 + 27 = 73"
+          },
+          {
+            "text": "Reading carefully and finding the operation — that's real math problem-solving! Let's do more!",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-01/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "word-problems-grade2-02",
+      "title": "Two-Step Word Problems (Within 100)",
+      "grade": 2,
+      "topic": "word-problems",
+      "order": 2,
+      "ccStandards": ["2.OA.A.1"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Ready for two-step word problems? These stories need TWO math operations to solve. Take it one step at a time!",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-02/step-1.mp3"
+          },
+          {
+            "text": "Leo has 35 stamps. He buys 24 more stamps at the shop. Then he gives 18 stamps to his sister. How many stamps does Leo have now?",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-02/step-2.mp3",
+            "equation": "35 + 24 - 18 = ?"
+          },
+          {
+            "text": "Step one: 35 plus 24 equals 59. Now step two: 59 minus 18 equals 41. Leo has 41 stamps. Two steps — you solved it!",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-02/step-3.mp3",
+            "equation": "35 + 24 = 59"
+          },
+          {
+            "text": "Then 59 - 18 = 41. Two steps, one great answer! You're a two-step math hero!",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-02/step-4.mp3",
+            "equation": "59 - 18 = 41"
+          }
+        ]
+      }
+    },
+    {
+      "id": "word-problems-grade2-03",
+      "title": "Comparing Word Problems",
+      "grade": 2,
+      "topic": "word-problems",
+      "order": 3,
+      "ccStandards": ["2.OA.A.1"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Let's compare bigger numbers in stories! These problems ask 'how many more' or 'how many fewer' — and we use subtraction to find the answer.",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-03/step-1.mp3"
+          },
+          {
+            "text": "Zara read 63 pages of her book. Remy read 48 pages of his book. How many more pages did Zara read than Remy?",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-03/step-2.mp3",
+            "equation": "63 - 48 = ?"
+          },
+          {
+            "text": "We subtract to compare: 63 minus 48. Regroup: 13 minus 8 equals 5. 5 tens minus 4 tens equals 1 ten. Zara read 15 more pages!",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-03/step-3.mp3",
+            "equation": "63 - 48 = 15"
+          },
+          {
+            "text": "Incredible comparing skills! You used subtraction to find the difference. Let's practice some more comparing stories!",
+            "narrationAudio": "/audio/lessons/word-problems-grade2-03/step-4.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "word-problems-grade3-01",
+      "title": "Two-Step Word Problems with Addition",
+      "grade": 3,
+      "topic": "word-problems",
+      "order": 1,
+      "ccStandards": ["3.OA.D.8"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Third-grade word problems use really big numbers! Today's problems need two addition steps. Read carefully, and we'll work through it together.",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-01/step-1.mp3"
+          },
+          {
+            "text": "A park has 325 oak trees and 248 maple trees. Park rangers plant 112 more oak trees. How many trees are in the park now?",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-01/step-2.mp3",
+            "equation": "325 + 248 + 112 = ?"
+          },
+          {
+            "text": "Step one: 325 plus 248 equals 573. Step two: 573 plus 112 equals 685. The park has 685 trees!",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-01/step-3.mp3",
+            "equation": "325 + 248 = 573"
+          },
+          {
+            "text": "Then 573 + 112 = 685. Two-step addition with big numbers — you're a superstar problem solver!",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-01/step-4.mp3",
+            "equation": "573 + 112 = 685"
+          }
+        ]
+      }
+    },
+    {
+      "id": "word-problems-grade3-02",
+      "title": "Two-Step Word Problems with Subtraction",
+      "grade": 3,
+      "topic": "word-problems",
+      "order": 2,
+      "ccStandards": ["3.OA.D.8"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "Two-step problems with subtraction! These stories need two steps — and they might both be subtraction, or one add and one subtract.",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-02/step-1.mp3"
+          },
+          {
+            "text": "A school has 920 students. On a field trip day, 135 students go to the science museum and 245 students go to the art gallery. How many students stay at school?",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-02/step-2.mp3",
+            "equation": "920 - 135 - 245 = ?"
+          },
+          {
+            "text": "Step one: 920 minus 135 equals 785. Step two: 785 minus 245 equals 540. 540 students stay at school!",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-02/step-3.mp3",
+            "equation": "920 - 135 = 785"
+          },
+          {
+            "text": "Then 785 - 245 = 540. You solved a two-step subtraction story — that's truly impressive math!",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-02/step-4.mp3",
+            "equation": "785 - 245 = 540"
+          }
+        ]
+      }
+    },
+    {
+      "id": "word-problems-grade3-03",
+      "title": "Mixed Two-Step Problems",
+      "grade": 3,
+      "topic": "word-problems",
+      "order": 3,
+      "ccStandards": ["3.OA.D.8"],
+      "workedExample": {
+        "steps": [
+          {
+            "text": "The ultimate challenge — mixed two-step problems! Some steps add and some subtract. Read every word carefully and plan your steps.",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-03/step-1.mp3"
+          },
+          {
+            "text": "A school library has 450 books. They receive 230 new books as a donation. Then 180 books are borrowed by students. How many books are on the shelves now?",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-03/step-2.mp3",
+            "equation": "450 + 230 - 180 = ?"
+          },
+          {
+            "text": "Step one (add): 450 plus 230 equals 680. Step two (subtract): 680 minus 180 equals 500. There are 500 books on the shelves!",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-03/step-3.mp3",
+            "equation": "450 + 230 = 680"
+          },
+          {
+            "text": "Then 680 - 180 = 500. You solved a mixed two-step problem! You are an incredible mathematician and you should be so proud!",
+            "narrationAudio": "/audio/lessons/word-problems-grade3-03/step-4.mp3",
+            "equation": "680 - 180 = 500"
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "addition-grade1-01-p1",
+      "lessonId": "addition-grade1-01",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 2 + 3?",
+      "answer": 5,
+      "type": "multiple-choice",
+      "choices": [4, 5, 6, 7]
+    },
+    {
+      "id": "addition-grade1-01-p2",
+      "lessonId": "addition-grade1-01",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 4 + 4?",
+      "answer": 8,
+      "type": "multiple-choice",
+      "choices": [6, 7, 8, 9]
+    },
+    {
+      "id": "addition-grade1-01-p3",
+      "lessonId": "addition-grade1-01",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 1 + 6?",
+      "answer": 7,
+      "type": "multiple-choice",
+      "choices": [5, 6, 7, 8]
+    },
+    {
+      "id": "addition-grade1-01-p4",
+      "lessonId": "addition-grade1-01",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 3 + 5?",
+      "answer": 8,
+      "type": "multiple-choice",
+      "choices": [7, 8, 9, 10]
+    },
+    {
+      "id": "addition-grade1-01-p5",
+      "lessonId": "addition-grade1-01",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 5 + 4?",
+      "answer": 9,
+      "type": "multiple-choice",
+      "choices": [8, 9, 10, 11]
+    },
+    {
+      "id": "addition-grade1-02-p1",
+      "lessonId": "addition-grade1-02",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 6 + 7?",
+      "answer": 13,
+      "type": "multiple-choice",
+      "choices": [11, 12, 13, 14]
+    },
+    {
+      "id": "addition-grade1-02-p2",
+      "lessonId": "addition-grade1-02",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 9 + 5?",
+      "answer": 14,
+      "type": "multiple-choice",
+      "choices": [13, 14, 15, 16]
+    },
+    {
+      "id": "addition-grade1-02-p3",
+      "lessonId": "addition-grade1-02",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 8 + 8?",
+      "answer": 16,
+      "type": "multiple-choice",
+      "choices": [14, 15, 16, 17]
+    },
+    {
+      "id": "addition-grade1-02-p4",
+      "lessonId": "addition-grade1-02",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 7 + 6?",
+      "answer": 13,
+      "type": "multiple-choice",
+      "choices": [11, 13, 14, 15]
+    },
+    {
+      "id": "addition-grade1-02-p5",
+      "lessonId": "addition-grade1-02",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 9 + 9?",
+      "answer": 18,
+      "type": "multiple-choice",
+      "choices": [16, 17, 18, 20]
+    },
+    {
+      "id": "addition-grade1-03-p1",
+      "lessonId": "addition-grade1-03",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 1 + 2 + 3?",
+      "answer": 6,
+      "type": "multiple-choice",
+      "choices": [4, 5, 6, 7]
+    },
+    {
+      "id": "addition-grade1-03-p2",
+      "lessonId": "addition-grade1-03",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 3 + 3 + 3?",
+      "answer": 9,
+      "type": "multiple-choice",
+      "choices": [6, 8, 9, 10]
+    },
+    {
+      "id": "addition-grade1-03-p3",
+      "lessonId": "addition-grade1-03",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 2 + 4 + 3?",
+      "answer": 9,
+      "type": "multiple-choice",
+      "choices": [7, 8, 9, 11]
+    },
+    {
+      "id": "addition-grade1-03-p4",
+      "lessonId": "addition-grade1-03",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 5 + 2 + 1?",
+      "answer": 8,
+      "type": "multiple-choice",
+      "choices": [6, 7, 8, 9]
+    },
+    {
+      "id": "addition-grade1-03-p5",
+      "lessonId": "addition-grade1-03",
+      "grade": 1,
+      "topic": "addition",
+      "question": "What is 4 + 4 + 2?",
+      "answer": 10,
+      "type": "multiple-choice",
+      "choices": [8, 9, 10, 11]
+    },
+    {
+      "id": "addition-grade2-01-p1",
+      "lessonId": "addition-grade2-01",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 32 + 15?",
+      "answer": 47,
+      "type": "multiple-choice",
+      "choices": [45, 46, 47, 48]
+    },
+    {
+      "id": "addition-grade2-01-p2",
+      "lessonId": "addition-grade2-01",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 41 + 36?",
+      "answer": 77,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade2-01-p3",
+      "lessonId": "addition-grade2-01",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 53 + 24?",
+      "answer": 77,
+      "type": "multiple-choice",
+      "choices": [75, 76, 77, 78]
+    },
+    {
+      "id": "addition-grade2-01-p4",
+      "lessonId": "addition-grade2-01",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 60 + 25?",
+      "answer": 85,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade2-01-p5",
+      "lessonId": "addition-grade2-01",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 22 + 43?",
+      "answer": 65,
+      "type": "multiple-choice",
+      "choices": [63, 64, 65, 66]
+    },
+    {
+      "id": "addition-grade2-02-p1",
+      "lessonId": "addition-grade2-02",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 38 + 45?",
+      "answer": 83,
+      "type": "multiple-choice",
+      "choices": [81, 82, 83, 84]
+    },
+    {
+      "id": "addition-grade2-02-p2",
+      "lessonId": "addition-grade2-02",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 57 + 36?",
+      "answer": 93,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade2-02-p3",
+      "lessonId": "addition-grade2-02",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 29 + 54?",
+      "answer": 83,
+      "type": "multiple-choice",
+      "choices": [81, 83, 85, 87]
+    },
+    {
+      "id": "addition-grade2-02-p4",
+      "lessonId": "addition-grade2-02",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 64 + 28?",
+      "answer": 92,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade2-02-p5",
+      "lessonId": "addition-grade2-02",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 46 + 37?",
+      "answer": 83,
+      "type": "multiple-choice",
+      "choices": [79, 83, 86, 90]
+    },
+    {
+      "id": "addition-grade2-03-p1",
+      "lessonId": "addition-grade2-03",
+      "grade": 2,
+      "topic": "addition",
+      "question": "There are 3 rows of books with 5 books in each row. How many books are there in all?",
+      "answer": 15,
+      "type": "multiple-choice",
+      "choices": [12, 13, 15, 18]
+    },
+    {
+      "id": "addition-grade2-03-p2",
+      "lessonId": "addition-grade2-03",
+      "grade": 2,
+      "topic": "addition",
+      "question": "There are 4 rows of tiles with 4 tiles in each row. What is 4 + 4 + 4 + 4?",
+      "answer": 16,
+      "type": "multiple-choice",
+      "choices": [12, 14, 16, 20]
+    },
+    {
+      "id": "addition-grade2-03-p3",
+      "lessonId": "addition-grade2-03",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 5 + 5 + 5?",
+      "answer": 15,
+      "type": "multiple-choice",
+      "choices": [13, 15, 16, 18]
+    },
+    {
+      "id": "addition-grade2-03-p4",
+      "lessonId": "addition-grade2-03",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 3 + 3 + 3 + 3 + 3?",
+      "answer": 15,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade2-03-p5",
+      "lessonId": "addition-grade2-03",
+      "grade": 2,
+      "topic": "addition",
+      "question": "What is 6 + 6 + 6?",
+      "answer": 18,
+      "type": "multiple-choice",
+      "choices": [15, 16, 18, 20]
+    },
+    {
+      "id": "addition-grade3-01-p1",
+      "lessonId": "addition-grade3-01",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 200 + 500?",
+      "answer": 700,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade3-01-p2",
+      "lessonId": "addition-grade3-01",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 400 + 300?",
+      "answer": 700,
+      "type": "multiple-choice",
+      "choices": [600, 700, 800, 900]
+    },
+    {
+      "id": "addition-grade3-01-p3",
+      "lessonId": "addition-grade3-01",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 150 + 250?",
+      "answer": 400,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade3-01-p4",
+      "lessonId": "addition-grade3-01",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 320 + 180?",
+      "answer": 500,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade3-01-p5",
+      "lessonId": "addition-grade3-01",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 250 + 350?",
+      "answer": 600,
+      "type": "multiple-choice",
+      "choices": [500, 550, 600, 650]
+    },
+    {
+      "id": "addition-grade3-02-p1",
+      "lessonId": "addition-grade3-02",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 347 + 215?",
+      "answer": 562,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade3-02-p2",
+      "lessonId": "addition-grade3-02",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 456 + 321?",
+      "answer": 777,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade3-02-p3",
+      "lessonId": "addition-grade3-02",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 583 + 149?",
+      "answer": 732,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade3-02-p4",
+      "lessonId": "addition-grade3-02",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 264 + 318?",
+      "answer": 582,
+      "type": "multiple-choice",
+      "choices": [572, 582, 592, 602]
+    },
+    {
+      "id": "addition-grade3-02-p5",
+      "lessonId": "addition-grade3-02",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 407 + 285?",
+      "answer": 692,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade3-03-p1",
+      "lessonId": "addition-grade3-03",
+      "grade": 3,
+      "topic": "addition",
+      "question": "A farm has 215 chickens. They get 130 more in spring and 95 more in summer. How many chickens are there now?",
+      "answer": 440,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade3-03-p2",
+      "lessonId": "addition-grade3-03",
+      "grade": 3,
+      "topic": "addition",
+      "question": "Mia collects 348 rocks. She finds 125 more at the beach and 67 more in the park. How many rocks does she have in all?",
+      "answer": 540,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade3-03-p3",
+      "lessonId": "addition-grade3-03",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 250 + 180 + 120?",
+      "answer": 550,
+      "type": "digit-grid"
+    },
+    {
+      "id": "addition-grade3-03-p4",
+      "lessonId": "addition-grade3-03",
+      "grade": 3,
+      "topic": "addition",
+      "question": "What is 175 + 325 + 200?",
+      "answer": 700,
+      "type": "multiple-choice",
+      "choices": [650, 675, 700, 725]
+    },
+    {
+      "id": "addition-grade3-03-p5",
+      "lessonId": "addition-grade3-03",
+      "grade": 3,
+      "topic": "addition",
+      "question": "A school raises 412 dollars on day one and 388 dollars on day two. How much money did they raise in total?",
+      "answer": 800,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade1-01-p1",
+      "lessonId": "subtraction-grade1-01",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is 9 - 4?",
+      "answer": 5,
+      "type": "multiple-choice",
+      "choices": [3, 4, 5, 6]
+    },
+    {
+      "id": "subtraction-grade1-01-p2",
+      "lessonId": "subtraction-grade1-01",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is 8 - 3?",
+      "answer": 5,
+      "type": "multiple-choice",
+      "choices": [4, 5, 6, 7]
+    },
+    {
+      "id": "subtraction-grade1-01-p3",
+      "lessonId": "subtraction-grade1-01",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is 10 - 6?",
+      "answer": 4,
+      "type": "multiple-choice",
+      "choices": [3, 4, 5, 6]
+    },
+    {
+      "id": "subtraction-grade1-01-p4",
+      "lessonId": "subtraction-grade1-01",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is 7 - 2?",
+      "answer": 5,
+      "type": "multiple-choice",
+      "choices": [4, 5, 6, 7]
+    },
+    {
+      "id": "subtraction-grade1-01-p5",
+      "lessonId": "subtraction-grade1-01",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is 6 - 4?",
+      "answer": 2,
+      "type": "multiple-choice",
+      "choices": [1, 2, 3, 4]
+    },
+    {
+      "id": "subtraction-grade1-02-p1",
+      "lessonId": "subtraction-grade1-02",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is 14 - 7?",
+      "answer": 7,
+      "type": "multiple-choice",
+      "choices": [5, 6, 7, 8]
+    },
+    {
+      "id": "subtraction-grade1-02-p2",
+      "lessonId": "subtraction-grade1-02",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is 18 - 9?",
+      "answer": 9,
+      "type": "multiple-choice",
+      "choices": [7, 8, 9, 10]
+    },
+    {
+      "id": "subtraction-grade1-02-p3",
+      "lessonId": "subtraction-grade1-02",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is 16 - 8?",
+      "answer": 8,
+      "type": "multiple-choice",
+      "choices": [6, 7, 8, 9]
+    },
+    {
+      "id": "subtraction-grade1-02-p4",
+      "lessonId": "subtraction-grade1-02",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is 20 - 11?",
+      "answer": 9,
+      "type": "multiple-choice",
+      "choices": [7, 8, 9, 10]
+    },
+    {
+      "id": "subtraction-grade1-02-p5",
+      "lessonId": "subtraction-grade1-02",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is 17 - 8?",
+      "answer": 9,
+      "type": "multiple-choice",
+      "choices": [8, 9, 10, 11]
+    },
+    {
+      "id": "subtraction-grade1-03-p1",
+      "lessonId": "subtraction-grade1-03",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "8 - 5 = ? Think: 5 + ? = 8",
+      "answer": 3,
+      "type": "multiple-choice",
+      "choices": [2, 3, 4, 5]
+    },
+    {
+      "id": "subtraction-grade1-03-p2",
+      "lessonId": "subtraction-grade1-03",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "10 - 4 = ? Think: 4 + ? = 10",
+      "answer": 6,
+      "type": "multiple-choice",
+      "choices": [4, 5, 6, 7]
+    },
+    {
+      "id": "subtraction-grade1-03-p3",
+      "lessonId": "subtraction-grade1-03",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "9 - 6 = ? Think: 6 + ? = 9",
+      "answer": 3,
+      "type": "multiple-choice",
+      "choices": [2, 3, 4, 5]
+    },
+    {
+      "id": "subtraction-grade1-03-p4",
+      "lessonId": "subtraction-grade1-03",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is the missing number? 7 - ? = 3",
+      "answer": 4,
+      "type": "multiple-choice",
+      "choices": [3, 4, 5, 6]
+    },
+    {
+      "id": "subtraction-grade1-03-p5",
+      "lessonId": "subtraction-grade1-03",
+      "grade": 1,
+      "topic": "subtraction",
+      "question": "What is the missing number? 10 - ? = 6",
+      "answer": 4,
+      "type": "multiple-choice",
+      "choices": [3, 4, 5, 6]
+    },
+    {
+      "id": "subtraction-grade2-01-p1",
+      "lessonId": "subtraction-grade2-01",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "What is 89 - 43?",
+      "answer": 46,
+      "type": "multiple-choice",
+      "choices": [44, 45, 46, 47]
+    },
+    {
+      "id": "subtraction-grade2-01-p2",
+      "lessonId": "subtraction-grade2-01",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "What is 75 - 32?",
+      "answer": 43,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade2-01-p3",
+      "lessonId": "subtraction-grade2-01",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "What is 96 - 54?",
+      "answer": 42,
+      "type": "multiple-choice",
+      "choices": [40, 41, 42, 43]
+    },
+    {
+      "id": "subtraction-grade2-01-p4",
+      "lessonId": "subtraction-grade2-01",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "What is 57 - 21?",
+      "answer": 36,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade2-01-p5",
+      "lessonId": "subtraction-grade2-01",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "What is 84 - 52?",
+      "answer": 32,
+      "type": "multiple-choice",
+      "choices": [30, 31, 32, 33]
+    },
+    {
+      "id": "subtraction-grade2-02-p1",
+      "lessonId": "subtraction-grade2-02",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "What is 63 - 28?",
+      "answer": 35,
+      "type": "multiple-choice",
+      "choices": [33, 34, 35, 36]
+    },
+    {
+      "id": "subtraction-grade2-02-p2",
+      "lessonId": "subtraction-grade2-02",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "What is 81 - 46?",
+      "answer": 35,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade2-02-p3",
+      "lessonId": "subtraction-grade2-02",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "What is 94 - 57?",
+      "answer": 37,
+      "type": "multiple-choice",
+      "choices": [35, 36, 37, 38]
+    },
+    {
+      "id": "subtraction-grade2-02-p4",
+      "lessonId": "subtraction-grade2-02",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "What is 72 - 38?",
+      "answer": 34,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade2-02-p5",
+      "lessonId": "subtraction-grade2-02",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "What is 50 - 23?",
+      "answer": 27,
+      "type": "multiple-choice",
+      "choices": [25, 27, 29, 31]
+    },
+    {
+      "id": "subtraction-grade2-03-p1",
+      "lessonId": "subtraction-grade2-03",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "Leo had 85 marbles. He gave 37 marbles to his friend. How many marbles does Leo have left?",
+      "answer": 48,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade2-03-p2",
+      "lessonId": "subtraction-grade2-03",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "Zara has 91 stickers. She uses 46 of them in her scrapbook. How many stickers does Zara have left?",
+      "answer": 45,
+      "type": "multiple-choice",
+      "choices": [43, 44, 45, 46]
+    },
+    {
+      "id": "subtraction-grade2-03-p3",
+      "lessonId": "subtraction-grade2-03",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "There are 78 flowers in a garden. 29 flowers are picked for a bouquet. How many flowers are still in the garden?",
+      "answer": 49,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade2-03-p4",
+      "lessonId": "subtraction-grade2-03",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "A shelf has 65 books. A student checks out 18 books. How many books are on the shelf now?",
+      "answer": 47,
+      "type": "multiple-choice",
+      "choices": [45, 46, 47, 48]
+    },
+    {
+      "id": "subtraction-grade2-03-p5",
+      "lessonId": "subtraction-grade2-03",
+      "grade": 2,
+      "topic": "subtraction",
+      "question": "Mia has 82 beads. She uses 35 beads to make a bracelet. How many beads does she have left?",
+      "answer": 47,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-01-p1",
+      "lessonId": "subtraction-grade3-01",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 900 - 400?",
+      "answer": 500,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-01-p2",
+      "lessonId": "subtraction-grade3-01",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 800 - 500?",
+      "answer": 300,
+      "type": "multiple-choice",
+      "choices": [200, 300, 400, 500]
+    },
+    {
+      "id": "subtraction-grade3-01-p3",
+      "lessonId": "subtraction-grade3-01",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 650 - 250?",
+      "answer": 400,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-01-p4",
+      "lessonId": "subtraction-grade3-01",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 780 - 380?",
+      "answer": 400,
+      "type": "multiple-choice",
+      "choices": [300, 350, 400, 450]
+    },
+    {
+      "id": "subtraction-grade3-01-p5",
+      "lessonId": "subtraction-grade3-01",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 550 - 220?",
+      "answer": 330,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-02-p1",
+      "lessonId": "subtraction-grade3-02",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 742 - 318?",
+      "answer": 424,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-02-p2",
+      "lessonId": "subtraction-grade3-02",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 865 - 437?",
+      "answer": 428,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-02-p3",
+      "lessonId": "subtraction-grade3-02",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 934 - 568?",
+      "answer": 366,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-02-p4",
+      "lessonId": "subtraction-grade3-02",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 721 - 345?",
+      "answer": 376,
+      "type": "multiple-choice",
+      "choices": [366, 376, 386, 396]
+    },
+    {
+      "id": "subtraction-grade3-02-p5",
+      "lessonId": "subtraction-grade3-02",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 600 - 247?",
+      "answer": 353,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-03-p1",
+      "lessonId": "subtraction-grade3-03",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "Leo has 750 building blocks. He uses 230 to build a castle and 180 more to build a bridge. How many blocks does he have left?",
+      "answer": 340,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-03-p2",
+      "lessonId": "subtraction-grade3-03",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "A bookstore has 900 books. They sell 345 books on Saturday and 215 books on Sunday. How many books are left?",
+      "answer": 340,
+      "type": "multiple-choice",
+      "choices": [320, 330, 340, 350]
+    },
+    {
+      "id": "subtraction-grade3-03-p3",
+      "lessonId": "subtraction-grade3-03",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 800 - 325 - 175?",
+      "answer": 300,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-03-p4",
+      "lessonId": "subtraction-grade3-03",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "Mia has 685 stickers. She gives away 140 to her class and 245 to her family. How many stickers does Mia have now?",
+      "answer": 300,
+      "type": "digit-grid"
+    },
+    {
+      "id": "subtraction-grade3-03-p5",
+      "lessonId": "subtraction-grade3-03",
+      "grade": 3,
+      "topic": "subtraction",
+      "question": "What is 950 - 200 - 350?",
+      "answer": 400,
+      "type": "multiple-choice",
+      "choices": [350, 375, 400, 425]
+    },
+    {
+      "id": "word-problems-grade1-01-p1",
+      "lessonId": "word-problems-grade1-01",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Mia has 3 apples. She picks 4 more apples from the tree. How many apples does she have now?",
+      "answer": 7,
+      "type": "multiple-choice",
+      "choices": [5, 6, 7, 8]
+    },
+    {
+      "id": "word-problems-grade1-01-p2",
+      "lessonId": "word-problems-grade1-01",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Remy sees 2 butterflies in the garden. Then 5 more butterflies fly in. How many butterflies are there now?",
+      "answer": 7,
+      "type": "multiple-choice",
+      "choices": [5, 6, 7, 8]
+    },
+    {
+      "id": "word-problems-grade1-01-p3",
+      "lessonId": "word-problems-grade1-01",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Leo has 4 toy cars. His dad gives him 3 more toy cars. How many toy cars does Leo have in all?",
+      "answer": 7,
+      "type": "multiple-choice",
+      "choices": [6, 7, 8, 9]
+    },
+    {
+      "id": "word-problems-grade1-01-p4",
+      "lessonId": "word-problems-grade1-01",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Zara has 5 books on her shelf. She gets 4 more books as a gift. How many books does she have in all?",
+      "answer": 9,
+      "type": "multiple-choice",
+      "choices": [7, 8, 9, 10]
+    },
+    {
+      "id": "word-problems-grade1-01-p5",
+      "lessonId": "word-problems-grade1-01",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "There are 6 birds on a tree. Then 3 more birds land on the tree. How many birds are on the tree now?",
+      "answer": 9,
+      "type": "multiple-choice",
+      "choices": [7, 8, 9, 10]
+    },
+    {
+      "id": "word-problems-grade1-02-p1",
+      "lessonId": "word-problems-grade1-02",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Remy had 8 blueberries. He ate 3 blueberries for a snack. How many blueberries does he have left?",
+      "answer": 5,
+      "type": "multiple-choice",
+      "choices": [3, 4, 5, 6]
+    },
+    {
+      "id": "word-problems-grade1-02-p2",
+      "lessonId": "word-problems-grade1-02",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Mia had 9 balloons. The wind blew 4 balloons away. How many balloons does she have left?",
+      "answer": 5,
+      "type": "multiple-choice",
+      "choices": [4, 5, 6, 7]
+    },
+    {
+      "id": "word-problems-grade1-02-p3",
+      "lessonId": "word-problems-grade1-02",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Leo had 10 grapes. He shared 6 grapes with Zara. How many grapes does Leo have now?",
+      "answer": 4,
+      "type": "multiple-choice",
+      "choices": [3, 4, 5, 6]
+    },
+    {
+      "id": "word-problems-grade1-02-p4",
+      "lessonId": "word-problems-grade1-02",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "There were 7 fish in a bowl. 2 fish were moved to a bigger tank. How many fish are still in the bowl?",
+      "answer": 5,
+      "type": "multiple-choice",
+      "choices": [3, 4, 5, 6]
+    },
+    {
+      "id": "word-problems-grade1-02-p5",
+      "lessonId": "word-problems-grade1-02",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Zara had 8 stickers. She gave 5 stickers to her friend. How many stickers does Zara have now?",
+      "answer": 3,
+      "type": "multiple-choice",
+      "choices": [2, 3, 4, 5]
+    },
+    {
+      "id": "word-problems-grade1-03-p1",
+      "lessonId": "word-problems-grade1-03",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Leo has 9 crayons. Zara has 6 crayons. How many more crayons does Leo have than Zara?",
+      "answer": 3,
+      "type": "multiple-choice",
+      "choices": [2, 3, 4, 5]
+    },
+    {
+      "id": "word-problems-grade1-03-p2",
+      "lessonId": "word-problems-grade1-03",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Mia has 7 books. Remy has 4 books. How many more books does Mia have than Remy?",
+      "answer": 3,
+      "type": "multiple-choice",
+      "choices": [2, 3, 4, 5]
+    },
+    {
+      "id": "word-problems-grade1-03-p3",
+      "lessonId": "word-problems-grade1-03",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "There are 8 red blocks and 5 blue blocks. How many more red blocks are there than blue blocks?",
+      "answer": 3,
+      "type": "multiple-choice",
+      "choices": [2, 3, 4, 5]
+    },
+    {
+      "id": "word-problems-grade1-03-p4",
+      "lessonId": "word-problems-grade1-03",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Zara collected 10 rocks and Remy collected 7 rocks. How many more rocks did Zara collect than Remy?",
+      "answer": 3,
+      "type": "multiple-choice",
+      "choices": [2, 3, 4, 5]
+    },
+    {
+      "id": "word-problems-grade1-03-p5",
+      "lessonId": "word-problems-grade1-03",
+      "grade": 1,
+      "topic": "word-problems",
+      "question": "Leo has 9 stickers. Mia has 4 stickers. How many fewer stickers does Mia have than Leo?",
+      "answer": 5,
+      "type": "multiple-choice",
+      "choices": [4, 5, 6, 7]
+    },
+    {
+      "id": "word-problems-grade2-01-p1",
+      "lessonId": "word-problems-grade2-01",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Mia collects 46 trading cards. Her friend gives her 27 more. How many cards does Mia have in all?",
+      "answer": 73,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade2-01-p2",
+      "lessonId": "word-problems-grade2-01",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Leo has 38 building blocks. He gets 25 more blocks for his birthday. How many blocks does he have now?",
+      "answer": 63,
+      "type": "multiple-choice",
+      "choices": [61, 62, 63, 64]
+    },
+    {
+      "id": "word-problems-grade2-01-p3",
+      "lessonId": "word-problems-grade2-01",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "A basket has 54 oranges. 29 more oranges are added to the basket. How many oranges are in the basket now?",
+      "answer": 83,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade2-01-p4",
+      "lessonId": "word-problems-grade2-01",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Zara read 42 pages on Monday and 35 pages on Tuesday. How many pages did she read in all?",
+      "answer": 77,
+      "type": "multiple-choice",
+      "choices": [74, 75, 77, 79]
+    },
+    {
+      "id": "word-problems-grade2-01-p5",
+      "lessonId": "word-problems-grade2-01",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Remy has 67 stickers. He buys 18 more stickers at the shop. How many stickers does Remy have now?",
+      "answer": 85,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade2-02-p1",
+      "lessonId": "word-problems-grade2-02",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Leo has 35 stamps. He buys 24 more stamps at the shop. Then he gives 18 stamps to his sister. How many stamps does Leo have now?",
+      "answer": 41,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade2-02-p2",
+      "lessonId": "word-problems-grade2-02",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Mia has 48 beads. She finds 23 more beads and then uses 31 beads to make a necklace. How many beads does Mia have left?",
+      "answer": 40,
+      "type": "multiple-choice",
+      "choices": [38, 39, 40, 41]
+    },
+    {
+      "id": "word-problems-grade2-02-p3",
+      "lessonId": "word-problems-grade2-02",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "A class has 56 pencils. They get 34 more pencils. Then they use 27 pencils for a project. How many pencils are left?",
+      "answer": 63,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade2-02-p4",
+      "lessonId": "word-problems-grade2-02",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Zara has 72 coins. She earns 18 more coins. Then she spends 35 coins at the fair. How many coins does Zara have now?",
+      "answer": 55,
+      "type": "multiple-choice",
+      "choices": [53, 54, 55, 56]
+    },
+    {
+      "id": "word-problems-grade2-02-p5",
+      "lessonId": "word-problems-grade2-02",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Remy collected 41 rocks. He found 29 more rocks. Then he gave 15 rocks to Leo. How many rocks does Remy have now?",
+      "answer": 55,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade2-03-p1",
+      "lessonId": "word-problems-grade2-03",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Zara read 63 pages of her book. Remy read 48 pages of his book. How many more pages did Zara read than Remy?",
+      "answer": 15,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade2-03-p2",
+      "lessonId": "word-problems-grade2-03",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Mia has 82 stickers. Leo has 57 stickers. How many more stickers does Mia have than Leo?",
+      "answer": 25,
+      "type": "multiple-choice",
+      "choices": [23, 24, 25, 26]
+    },
+    {
+      "id": "word-problems-grade2-03-p3",
+      "lessonId": "word-problems-grade2-03",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "A jar has 91 marbles. Another jar has 68 marbles. How many more marbles are in the first jar?",
+      "answer": 23,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade2-03-p4",
+      "lessonId": "word-problems-grade2-03",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Remy ran 74 laps. Zara ran 59 laps. How many fewer laps did Zara run than Remy?",
+      "answer": 15,
+      "type": "multiple-choice",
+      "choices": [13, 15, 17, 19]
+    },
+    {
+      "id": "word-problems-grade2-03-p5",
+      "lessonId": "word-problems-grade2-03",
+      "grade": 2,
+      "topic": "word-problems",
+      "question": "Leo collected 85 leaves. Mia collected 67 leaves. How many more leaves did Leo collect than Mia?",
+      "answer": 18,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-01-p1",
+      "lessonId": "word-problems-grade3-01",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "A park has 325 oak trees and 248 maple trees. Park rangers plant 112 more oak trees. How many trees are in the park now?",
+      "answer": 685,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-01-p2",
+      "lessonId": "word-problems-grade3-01",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "Mia's school collected 416 cans of food in October and 283 more cans in November. Then they collected 151 more cans in December. How many cans did they collect in all?",
+      "answer": 850,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-01-p3",
+      "lessonId": "word-problems-grade3-01",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "Remy read 234 pages in July and 318 pages in August. How many pages did Remy read over the two months?",
+      "answer": 552,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-01-p4",
+      "lessonId": "word-problems-grade3-01",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "A garden center has 145 rose plants and 267 tulip plants. They get a delivery of 88 more rose plants. How many plants are there now?",
+      "answer": 500,
+      "type": "multiple-choice",
+      "choices": [490, 495, 500, 505]
+    },
+    {
+      "id": "word-problems-grade3-01-p5",
+      "lessonId": "word-problems-grade3-01",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "Leo scored 275 points in the first round of a game and 348 points in the second round. What is his total score?",
+      "answer": 623,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-02-p1",
+      "lessonId": "word-problems-grade3-02",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "A school has 920 students. On a field trip day, 135 students go to the science museum and 245 students go to the art gallery. How many students stay at school?",
+      "answer": 540,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-02-p2",
+      "lessonId": "word-problems-grade3-02",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "Zara's town has 875 library books. Some kids check out 234 books in the morning and 148 books in the afternoon. How many books are left on the shelves?",
+      "answer": 493,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-02-p3",
+      "lessonId": "word-problems-grade3-02",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "A bakery bakes 756 cookies. They sell 312 cookies at the morning sale and 188 cookies in the afternoon. How many cookies are left?",
+      "answer": 256,
+      "type": "multiple-choice",
+      "choices": [246, 256, 266, 276]
+    },
+    {
+      "id": "word-problems-grade3-02-p4",
+      "lessonId": "word-problems-grade3-02",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "Mia's class collected 643 cans. They donate 215 cans to one shelter and 178 cans to another shelter. How many cans does the class still have?",
+      "answer": 250,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-02-p5",
+      "lessonId": "word-problems-grade3-02",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "Remy has 810 building blocks. He uses 365 blocks to build a tower and 245 blocks to build a wall. How many blocks does he have left?",
+      "answer": 200,
+      "type": "multiple-choice",
+      "choices": [190, 195, 200, 210]
+    },
+    {
+      "id": "word-problems-grade3-03-p1",
+      "lessonId": "word-problems-grade3-03",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "A school library has 450 books. They receive 230 new books as a donation. Then 180 books are borrowed by students. How many books are on the shelves now?",
+      "answer": 500,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-03-p2",
+      "lessonId": "word-problems-grade3-03",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "Leo's town planted 567 trees in spring. A storm knocked down 89 trees. Then they planted 122 more trees. How many trees are there now?",
+      "answer": 600,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-03-p3",
+      "lessonId": "word-problems-grade3-03",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "Mia had 720 beads. She used 345 beads to make jewelry and then bought 125 more beads. How many beads does she have now?",
+      "answer": 500,
+      "type": "digit-grid"
+    },
+    {
+      "id": "word-problems-grade3-03-p4",
+      "lessonId": "word-problems-grade3-03",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "Zara's team earned 485 points. They earned 235 more points in round two. Then they lost 120 points for a wrong answer. How many points does the team have now?",
+      "answer": 600,
+      "type": "multiple-choice",
+      "choices": [580, 590, 600, 610]
+    },
+    {
+      "id": "word-problems-grade3-03-p5",
+      "lessonId": "word-problems-grade3-03",
+      "grade": 3,
+      "topic": "word-problems",
+      "question": "Remy collected 634 stamps. He gave away 156 stamps and then received 72 stamps as a gift. How many stamps does Remy have now?",
+      "answer": 550,
+      "type": "digit-grid"
+    }
+  ]
+}
