@@ -1,6 +1,16 @@
 import { Dexie, type EntityTable } from 'dexie'
 import type { Topic } from '../curriculum/types'
 
+// --- Branded date type ---
+
+/** ISO 8601 date-only string: YYYY-MM-DD */
+export type ISODateString = string & { readonly _brand: 'ISODateString' }
+
+/** Converts a Date to an ISODateString (YYYY-MM-DD). Use this whenever writing date fields. */
+export function toISODateString(d: Date): ISODateString {
+  return d.toISOString().slice(0, 10) as ISODateString
+}
+
 // --- TypeScript interfaces ---
 
 export interface Session {
@@ -8,7 +18,7 @@ export interface Session {
   lessonId: string      // foreign key -> Lesson.id
   topic: Topic          // canonical Topic union from src/curriculum/types
   grade: 1 | 2 | 3     // denormalized for easy filtering
-  date: string          // ISO date string
+  date: ISODateString
   correctCount: number
   totalCount: number
 }
@@ -17,7 +27,7 @@ export interface TopicProgress {
   topic: Topic          // primary key — Topic union from src/curriculum/types
   accuracy: number      // 0–1 float
   attemptCount: number
-  lastPracticed: string // ISO date string
+  lastPracticed: ISODateString
 }
 
 export interface AppConfig {
