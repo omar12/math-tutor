@@ -19,7 +19,7 @@ export interface TopicProgress {
 }
 
 export interface AppConfig {
-  key: string           // primary key: 'pinHash' | 'lastLessonId' | 'onboardingComplete'
+  key: 'pinHash' | 'lastLessonId' | 'onboardingComplete'
   value: string
 }
 
