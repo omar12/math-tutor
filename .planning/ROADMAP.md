@@ -13,7 +13,7 @@ Six phases take this project from a bare Vite+React scaffold to a fully offline-
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [~] **Phase 1: Foundation** - App shell, routing, IndexedDB storage, iPad viewport, PWA scaffold *(2 plans — Ready to execute)*
-- [ ] **Phase 2: Curriculum & Content** - JSON-driven curriculum schema and grade 1–3 lesson content
+- [x] **Phase 2: Curriculum & Content** - JSON-driven curriculum schema and grade 1–3 lesson content
 - [ ] **Phase 3: Lesson Player** - Audio manager, narration playback, guided worked example, tap-to-replay
 - [ ] **Phase 4: Practice Engine** - Multiple choice, digit grid input, feedback escalation, session celebration
 - [ ] **Phase 5: Progress & Parent Section** - Per-topic accuracy tracking, adaptive repetition, PIN-gated parent dashboard
@@ -61,7 +61,7 @@ Plans:
 
 Plans:
 - [x] 02-01-PLAN.md — TypeScript types, Dexie topic narrowing, and data integrity test suite (tests RED until Wave 2)
-- [ ] 02-02-PLAN.md — Curriculum loader (index.ts with satisfies) and full curriculum.json data (27 lessons, ~135 problems)
+- [x] 02-02-PLAN.md — Curriculum loader (index.ts with satisfies) and full curriculum.json data (27 lessons, 135 problems)
 
 ### Phase 3: Lesson Player
 **Goal**: A child can work through a narrated, guided lesson from start to finish — audio plays automatically after the first tap, narrated steps advance in sequence, and the child can replay any segment by tapping it.
@@ -123,7 +123,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | 2026-05-13 |
-| 2. Curriculum & Content | 1/2 | Executing | - |
+| 2. Curriculum & Content | 2/2 | Complete | 2026-05-13 |
 | 3. Lesson Player | 0/TBD | Not started | - |
 | 4. Practice Engine | 0/TBD | Not started | - |
 | 5. Progress & Parent Section | 0/TBD | Not started | - |

@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 2 context gathered
-last_updated: "2026-05-14T04:08:52.965Z"
-last_activity: 2026-05-14 -- Phase 2 planning complete
+stopped_at: Plan 02-02 complete
+last_updated: "2026-05-13T21:15:00.000Z"
+last_activity: 2026-05-13 -- Plan 02-02 complete (curriculum.json + index.ts)
 progress:
   total_phases: 6
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 4
-  completed_plans: 3
-  percent: 75
+  completed_plans: 4
+  percent: 33
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-12)
 
 **Core value:** A kid sits down, does a lesson, practices, and the parent can see exactly what their child understands and what they don't — without any accounts or setup friction.
-**Current focus:** Phase 2 — Curriculum & Content
+**Current focus:** Phase 3 — Lesson Player
 
 ## Current Position
 
-Phase: 2 of 6 (Curriculum & Content)
-Plan: 1 of ? in current phase (02-01 complete)
+Phase: 2 of 6 (Curriculum & Content) — COMPLETE
+Plan: 2 of 2 in Phase 2 (02-02 complete)
 Status: Executing
-Last activity: 2026-05-13 -- Plan 02-01 complete (types, db narrowing, test wiring)
+Last activity: 2026-05-13 -- Plan 02-02 complete (curriculum.json 27 lessons 135 problems, index.ts typed loader, all 29 tests green)
 
-Progress: [███░░░░░░░] 25%
+Progress: [██████░░░░] 33%
 
 ## Performance Metrics
 
@@ -70,6 +70,9 @@ Recent decisions affecting current work:
 - [01-02]: ParentScreen has no PIN gate — deferred to Phase 5
 - [02-01]: Topic union is canonical source of truth — db.ts imports from curriculum/types.ts
 - [02-01]: curriculum.test.ts intentionally RED until Plan 02 ships index.ts + curriculum.json
+- [02-02]: curriculum.json authored with exactly 27 lessons and 135 problems (5 per lesson)
+- [02-02]: Grade 1 problems are all multiple-choice; Grade 2/3 mix multiple-choice and digit-grid
+- [02-02]: index.ts uses satisfies (not as) for compile-time type safety without runtime overhead
 
 ### Pending Todos
 
@@ -90,5 +93,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-13
-Stopped at: Completed 02-01-PLAN.md
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None
