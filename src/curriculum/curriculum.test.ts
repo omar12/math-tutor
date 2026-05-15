@@ -83,6 +83,18 @@ describe('curriculum data integrity', () => {
     }
   })
 
+  it('every lesson step narrationAudio step number matches step index', () => {
+    for (const lesson of curriculum.lessons) {
+      lesson.workedExample.steps.forEach((step, index) => {
+        const expectedSuffix = `/step-${index + 1}.mp3`
+        expect(
+          step.narrationAudio.endsWith(expectedSuffix),
+          `lesson ${lesson.id} step ${index + 1}: expected path ending ${expectedSuffix}, got ${step.narrationAudio}`
+        ).toBe(true)
+      })
+    }
+  })
+
   it('word-problems topic exists across all grades', () => {
     const g1wp = curriculum.lessons.filter(l => l.grade === 1 && l.topic === 'word-problems')
     const g2wp = curriculum.lessons.filter(l => l.grade === 2 && l.topic === 'word-problems')
