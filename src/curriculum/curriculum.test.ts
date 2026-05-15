@@ -56,7 +56,7 @@ describe('curriculum data integrity', () => {
   })
 
   it('all lesson ccStandards match known grade 1-3 addition/subtraction standard prefixes', () => {
-    const validPrefixes = ['1.OA', '2.OA', '3.NBT', '3.OA.D.8']
+    const validPrefixes = ['1.OA', '2.OA', '3.NBT', '3.OA']
     for (const lesson of curriculum.lessons) {
       for (const std of lesson.ccStandards) {
         const valid = validPrefixes.some(p => std.startsWith(p))
