@@ -337,7 +337,7 @@
       "grade": 1,
       "topic": "subtraction",
       "order": 3,
-      "ccStandards": ["1.OA.B.4", "1.OA.D.8"],
+      "ccStandards": ["1.OA.B.4"],
       "workedExample": {
         "steps": [
           {
