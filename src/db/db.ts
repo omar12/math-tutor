@@ -80,3 +80,14 @@ export async function storePinHash(hexDigest: string): Promise<void> {
   }
   await db.appConfig.put({ key: 'pinHash', value: hexDigest })
 }
+
+/**
+ * Verifies a raw PIN against the stored SHA-256 hash.
+ * Returns true if the PIN matches, false otherwise (including if no PIN is set).
+ */
+export async function verifyPin(rawPin: string): Promise<boolean> {
+  const stored = await db.appConfig.get('pinHash')
+  if (!stored) return false
+  const candidate = await hashPin(rawPin)
+  return candidate === stored.value
+}
