@@ -91,3 +91,20 @@ export async function verifyPin(rawPin: string): Promise<boolean> {
   const candidate = await hashPin(rawPin)
   return candidate === stored.value
 }
+
+// --- Runtime-safe config writer ---
+
+/** All valid AppConfig keys — kept in sync with the AppConfig interface above. */
+const VALID_CONFIG_KEYS = new Set<AppConfig['key']>(['pinHash', 'lastLessonId', 'onboardingComplete'])
+
+/**
+ * Type-safe config writer — use instead of db.appConfig.put() directly.
+ * Validates the key at runtime so JavaScript callers cannot store arbitrary keys
+ * that would corrupt parent-dashboard state iteration.
+ */
+export async function setConfig(key: AppConfig['key'], value: string): Promise<void> {
+  if (!VALID_CONFIG_KEYS.has(key)) {
+    throw new Error(`setConfig: unknown key "${key}". Valid keys: ${[...VALID_CONFIG_KEYS].join(', ')}`)
+  }
+  await db.appConfig.put({ key, value })
+}
