@@ -55,16 +55,16 @@ Source: CLAUDE.md (44px touch targets), `src/index.css` (global button rule), 03
 | Role | Size | Weight | Line Height | Usage |
 |------|------|--------|-------------|-------|
 | Body | 20px (`text-xl`) | 400 (regular) | 1.5 | Step instruction text in StepCard |
-| Label | 16px (`text-base`) | 600 (semibold) | 1.4 | Dot count label "Step N of M", replay button aria-label |
+| Label | 16px (`text-base`) | 400 (regular) | 1.4 | Dot count label "Step N of M", replay button aria-label |
 | Heading | 28px (`text-3xl`) | 700 (bold) | 1.2 | Lesson title on unlock screen; "You did it!" on celebration screen |
-| Display | 40px (`text-4xl`) | 800 (extrabold) | 1.1 | Equation rendering (e.g., "3 + 4 = ?") centered in StepCard |
+| Display | 40px (`text-4xl`) | 700 (bold) | 1.1 | Equation rendering (e.g., "3 + 4 = ?") centered in StepCard |
 
 Notes:
 - Font family: Nunito exclusively — already set globally via `--font-sans` in `src/index.css`
-- All weights used (400, 600, 700, 800) are present in the Google Fonts import already in `src/index.css`
-- Equation display at 40px + extrabold ensures legibility at arm's length on iPad for ages 6–9
+- Exactly 2 weights used: 400 (regular) for body and label roles; 700 (bold) for heading and equation display
+- Equation display at 40px + bold ensures legibility at arm's length on iPad for ages 6–9
 
-Source: `src/index.css` (Nunito import), `src/screens/HomeScreen.tsx` (established size precedents — `text-4xl font-extrabold`, `text-2xl font-bold`), 03-CONTEXT.md Claude's Discretion
+Source: `src/index.css` (Nunito import), `src/screens/HomeScreen.tsx` (established size precedents), 03-CONTEXT.md Claude's Discretion
 
 ---
 
@@ -117,10 +117,13 @@ Source: `src/index.css` @theme (verified hex values), 03-CONTEXT.md D-08, 03-RES
 ### Screen Anatomy
 
 **Unlock Screen** (state: `unlock`)
+
+Focal point: RemyFox SVG (192px, centered)
+
 ```
 ┌────────────────────────────────────────┐  ← 100dvh full-screen tap target
 │                                        │
-│         [RemyFox 192×192]              │  ← vertically centered, gap-8 from title
+│         [RemyFox 192×192]              │  ← FOCAL POINT — vertically centered, gap-8 from title
 │                                        │
 │      [Lesson Title — text-3xl bold]    │
 │                                        │
@@ -133,6 +136,9 @@ Source: `src/index.css` @theme (verified hex values), 03-CONTEXT.md D-08, 03-RES
 - The entire div is the tap target (`onClick={handleUnlockTap}`)
 
 **Step Screen** (state: `playing` | `between-steps`)
+
+Focal point: equation block (40px bold, centered) when `LessonStep.equation` is present; step instruction text (20px regular) when no equation
+
 ```
 ┌────────────────────────────────────────┐  ← 100dvh
 │  [● ● ○ ○ ○]  Step N of M             │  ← dot progress, top-center, 24px from top
@@ -140,7 +146,7 @@ Source: `src/index.css` @theme (verified hex values), 03-CONTEXT.md D-08, 03-RES
 │  ┌──────────────────────────────────┐  │
 │  │  [Step text — text-xl / 1.5lh]  │  │  ← white card, rounded-2xl, shadow-sm
 │  │                                  │  │
-│  │  [Equation — text-4xl extrabold] │  │  ← if LessonStep.equation present
+│  │  [Equation — text-4xl bold]      │  │  ← FOCAL POINT (when present); if LessonStep.equation present
 │  │                                  │  │
 │  │                         [↺ icon] │  │  ← replay icon, bottom-right of card, 44×44px
 │  └──────────────────────────────────┘  │
