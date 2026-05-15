@@ -123,6 +123,17 @@ describe('curriculum data integrity', () => {
     }
   })
 
+  it('multiple-choice problems have the correct answer in their choices', () => {
+    for (const p of curriculum.problems) {
+      if (p.type === 'multiple-choice') {
+        expect(
+          p.choices.includes(p.answer),
+          `problem ${p.id}: answer ${p.answer} is not in choices ${JSON.stringify(p.choices)}`
+        ).toBe(true)
+      }
+    }
+  })
+
   it('all topic values are valid Topic literals', () => {
     const valid = new Set(['addition', 'subtraction', 'word-problems'])
     for (const lesson of curriculum.lessons) {
