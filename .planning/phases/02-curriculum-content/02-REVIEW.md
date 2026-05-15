@@ -1,203 +1,147 @@
 ---
 phase: 02-curriculum-content
-reviewed: 2026-05-14T00:00:00Z
+reviewed: 2026-05-14T12:00:00Z
 depth: standard
 files_reviewed: 5
 files_reviewed_list:
-  - src/curriculum/curriculum.json
-  - src/curriculum/curriculum.test.ts
-  - src/curriculum/index.ts
   - src/curriculum/types.ts
+  - src/curriculum/curriculum.test.ts
   - src/db/db.ts
+  - src/curriculum/index.ts
+  - src/curriculum/curriculum.json
 findings:
-  critical: 1
-  warning: 4
-  info: 3
-  total: 8
+  critical: 2
+  warning: 3
+  info: 1
+  total: 6
 status: issues_found
 ---
 
-# Phase 2: Code Review Report
+# Phase 02: Code Review Report
 
-**Reviewed:** 2026-05-14
+**Reviewed:** 2026-05-14T12:00:00Z
 **Depth:** standard
 **Files Reviewed:** 5
 **Status:** issues_found
 
 ## Summary
 
-Five files reviewed covering the curriculum data layer: type definitions (`types.ts`), the curriculum JSON fixture (`curriculum.json`), the module re-export (`index.ts`), the integrity test suite (`curriculum.test.ts`), and the Dexie database schema (`db.ts`).
+Reviewed the full curriculum content layer: type definitions, the curriculum JSON data file (27 lessons, 135 problems), the Dexie database schema, the curriculum index module, and the data-integrity test suite.
 
-The math content and data structures are largely sound — all arithmetic answers verify correctly, no duplicate IDs, and the TypeScript type hierarchy is coherent. However, one critical security gap exists in the PIN storage schema, and several quality issues weaken the test suite and type safety in ways that will permit silent bugs in later phases.
+The TypeScript types and Dexie schema are structurally sound. All arithmetic answers in the curriculum data verify correctly. Lesson ordering, problem-to-lesson linkage, choice counts, and audio path conventions are all clean.
+
+Two blockers were found: a fictitious Common Core standard (`1.OA.D.8`) embedded in the data, and a test validator that uses an exact standard code where it intends a domain prefix — making the test fragile while appearing to pass. Three warnings cover timezone-unsafe date handling, a missing PIN verification function that forces callers to implement comparison themselves, and incomplete audio path step-number validation.
 
 ---
 
 ## Critical Issues
 
-### CR-01: PIN stored with no enforced hashing — plaintext PIN risk
+### CR-01: Fictitious Common Core Standard in Curriculum Data
 
-**File:** `src/db/db.ts:22–24`
+**File:** `src/curriculum/curriculum.json:340`
+**Issue:** Lesson `subtraction-grade1-03` lists `"1.OA.D.8"` as a ccStandard. This standard code does not exist in the Common Core State Standards. Grade 1 Operations & Algebraic Thinking (1.OA) has only sub-domains A, B, and C. The sub-domain D (`1.OA.D`) does not exist at grade 1 — it is a grade-3 domain (`3.OA.D.8`). The content of this lesson (subtraction as unknown addend) maps to real standard `1.OA.B.4`, which is already also listed on this lesson. The spurious code will propagate into parent-facing progress reports and mastery tracking, reporting a standard that no curriculum authority recognizes.
 
-**Issue:** `AppConfig` stores the parent PIN under the key `'pinHash'` as a plain `string`. The schema, type definition, and the rest of Phase 2 contain no hashing implementation. The key name implies hashing is intended, but nothing enforces it — a Phase 4 implementer could write `db.appConfig.put({ key: 'pinHash', value: pin })` with the raw PIN and the schema will silently accept it. If the device is backed up or inspected, the PIN is exposed. For a children's app gating parental controls, this is the primary trust boundary.
+**Fix:**
+```json
+// Line 340 — remove "1.OA.D.8" from the array; "1.OA.B.4" already covers the content
+"ccStandards": ["1.OA.B.4"]
+```
 
-**Fix:** Enforce hashing at the storage boundary by providing a typed helper that accepts only pre-hashed values, or at minimum add a JSDoc contract and runtime assertion:
+---
 
+### CR-02: Test Validator Uses Exact Code Instead of Domain Prefix for Grade-3 OA Standards
+
+**File:** `src/curriculum/curriculum.test.ts:59`
+**Issue:** The `validPrefixes` array is `['1.OA', '2.OA', '3.NBT', '3.OA.D.8']`. The first three entries are domain-level prefixes (matching any standard within that domain). The fourth entry, `'3.OA.D.8'`, is an exact standard code, not a prefix. Any grade-3 OA standard that is valid but different — `'3.OA.A.1'`, `'3.OA.B.5'`, `'3.OA.C.7'` — would fail this validation and be silently rejected. The validator currently passes only because the curriculum happens to use exactly `'3.OA.D.8'`. This is a latent correctness bug: the guard gives false confidence and will block legitimate content additions without a clear error message.
+
+**Fix:**
 ```typescript
-// db.ts — add a typed write helper so callers cannot bypass hashing
-import { db } from './db'
-
-/**
- * Stores a PIN. MUST be called with a SHA-256 hex digest — never the raw PIN.
- * Call hashPin(rawPin) first.
- */
-export async function storePinHash(hexDigest: string): Promise<void> {
-  if (!/^[0-9a-f]{64}$/.test(hexDigest)) {
-    throw new Error('storePinHash: argument must be a SHA-256 hex digest')
-  }
-  await db.appConfig.put({ key: 'pinHash', value: hexDigest })
-}
-
-// Companion utility (uses Web Crypto — never Math.random or btoa):
-export async function hashPin(pin: string): Promise<string> {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pin))
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('')
-}
+// Line 59 — replace the exact code with the domain prefix
+const validPrefixes = ['1.OA', '2.OA', '3.NBT', '3.OA']
 ```
 
 ---
 
 ## Warnings
 
-### WR-01: Test suite has no assertion that MC answer is present in its choices array
+### WR-01: `toISODateString` Records UTC Date, Not Local Device Date
 
-**File:** `src/curriculum/curriculum.test.ts:118–124`
+**File:** `src/db/db.ts:11`
+**Issue:** `toISODateString` calls `d.toISOString().slice(0, 10)`. `Date.prototype.toISOString()` always returns UTC time. A child using the app at 11:30 PM in UTC-5 is still on the prior calendar day locally, but this function records tomorrow's date (the UTC date). Conversely, a child using the app just after midnight UTC+10 will have their session attributed to yesterday. For a progress-tracking app where "last practiced" and daily streaks are key parent-facing metrics, this is a correctness failure that affects every user outside UTC.
 
-**Issue:** The test at line 118 checks that multiple-choice problems have exactly 4 choices, but it never asserts that the declared `answer` value is one of those choices. A problem with `answer: 42` and `choices: [1, 2, 3, 4]` would pass all existing tests and be completely unanswerable at runtime. Phase 4 will compare the user's selected choice against `answer` with `===`; if the correct answer is absent from the choices, the problem can never be completed.
-
-**Fix:** Add an assertion inside a new test block:
-
+**Fix:**
 ```typescript
-it('multiple-choice problems have the correct answer in their choices', () => {
-  for (const p of curriculum.problems) {
-    if (p.type === 'multiple-choice') {
+export function toISODateString(d: Date): ISODateString {
+  // Use local calendar date, not UTC date
+  const year  = d.getFullYear()
+  const month = String(d.getMonth() + 1).padStart(2, '0')
+  const day   = String(d.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}` as ISODateString
+}
+```
+
+---
+
+### WR-02: No `verifyPin` Function Exported — Callers Must Implement Comparison Themselves
+
+**File:** `src/db/db.ts:60–77`
+**Issue:** `hashPin` and `storePinHash` are exported, but there is no `verifyPin` (or `checkPin`) function that retrieves the stored hash and performs a constant-time or hash comparison. Any caller that implements PIN verification ad-hoc risks: (a) comparing raw PIN against stored hash (incorrect), (b) using `===` on hash strings (acceptable for SHA-256 hex but not documented as the intended pattern), or (c) omitting the retrieval step entirely and always granting access. The storage boundary is well-guarded; the verification boundary is not.
+
+**Fix:**
+```typescript
+/**
+ * Verifies a raw PIN against the stored SHA-256 hash.
+ * Returns true if the PIN matches, false otherwise (including if no PIN is set).
+ */
+export async function verifyPin(rawPin: string): Promise<boolean> {
+  const stored = await db.appConfig.get('pinHash')
+  if (!stored) return false
+  const candidate = await hashPin(rawPin)
+  return candidate === stored.value
+}
+```
+
+---
+
+### WR-03: Audio Path Validation Does Not Verify Step Number Alignment
+
+**File:** `src/curriculum/curriculum.test.ts:78–84`
+**Issue:** The narration audio test validates that each step's `narrationAudio` matches `/^\/audio\/lessons\/.+\/step-\d+\.mp3$/`. This confirms the path format but does not verify that the step number in the path matches the step's actual index (step 1 → `step-1.mp3`, step 2 → `step-2.mp3`, etc.). A transposed or copy-paste error where step 3 references `step-7.mp3` would pass the test. At runtime, the player would either play the wrong audio or attempt to load a non-existent file — both are silent failures from the test's perspective.
+
+**Fix:**
+```typescript
+it('every lesson step narrationAudio step number matches step index', () => {
+  for (const lesson of curriculum.lessons) {
+    lesson.workedExample.steps.forEach((step, index) => {
+      const expectedSuffix = `/step-${index + 1}.mp3`
       expect(
-        p.choices.includes(p.answer),
-        `problem ${p.id}: answer ${p.answer} is not in choices ${JSON.stringify(p.choices)}`
+        step.narrationAudio.endsWith(expectedSuffix),
+        `lesson ${lesson.id} step ${index + 1}: expected path ending ${expectedSuffix}, got ${step.narrationAudio}`
       ).toBe(true)
-    }
+    })
   }
 })
 ```
-
-### WR-02: `AppConfig.key` is typed as `string` instead of a literal union
-
-**File:** `src/db/db.ts:21–24`
-
-**Issue:** The comment documents the only valid keys as `'pinHash' | 'lastLessonId' | 'onboardingComplete'`, but the field is typed as `string`. Any arbitrary string is accepted by TypeScript without error, meaning typos like `'pinhash'` or new undocumented keys silently succeed at compile time. With Dexie's upsert semantics (`put`), a misspelled key creates a ghost record that is never read, causing hard-to-diagnose "settings not saved" bugs.
-
-**Fix:**
-
-```typescript
-export interface AppConfig {
-  key: 'pinHash' | 'lastLessonId' | 'onboardingComplete'
-  value: string
-}
-```
-
-Dexie's `EntityTable` and schema definition are compatible with literal-typed primary keys.
-
-### WR-03: `Session` has no `lessonId` field — per-lesson progress is untrackable
-
-**File:** `src/db/db.ts:6–12`
-
-**Issue:** `Session` records only `topic`, not `lessonId`. The stated project goal is for parents to see "exactly what their child understands and what they don't," but with the current schema accuracy is only knowable at the topic level across all grades. A child struggling with Grade 3 regrouping but excelling at Grade 1 facts both contribute identically to the `addition` topic accuracy. Retrofitting `lessonId` in Phase 4 or 5 requires a Dexie schema version migration (`db.version(2)`), which is more disruptive than adding the field now.
-
-**Fix:** Add `lessonId` while the schema is still at version 1:
-
-```typescript
-export interface Session {
-  id?: number
-  lessonId: string        // foreign key -> Lesson.id
-  topic: Topic
-  grade: 1 | 2 | 3       // denormalized for easy filtering
-  date: string
-  correctCount: number
-  totalCount: number
-}
-
-// Schema:
-db.version(1).stores({
-  sessions: '++id, lessonId, topic, grade, date',
-  topicProgress: 'topic',
-  appConfig:     'key',
-})
-```
-
-### WR-04: `date` / `lastPracticed` string format is unenforced — silent sort failures
-
-**File:** `src/db/db.ts:9, 19`
-
-**Issue:** Both `Session.date` and `TopicProgress.lastPracticed` are declared as `string` with a comment "ISO date string," but nothing enforces whether callers store `'2026-05-14'` (date-only) or `'2026-05-14T12:00:00Z'` (full datetime). If Phase 4 stores full datetimes and the parent dashboard sorts or filters using string comparison, mixed formats will produce wrong ordering. String comparison of ISO dates works only when all values share the same format and length.
-
-**Fix:** Define a branded alias and a centralised formatter to prevent format drift across phases:
-
-```typescript
-/** ISO 8601 date-only string: YYYY-MM-DD */
-type ISODateString = string & { readonly _brand: 'ISODateString' }
-
-export function toISODateString(d: Date): ISODateString {
-  return d.toISOString().slice(0, 10) as ISODateString
-}
-```
-
-Replace `string` with `ISODateString` in `Session.date` and `TopicProgress.lastPracticed`.
 
 ---
 
 ## Info
 
-### IN-01: `ccStandards` prefix whitelist uses inconsistent matching strategy
+### IN-01: `AppConfig` Key Union Is TypeScript-Only — No Runtime Enforcement
 
-**File:** `src/curriculum/curriculum.test.ts:59–66`
+**File:** `src/db/db.ts:33–36`
+**Issue:** The `AppConfig` interface constrains `key` to `'pinHash' | 'lastLessonId' | 'onboardingComplete'`. This is enforced only at compile time. A raw `db.appConfig.put({ key: 'anything', value: '...' })` call with a type assertion or a JavaScript caller bypasses this entirely. IndexedDB stores whatever is provided. This is a minor concern given the local-only, no-auth scope of v1, but any future code that iterates `appConfig` entries to build parent dashboard state could encounter unexpected keys without warning.
 
-**Issue:** `validPrefixes` mixes broad prefixes (`'1.OA'`, `'2.OA'`, `'3.NBT'`) with a single fully-qualified standard (`'3.OA.D.8'`). The `startsWith` check means `'3.OA.D.8'` technically also accepts strings like `'3.OA.D.80'`. More practically, if a future lesson needs any other Grade 3 OA standard (e.g., `3.OA.A.3`), the test will fail because neither `'3.NBT'` nor `'3.OA.D.8'` will match it, and the intent behind the restriction will not be obvious.
-
-**Fix:** Make the two-tier strategy explicit:
-
+**Fix:** Document the limitation with a comment, or add a runtime-enforcing wrapper:
 ```typescript
-const validGrade3OA = new Set(['3.OA.D.8'])
-
-const valid = std.startsWith('1.OA') ||
-              std.startsWith('2.OA') ||
-              std.startsWith('3.NBT') ||
-              validGrade3OA.has(std)
-```
-
-### IN-02: Lesson `addition-grade3-01` introduces round-hundred addition but includes mixed-addend problems
-
-**File:** `src/curriculum/curriculum.json:183–211, 1136–1161`
-
-**Issue:** The lesson "Adding Hundreds (Place Value)" uses `300 + 400` as its worked example — pure round-hundred arithmetic. However, problems p3 and p4 for this lesson present `150 + 250` and `320 + 180`, which require tens-digit addition that the lesson never demonstrates. A child who absorbed only the lesson's worked example will encounter a technique gap when reaching these problems.
-
-**Fix:** Either adjust the lesson worked example to include a non-round-hundred example (e.g., `250 + 150`), or replace p3/p4 with problems consistent with round-hundred scope (e.g., `100 + 600`, `200 + 700`).
-
-### IN-03: `TopicProgress.accuracy` has no 0–1 range guard at the storage layer
-
-**File:** `src/db/db.ts:14–19`
-
-**Issue:** `accuracy: number` is commented as "0–1 float" but TypeScript's `number` accepts `NaN`, `Infinity`, negative values, and values above 1. A divide-by-zero in Phase 4 (e.g., `correctCount / totalCount` when `totalCount === 0`) would silently store `NaN`. The parent dashboard would then display `NaN%` or render broken progress indicators.
-
-**Fix:** Add a guard in any function that writes `TopicProgress`:
-
-```typescript
-function clampAccuracy(raw: number): number {
-  if (!isFinite(raw)) return 0
-  return Math.max(0, Math.min(1, raw))
+/** Type-safe config writer — use instead of db.appConfig.put() directly */
+export async function setConfig(key: AppConfig['key'], value: string): Promise<void> {
+  await db.appConfig.put({ key, value })
 }
 ```
 
 ---
 
-_Reviewed: 2026-05-14_
+_Reviewed: 2026-05-14T12:00:00Z_
 _Reviewer: Claude (gsd-code-reviewer)_
 _Depth: standard_
