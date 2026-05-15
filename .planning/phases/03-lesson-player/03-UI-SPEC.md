@@ -167,7 +167,7 @@ Focal point: equation block (40px bold, centered) when `LessonStep.equation` is 
 │                                        │
 │         "You did it!"                  │  ← text-3xl bold, color on-surface
 │                                        │
-│    [  Start Practice  ]                │  ← bg-accent (#3B82F6), text-white text-2xl bold
+│    [  Start Practice  ]                │  ← bg-accent (#3B82F6), text-white text-xl bold
 │                                        │    rounded-3xl px-10 py-5 min-h-[64px]
 └────────────────────────────────────────┘
 ```
