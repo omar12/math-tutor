@@ -536,17 +536,17 @@ function handleUnlockTap() {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Should Howl instances use `html5: true` or default Web Audio?**
    - What we know: Web Audio is faster for short clips; HTML5 is better for large files. These are short narration clips (~3–10 seconds each).
    - What's unclear: Whether older iPads (A12 chip) have Web Audio decode performance issues with many simultaneous Howl instances in memory.
-   - Recommendation: Default (`html5: false`). If audio latency is reported on older hardware during QA, switch to `html5: true`.
+   - RESOLVED: Use default (`html5: false`). Web Audio mode is faster for short clips. If audio latency is reported on older hardware during QA, switch to `html5: true` as a targeted fix.
 
 2. **Should all step Howls be created at mount, or lazily on step entry?**
    - What we know: Creating all at mount front-loads any potential memory cost; creating lazily reduces peak memory.
    - What's unclear: How many steps the largest lesson has (checking curriculum data confirms max ~5 steps per lesson).
-   - Recommendation: Create all at mount. Max 5 Howl instances is negligible memory; it eliminates any "first play latency" on step entry.
+   - RESOLVED: Create all at mount. Max 5 Howl instances is negligible memory; it eliminates any "first play latency" on step entry.
 
 ---
 
