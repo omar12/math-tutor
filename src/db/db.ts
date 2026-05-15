@@ -8,7 +8,12 @@ export type ISODateString = string & { readonly _brand: 'ISODateString' }
 
 /** Converts a Date to an ISODateString (YYYY-MM-DD). Use this whenever writing date fields. */
 export function toISODateString(d: Date): ISODateString {
-  return d.toISOString().slice(0, 10) as ISODateString
+  // Use local calendar date, not UTC date — avoids wrong-day attribution for
+  // users in timezones far from UTC (e.g. UTC-5 late night, UTC+10 just past midnight).
+  const year  = d.getFullYear()
+  const month = String(d.getMonth() + 1).padStart(2, '0')
+  const day   = String(d.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}` as ISODateString
 }
 
 // --- TypeScript interfaces ---
