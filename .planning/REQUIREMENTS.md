@@ -21,9 +21,9 @@
 ### Lesson
 
 - [ ] **LESS-01**: Each lesson begins with a guided worked example that walks through a sample problem step by step with narration
-- [ ] **LESS-02**: All lesson instructions and problem text are narrated aloud (pre-recorded audio)
+- [x] **LESS-02**: All lesson instructions and problem text are narrated aloud (pre-recorded audio)
 - [ ] **LESS-03**: Kid can tap any narrated segment to replay it
-- [ ] **LESS-04**: Audio playback is unlocked via the first deliberate user tap (satisfies iOS Safari gesture requirement)
+- [x] **LESS-04**: Audio playback is unlocked via the first deliberate user tap (satisfies iOS Safari gesture requirement)
 
 ### Practice
 
@@ -110,9 +110,9 @@
 | CURR-02 | Phase 2 | Pending |
 | CURR-03 | Phase 2 | Pending |
 | LESS-01 | Phase 3 | Pending |
-| LESS-02 | Phase 3 | Pending |
+| LESS-02 | Phase 3 | Complete |
 | LESS-03 | Phase 3 | Pending |
-| LESS-04 | Phase 3 | Pending |
+| LESS-04 | Phase 3 | Complete |
 | PRAC-01 | Phase 4 | Pending |
 | PRAC-02 | Phase 4 | Pending |
 | PRAC-03 | Phase 4 | Pending |
