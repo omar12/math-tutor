@@ -39,10 +39,10 @@ describe('useLessonAudio', () => {
     expect(onStepEnded).toHaveBeenCalledTimes(1)
   })
 
-  it('calls unload on all Howl instances when unmounted', () => {
+  it('calls stop on all Howl instances when unmounted', () => {
     const { result, unmount } = renderHook(() => useLessonAudio(mockSteps, vi.fn()))
     const howls = result.current
     unmount()
-    howls.forEach(h => expect(h.unload).toHaveBeenCalled())
+    howls.forEach(h => expect(h.stop).toHaveBeenCalled())
   })
 })

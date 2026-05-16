@@ -22,7 +22,10 @@ export function useLessonAudio(
   }, [])
 
   useEffect(() => {
-    return () => howls.forEach((h) => h.unload())
+    // stop() prevents ghost audio on unmount without clearing callbacks.
+    // unload() would clear all Howl event handlers, breaking React StrictMode's
+    // cleanup+remount cycle and causing the lesson to freeze (no Next button).
+    return () => howls.forEach((h) => h.stop())
   }, [howls])
 
   return howls
