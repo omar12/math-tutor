@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, act } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
 import { Howl } from 'howler'
 import LessonScreen from './LessonScreen'
@@ -34,8 +34,8 @@ describe('LessonScreen', () => {
     render(<MemoryRouter><LessonScreen /></MemoryRouter>)
     fireEvent.click(screen.getByRole('button', { name: /tap to start lesson/i }))
     const HowlMock = Howl as ReturnType<typeof vi.fn>
-    // Simulate audio ended for step 0
-    HowlMock.mock.calls[0][0].onend()
+    // Simulate audio ended for step 0 — wrapped in act() because it triggers a state update
+    act(() => { HowlMock.mock.calls[0][0].onend() })
     // Now in between-steps — Next button visible
     const nextBtn = screen.getByRole('button', { name: /next step/i })
     expect(nextBtn).toBeInTheDocument()
@@ -49,9 +49,9 @@ describe('LessonScreen', () => {
     fireEvent.click(screen.getByRole('button', { name: /tap to start lesson/i }))
     const HowlMock = Howl as ReturnType<typeof vi.fn>
     const steps = lessons[0].workedExample.steps
-    // Advance through all steps
+    // Advance through all steps — onend() calls trigger state updates, so wrap in act()
     for (let i = 0; i < steps.length; i++) {
-      HowlMock.mock.calls[i][0].onend()
+      act(() => { HowlMock.mock.calls[i][0].onend() })
       fireEvent.click(screen.getByRole('button', { name: /next step/i }))
     }
     expect(screen.getByText('You did it!')).toBeInTheDocument()
@@ -62,8 +62,8 @@ describe('LessonScreen', () => {
     render(<MemoryRouter><LessonScreen /></MemoryRouter>)
     fireEvent.click(screen.getByRole('button', { name: /tap to start lesson/i }))
     const HowlMock = Howl as ReturnType<typeof vi.fn>
-    // Trigger onend to enter between-steps
-    HowlMock.mock.calls[0][0].onend()
+    // Trigger onend to enter between-steps — wrapped in act() for state update
+    act(() => { HowlMock.mock.calls[0][0].onend() })
     // Click replay
     fireEvent.click(screen.getByRole('button', { name: /replay this step/i }))
     const firstHowl = HowlMock.mock.results[0].value

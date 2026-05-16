@@ -18,7 +18,8 @@ describe('App routing', () => {
         <App />
       </MemoryRouter>
     )
-    expect(screen.getByText('Lesson')).toBeInTheDocument()
+    // LessonScreen unlock screen shows "Tap anywhere to start" (stub "Lesson" text removed in 03-03)
+    expect(screen.getByText('Tap anywhere to start')).toBeInTheDocument()
   })
 
   it('renders PracticeScreen at /practice', () => {
