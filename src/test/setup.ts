@@ -5,14 +5,16 @@ import 'fake-indexeddb/auto'
 
 // Howler mock — jsdom has no Web Audio API; mock Howl for unit tests
 vi.mock('howler', () => ({
-  Howl: vi.fn().mockImplementation(({ onend, onloaderror, onplayerror }: {
+  Howl: vi.fn().mockImplementation(function ({ onend, onloaderror, onplayerror }: {
     onend?: () => void
     onloaderror?: () => void
     onplayerror?: () => void
-  }) => ({
-    play: vi.fn(),
-    stop: vi.fn(),
-    unload: vi.fn(),
-    _callbacks: { onend, onloaderror, onplayerror },
-  })),
+  }) {
+    return {
+      play: vi.fn(),
+      stop: vi.fn(),
+      unload: vi.fn(),
+      _callbacks: { onend, onloaderror, onplayerror },
+    }
+  }),
 }))
