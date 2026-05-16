@@ -1,5 +1,6 @@
 interface ConfettiScreenProps {
   onStartPractice: () => void
+  buttonLabel?: string
 }
 
 const CONFETTI_COLORS = ['#FF6B35', '#FFD23F', '#3B82F6', '#22C55E', '#FF4757'] as const
@@ -13,7 +14,7 @@ const pieces = Array.from({ length: PIECE_COUNT }, (_, i) => ({
   size: i % 3 === 0 ? 10 : 8,
 }))
 
-export function ConfettiScreen({ onStartPractice }: ConfettiScreenProps) {
+export function ConfettiScreen({ onStartPractice, buttonLabel }: ConfettiScreenProps) {
   return (
     <div
       className="flex flex-col items-center justify-center gap-8 bg-surface"
@@ -32,10 +33,10 @@ export function ConfettiScreen({ onStartPractice }: ConfettiScreenProps) {
       <button
         className="bg-accent text-white text-xl font-bold rounded-3xl px-10 py-5 min-h-[64px] min-w-[200px] active:opacity-80 relative"
         style={{ touchAction: 'manipulation' }}
-        aria-label="Start Practice"
+        aria-label={buttonLabel ?? 'Start Practice'}
         onClick={onStartPractice}
       >
-        Start Practice
+        {buttonLabel ?? 'Start Practice'}
       </button>
     </div>
   )

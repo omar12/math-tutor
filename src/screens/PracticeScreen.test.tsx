@@ -109,22 +109,56 @@ describe('D-03: Attempt counter resets on advance', () => {
   })
 })
 
-describe('FEED-01: Encouragement after 1st wrong answer', () => {
-  it.todo('shows warm encouragement phrase below problem after first wrong answer')
+describe('FEED-01: Hint after 2nd wrong answer', () => {
+  it('shows hint text after second wrong answer on same problem', () => {
+    renderWithRoute(MC_LESSON_ID)
+    const wrongChoice = mcProblems[0].choices.find(c => c !== mcProblems[0].answer)!
+    // First wrong
+    fireEvent.click(screen.getByLabelText(`Answer ${wrongChoice}`))
+    // Second wrong
+    fireEvent.click(screen.getByLabelText(`Answer ${wrongChoice}`))
+    expect(screen.getByText('Think about what number makes the equation balance.')).toBeInTheDocument()
+  })
 })
 
-describe('FEED-02: Reveal after 3 wrong answers', () => {
-  it.todo('auto-advances after 1500ms when 3rd wrong answer triggers reveal')
+describe('FEED-02: Auto-advance after 3 wrong answers + reveal timer', () => {
+  it('auto-advances to next problem after 3 wrong answers and 1.5s', () => {
+    renderWithRoute(MC_LESSON_ID)
+    const wrongChoice = mcProblems[0].choices.find(c => c !== mcProblems[0].answer)!
+    const firstQuestion = mcProblems[0].question
+    // Three wrong answers
+    fireEvent.click(screen.getByLabelText(`Answer ${wrongChoice}`))
+    fireEvent.click(screen.getByLabelText(`Answer ${wrongChoice}`))
+    fireEvent.click(screen.getByLabelText(`Answer ${wrongChoice}`))
+    // Advance reveal timer
+    act(() => { vi.advanceTimersByTime(1501) })
+    // Original question should be gone
+    expect(screen.queryByText(firstQuestion)).not.toBeInTheDocument()
+  })
 })
 
-describe('FEED-03: Encouragement phrase after 1st wrong answer (FeedbackSlot)', () => {
-  it.todo('FeedbackSlot renders encouragement in text-primary (orange) after first wrong answer')
+describe('FEED-03: Encouragement after 1st wrong answer', () => {
+  it('shows encouragement phrase after first wrong answer (orange text-primary)', () => {
+    renderWithRoute(MC_LESSON_ID)
+    const wrongChoice = mcProblems[0].choices.find(c => c !== mcProblems[0].answer)!
+    fireEvent.click(screen.getByLabelText(`Answer ${wrongChoice}`))
+    // phraseIndex becomes 1 after first WRONG_ANSWER → ENCOURAGEMENT_PHRASES[1]
+    expect(screen.getByText('Almost! You can do it.')).toBeInTheDocument()
+  })
 })
 
 describe('FEED-04: ConfettiScreen after last problem', () => {
-  it.todo('ConfettiScreen shown after all problems answered with Back to Home button')
+  it('shows ConfettiScreen with Back to Home button after all problems answered', () => {
+    renderWithRoute(MC_LESSON_ID)
+    for (const problem of mcProblems) {
+      fireEvent.click(screen.getByLabelText(`Answer ${problem.answer}`))
+      act(() => { vi.advanceTimersByTime(201) })
+    }
+    expect(screen.getByText('You did it!')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /back to home/i })).toBeInTheDocument()
+  })
 })
 
 describe('D-11: LessonScreen ConfettiScreen regression', () => {
-  it.todo('LessonScreen ConfettiScreen still shows Start Practice button text')
+  it.todo('LessonScreen ConfettiScreen still shows Start Practice — covered by LessonScreen.test.tsx')
 })

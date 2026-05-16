@@ -1,6 +1,7 @@
 import { useReducer, useEffect, useMemo, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { ConfettiScreen } from '../components/ConfettiScreen'
+import { FeedbackSlot } from '../components/FeedbackSlot'
 import { MultipleChoiceWidget } from '../components/MultipleChoiceWidget'
 import { DigitGridWidget } from '../components/DigitGridWidget'
 import { problems } from '../curriculum/index'
@@ -136,7 +137,7 @@ export default function PracticeScreen() {
   }
 
   if (state.phase === 'celebration') {
-    return <ConfettiScreen onStartPractice={() => navigate('/')} />
+    return <ConfettiScreen onStartPractice={() => navigate('/')} buttonLabel="Back to Home" />
   }
 
   return (
@@ -172,8 +173,18 @@ export default function PracticeScreen() {
         {currentProblem.question}
       </p>
 
-      {/* FeedbackSlot placeholder — Plan 02 replaces this */}
-      <div className="min-h-[48px]" aria-hidden="true" />
+      {/* Correct-reveal announcement for screen readers — always present so aria-live region is registered */}
+      <div
+        aria-live="assertive"
+        aria-atomic="true"
+        style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap' }}
+      >
+        {state.phase === 'revealing'
+          ? `The answer is ${currentProblem.answer}. Moving to the next problem.`
+          : ''}
+      </div>
+
+      <FeedbackSlot attemptCount={state.attemptCount} phraseIndex={state.phraseIndex} />
 
       {/* Input widget */}
       {currentProblem.type === 'multiple-choice' ? (
