@@ -21,7 +21,7 @@ created: 2026-05-15
 | Preset | not applicable |
 | Component library | none — custom components with Tailwind 4 CSS-first tokens |
 | Icon library | inline SVG (no external icon library; matches Phase 3 StepCard pattern) |
-| Font | Nunito (Google Fonts) — weights 400, 600, 700, 800 already loaded globally |
+| Font | Nunito (Google Fonts) — weights 400, 700, 800 already loaded globally |
 
 Source: `src/index.css` @theme block + Phase 1 D-11.
 
@@ -52,7 +52,7 @@ Exceptions:
 | Role | Size | Weight | Line Height |
 |------|------|--------|-------------|
 | Body | 18px (text-lg) | 400 (regular) | 1.5 |
-| Label | 16px (text-base) | 600 (semibold) | 1.4 |
+| Label | 16px (text-base) | 700 (bold) | 1.4 |
 | Heading | 24px (text-2xl) | 700 (bold) | 1.2 |
 | Display (equation / answer) | 40px (text-4xl) | 700 (bold) | 1.1 |
 
@@ -62,7 +62,7 @@ Notes:
 - Digit display box (composed answer) uses Display (40px / 700) — number must read clearly before submission.
 - Digit grid keys use Heading (24px / 700) — high contrast, easily read on 64px targets.
 - Feedback / encouragement phrases use Body (18px / 400) — subordinate to the problem, not alarming.
-- "Check" button label uses Label (16px / 600).
+- "Check Answer" button label uses Label (16px / 700).
 
 Source: Phase 1 D-11 (Nunito globally), Phase 3 StepCard.tsx (text-xl / text-4xl pattern), Phase 1 D-12 (kids 6–9 legibility requirement).
 
@@ -76,7 +76,7 @@ Tokens are from `src/index.css` @theme. All values confirmed from codebase.
 |------|-------|-------|
 | Dominant (60%) | `#FFF8F0` (`--color-surface`) | Screen background, all screen containers |
 | Secondary (30%) | `#FFFFFF` (white) | Answer option cards, digit grid key backgrounds, digit display box background |
-| Accent (10%) | `#3B82F6` (`--color-accent`) | "Check" button background, selected-state border on answer options |
+| Accent (10%) | `#3B82F6` (`--color-accent`) | "Check Answer" button background, selected-state border on answer options |
 | Success | `#22C55E` (`--color-success`) | Correct answer highlight (answer option border + background tint on correct reveal, D-09) |
 | Primary | `#FF6B35` (`--color-primary`) | Wrong-answer card shake indicator border, replay icon stroke (consistent with StepCard) |
 | Secondary yellow | `#FFD23F` (`--color-secondary`) | Confetti pieces (reused from ConfettiScreen CONFETTI_COLORS) |
@@ -84,7 +84,7 @@ Tokens are from `src/index.css` @theme. All values confirmed from codebase.
 | Text | `#1C1917` (`--color-on-surface`) | All body text, labels, question text |
 
 Accent (`#3B82F6`) reserved for:
-1. "Check" submit button background (digit-grid input only)
+1. "Check Answer" submit button background (digit-grid input only)
 2. Focused / selected border on an answer option card before tap confirms (optional hover ring — touch does not have hover, but this covers iPad keyboard-with-trackpad edge case)
 
 Success (`#22C55E`) reserved for:
@@ -118,12 +118,12 @@ Source: `src/index.css` confirmed, ConfettiScreen.tsx CONFETTI_COLORS confirmed,
 - Digit display box above grid: `bg-white rounded-2xl shadow-sm` + 64px height + Display size (40px / 700)
   - Empty state: single underscore character `_` in `text-on-surface/30`
   - Filled state: composed digits left-aligned in display box
-- 3×4 grid of digit keys (0–9 + backspace + Check): each key 64×64px minimum, `bg-white rounded-xl shadow-sm`
+- 3×4 grid of digit keys (0–9 + backspace + Check Answer): each key 64×64px minimum, `bg-white rounded-xl shadow-sm`
   - Digit keys (0–9): Heading size (24px / 700), `text-on-surface`
   - Backspace key: inline SVG backspace icon, `stroke-primary` (same orange as replay icon)
-  - Check key: `bg-accent text-white` Label size (16px / 600) — only enabled when display box is non-empty; disabled state: `opacity-40`
-- Grid layout: `grid grid-cols-3 gap-3`
-- Key layout row order: [7][8][9] / [4][5][6] / [1][2][3] / [backspace][0][Check]
+  - Check Answer key: `bg-accent text-white` Label size (16px / 700) — only enabled when display box is non-empty; disabled state: `opacity-40`
+- Grid layout: `grid grid-cols-3 gap-4`
+- Key layout row order: [7][8][9] / [4][5][6] / [1][2][3] / [backspace][0][Check Answer]
 
 ### FeedbackSlot
 - Fixed slot below problem question — always occupies vertical space to prevent layout shift (D-08)
@@ -162,10 +162,10 @@ Hint slot (after 2nd wrong) uses problem-specific hint from curriculum data. Fal
 7. Attempt counter resets per problem.
 
 ### Digit-Grid Flow
-1. Problem question displayed, digit display box shows `_`, Check disabled.
-2. Child taps digit keys → digits compose in display box. Check enables after first digit.
-3. Backspace removes last digit. If display box becomes empty, Check disables again.
-4. Child taps Check → submission.
+1. Problem question displayed, digit display box shows `_`, Check Answer disabled.
+2. Child taps digit keys → digits compose in display box. Check Answer enables after first digit.
+3. Backspace removes last digit. If display box becomes empty, Check Answer disables again.
+4. Child taps Check Answer → submission.
 5. If correct: display box flashes green border (200ms) → advance.
 6. If wrong (attempt 1): display box flashes orange border (300ms), encouragement in FeedbackSlot. Display box clears.
 7. If wrong (attempt 2): same + hint replaces encouragement. Display box clears.
@@ -188,12 +188,12 @@ Hint slot (after 2nd wrong) uses problem-specific hint from curriculum data. Fal
 
 | Element | Copy |
 |---------|------|
-| Primary CTA (digit-grid submit) | "Check" |
+| Primary CTA (digit-grid submit) | "Check Answer" |
 | Session-end button | "Back to Home" |
 | Empty display box placeholder | `_` (single underscore, visually understated) |
 | Progress dots aria-label | "Problem {N} of {M}" (on the container, for screen readers) |
 | Backspace key aria-label | "Delete last digit" |
-| Check button aria-label | "Check my answer" |
+| Check Answer button aria-label | "Check my answer" |
 | Correct-reveal status (screen reader) | "The answer is {N}. Moving to the next problem." (aria-live region) |
 | Wrong attempt 1 encouragement (example) | "Nice try! Give it another go." (rotates through 5 phrases above) |
 | Hint (attempt 2) | Problem-specific hint from curriculum; fallback: "Think about what number makes the equation balance." |
