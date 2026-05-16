@@ -596,7 +596,7 @@ const shuffled = [...raw].sort(() => Math.random() - 0.5)
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Which plan handles the App.tsx route change (`/practice` → `/practice/:lessonId`)?**
    - What we know: The route change is a prerequisite for PracticeScreen to work. It also requires updating LessonScreen's `navigate('/practice')` call and `App.test.tsx`.
