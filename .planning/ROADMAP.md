@@ -87,8 +87,15 @@ Plans:
   3. After 2 wrong attempts on the same problem, a hint appears automatically
   4. After 3 wrong attempts, the correct answer is revealed and the app advances — the child is never stuck in an infinite retry loop
   5. A completion celebration screen (visual reward) appears when the practice session ends
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+
+**Wave 1** — 04-01: Route wiring, PracticeScreen state machine, MultipleChoiceWidget, DigitGridWidget, test scaffold (PRAC-01, PRAC-02, PRAC-03)
+
+**Wave 2** *(blocked on Wave 1 completion)* — 04-02: FeedbackSlot, ConfettiScreen buttonLabel prop, feedback escalation and session-end wiring (FEED-01, FEED-02, FEED-03, FEED-04)
+
+Plans:
+- [ ] 04-01-PLAN.md — Route plumbing, state machine, MultipleChoiceWidget, DigitGridWidget, and test scaffold
+- [ ] 04-02-PLAN.md — FeedbackSlot, ConfettiScreen extension, feedback escalation, and session-end celebration
 
 ### Phase 5: Progress & Parent Section
 **Goal**: The app records per-topic accuracy across sessions and uses it to surface struggling topics more often in practice; a PIN-protected parent dashboard makes this data visible to adults.
@@ -125,6 +132,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Foundation | 2/2 | Complete | 2026-05-13 |
 | 2. Curriculum & Content | 2/2 | Complete | 2026-05-13 |
 | 3. Lesson Player | 3/3 | Complete | 2026-05-16 |
-| 4. Practice Engine | 0/TBD | Not started | - |
+| 4. Practice Engine | 0/2 | Not started | - |
 | 5. Progress & Parent Section | 0/TBD | Not started | - |
 | 6. PWA & Offline | 0/TBD | Not started | - |
