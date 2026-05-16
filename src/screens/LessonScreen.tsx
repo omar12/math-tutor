@@ -155,17 +155,15 @@ export default function LessonScreen() {
         />
       </div>
 
-      {/* Next indicator — visible only in between-steps state */}
-      {state.phase === 'between-steps' && (
-        <button
-          className="bg-primary text-white rounded-full min-h-[64px] min-w-[64px] flex items-center justify-center text-2xl font-bold active:opacity-80"
-          style={{ touchAction: 'manipulation' }}
-          onClick={() => dispatch({ type: 'ADVANCE', totalSteps })}
-          aria-label="Next step"
-        >
-          →
-        </button>
-      )}
+      {/* Next button — always visible so lesson can advance with or without audio */}
+      <button
+        className="bg-primary text-white rounded-full min-h-[64px] min-w-[64px] flex items-center justify-center text-2xl font-bold active:opacity-80"
+        style={{ touchAction: 'manipulation' }}
+        onClick={() => dispatch({ type: 'ADVANCE', totalSteps })}
+        aria-label="Next step"
+      >
+        →
+      </button>
     </div>
   )
 }
