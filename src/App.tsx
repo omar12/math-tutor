@@ -9,7 +9,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomeScreen />} />
       <Route path="/lesson" element={<LessonScreen />} />
-      <Route path="/practice" element={<PracticeScreen />} />
+      <Route path="/practice/:lessonId" element={<PracticeScreen />} />
       <Route path="/parent" element={<ParentScreen />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

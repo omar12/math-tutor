@@ -55,3 +55,9 @@ button, [role="button"], a {
   border-radius: 2px;
   position: fixed;
 }
+
+@keyframes wrong-pulse { 0% { border-color: transparent; } 50% { border-color: #FF6B35; } 100% { border-color: transparent; } }
+.wrong-pulse { animation: wrong-pulse 300ms ease-in-out 1; border-width: 2px; border-style: solid; }
+
+@keyframes correct-flash { 0% { border-color: transparent; } 50% { border-color: #22C55E; background-color: rgb(34 197 94 / 0.1); } 100% { border-color: transparent; background-color: transparent; } }
+.correct-flash { animation: correct-flash 200ms ease-in-out 1; border-width: 2px; border-style: solid; }

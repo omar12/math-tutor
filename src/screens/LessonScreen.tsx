@@ -108,7 +108,7 @@ export default function LessonScreen() {
 
   // --- Celebration screen ---
   if (state.phase === 'celebration') {
-    return <ConfettiScreen onStartPractice={() => navigate('/practice')} />
+    return <ConfettiScreen onStartPractice={() => navigate(`/practice/${lesson.id}`)} />
   }
 
   // --- Step screen (playing | between-steps) ---

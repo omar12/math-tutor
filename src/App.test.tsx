@@ -22,13 +22,13 @@ describe('App routing', () => {
     expect(screen.getByText('Tap anywhere to start')).toBeInTheDocument()
   })
 
-  it('renders PracticeScreen at /practice', () => {
+  it('renders PracticeScreen at /practice/:lessonId', () => {
     render(
-      <MemoryRouter initialEntries={['/practice']}>
+      <MemoryRouter initialEntries={['/practice/addition-grade1-01']}>
         <App />
       </MemoryRouter>
     )
-    expect(screen.getByText('Practice')).toBeInTheDocument()
+    expect(screen.getByLabelText(/problem 1 of/i)).toBeInTheDocument()
   })
 
   it('renders ParentScreen at /parent', () => {
