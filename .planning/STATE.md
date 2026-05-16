@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 03-01-PLAN.md
-last_updated: "2026-05-16T00:54:52.171Z"
+stopped_at: Completed 03-03-PLAN.md
+last_updated: "2026-05-16T01:00:00.000Z"
 last_activity: 2026-05-16
 progress:
   total_phases: 6
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-05-12)
 ## Current Position
 
 Phase: 3 of 6 (Lesson Player) — PLANNED, ready to execute
-Plan: 1 of 3 in Phase 3
-Status: Ready to execute
+Plan: 3 of 3 in Phase 3 — COMPLETE
+Status: Phase 3 complete, ready for Phase 4
 Last activity: 2026-05-16
 
 Progress: [█████████░] 86%
@@ -53,6 +53,8 @@ Progress: [█████████░] 86%
 
 *Updated after each plan completion*
 | Phase 03-lesson-player P01 | 12min | 4 tasks | 5 files |
+| Phase 03-lesson-player P02 | 8min | 2 tasks | 4 files |
+| Phase 03-lesson-player P03 | 4min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -75,6 +77,8 @@ Recent decisions affecting current work:
 - [02-02]: Grade 1 problems are all multiple-choice; Grade 2/3 mix multiple-choice and digit-grid
 - [02-02]: index.ts uses satisfies (not as) for compile-time type safety without runtime overhead
 - [Phase ?]: Used function() not arrow function in Howler vi.mock so new Howl() works as constructor in jsdom
+- [03-03]: justReplayedRef guard added to prevent double-play when REPLAY dispatch re-enters playing phase
+- [03-03]: act() wrapper required when calling Howl onend() directly in tests (triggers React state update outside event handler)
 
 ### Pending Todos
 
@@ -94,6 +98,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-16T00:54:52.163Z
-Stopped at: Completed 03-01-PLAN.md
+Last session: 2026-05-16T01:00:00.000Z
+Stopped at: Completed 03-03-PLAN.md — Phase 3 complete
 Resume file: None

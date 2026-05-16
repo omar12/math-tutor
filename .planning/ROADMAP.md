@@ -124,7 +124,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | 2026-05-13 |
 | 2. Curriculum & Content | 2/2 | Complete | 2026-05-13 |
-| 3. Lesson Player | 2/3 | In Progress|  |
+| 3. Lesson Player | 3/3 | Complete | 2026-05-16 |
 | 4. Practice Engine | 0/TBD | Not started | - |
 | 5. Progress & Parent Section | 0/TBD | Not started | - |
 | 6. PWA & Offline | 0/TBD | Not started | - |
