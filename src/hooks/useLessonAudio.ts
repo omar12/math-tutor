@@ -12,6 +12,7 @@ export function useLessonAudio(
         new Howl({
           src: [step.narrationAudio],
           html5: false,
+          preload: false,
           onend: () => onStepEnded(),
           onloaderror: () => onStepEnded(),
           onplayerror: () => onStepEnded(),
