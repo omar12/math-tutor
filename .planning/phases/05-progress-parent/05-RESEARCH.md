@@ -638,22 +638,22 @@ export function ProgressBar({ label, accuracy, hasData }: ProgressBarProps) {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Should the lock icon replace the existing "Parent" text link or be added alongside it?**
    - What we know: HomeScreen has a visible "Parent" text button that navigates to `/parent`. D-01 says lock icon should be subtle.
    - What's unclear: Whether to remove the text link entirely (cleaner, correct per D-01) or keep it alongside the lock icon (redundant, contradicts D-01 "subtle").
-   - Recommendation: Remove the text link; replace with the lock icon only. The icon is the single entry point.
+   - RESOLVED: Remove the text link; replace with the lock icon only. The icon is the single entry point. Plan 05-03 Task 2 removes the "Parent" text button and adds the lock icon in the top-right corner.
 
 2. **Where does `PracticeScreen` get `lesson.topic` and `lesson.grade` for the session write?**
    - What we know: PracticeScreen receives `lessonId` from URL params. It does NOT currently load the full `Lesson` object — it only filters `problems` by `lessonId`.
    - What's unclear: How to get `topic` and `grade` for the session record without duplicating the lesson lookup.
-   - Recommendation: Add `const currentLesson = lessons.find(l => l.id === lessonId)` to PracticeScreen (mirrors how LessonScreen does it). `lessons` is already exported from `curriculum/index.ts`.
+   - RESOLVED: Add `const currentLesson = lessons.find(l => l.id === lessonId)` to PracticeScreen (mirrors how LessonScreen does it). `lessons` is already exported from `curriculum/index.ts`. Plan 05-01 Task 2 adds this lookup.
 
 3. **Does HomeScreen need to display lessons at all currently?**
    - What we know: HomeScreen currently has a single "Start Learning" button that navigates to `/lesson` (no lesson selection UI). The adaptive ordering (D-15) implies a lesson list.
    - What's unclear: Phase 5 CONTEXT.md says adaptive ordering affects "which lesson is highlighted/suggested" — but there may not be a lesson list UI yet.
-   - Recommendation: The plan should clarify whether Phase 5 introduces a lesson list (picking from 27 lessons) or simply navigates to the single weakest-topic lesson automatically. Given the existing HomeScreen routes to `/lesson` with no ID, the simplest implementation is: on "Start Learning" tap, auto-select the lesson from the weakest topic and navigate to `/lesson/${selectedLesson.id}`. This avoids building a full lesson picker UI which is not required by any v1 requirement.
+   - RESOLVED: Phase 5 does NOT introduce a full lesson picker UI. On "Start Learning" tap, the weakest-topic lesson is auto-selected and the app navigates to `/lesson/${selectedLesson.id}`. This satisfies D-14/D-15 without building a 27-lesson picker. Plan 05-03 Task 2 implements this.
 
 ---
 
