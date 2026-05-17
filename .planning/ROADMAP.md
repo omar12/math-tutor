@@ -107,8 +107,16 @@ Plans:
   2. Topics where the child has lower accuracy appear more frequently in subsequent practice sessions (adaptive repetition is observable over 2+ sessions)
   3. Entering a 4-digit PIN from the home screen opens the parent dashboard; wrong PIN shows an error and stays locked
   4. Parent dashboard displays accuracy percentage for each topic (addition, subtraction, word problems) drawn from stored session data
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 3 plans
+
+**Wave 1** *(no dependencies)* — 05-01: Session recording in PracticeScreen — add correctCount/totalCount to state, write Session + upsert TopicProgress on celebration (PROG-01)
+
+**Wave 2** *(parallel — both blocked on Wave 1 completion)* — 05-02: PinScreen (CREATE + VERIFY mode, digit-dot display, hashPin/storePinHash/verifyPin), /pin route in App.tsx (PAR-01); 05-03: ProgressBar component, ParentScreen replacement with useLiveQuery, HomeScreen lock icon + adaptive lesson ordering (PROG-02, PAR-02)
+
+Plans:
+- [ ] 05-01-PLAN.md — PracticeScreen session recording: correctCount/totalCount in state, Session write + TopicProgress upsert on celebration
+- [ ] 05-02-PLAN.md — PinScreen (CREATE + VERIFY mode, tap-only digit pad, PIN hash via db.ts helpers) and /pin route registration
+- [ ] 05-03-PLAN.md — ProgressBar component, ParentScreen dashboard (useLiveQuery, 3 topics, empty state, Done button), HomeScreen lock icon + adaptive lesson ordering
 
 ### Phase 6: PWA & Offline
 **Goal**: The app can be installed to the iPad home screen and works fully offline after the first load — no network required for any feature.
@@ -133,5 +141,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Curriculum & Content | 2/2 | Complete | 2026-05-13 |
 | 3. Lesson Player | 3/3 | Complete | 2026-05-16 |
 | 4. Practice Engine | 0/2 | Not started | - |
-| 5. Progress & Parent Section | 0/TBD | Not started | - |
+| 5. Progress & Parent Section | 0/3 | Not started | - |
 | 6. PWA & Offline | 0/TBD | Not started | - |
