@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: verifying
-stopped_at: Phase 4 UI-SPEC approved
-last_updated: "2026-05-18T04:54:24.403Z"
+stopped_at: Completed 05-03-PLAN.md
+last_updated: "2026-05-18T05:00:09.708Z"
 last_activity: 2026-05-18
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 12
-  completed_plans: 10
+  completed_plans: 11
   percent: 67
 ---
 
@@ -30,7 +30,7 @@ Plan: 3 of 3 in Phase 3 — COMPLETE
 Status: Phase complete — ready for verification
 Last activity: 2026-05-18
 
-Progress: [████████░░] 83%
+Progress: [█████████░] 92%
 
 ## Performance Metrics
 
@@ -56,6 +56,7 @@ Progress: [████████░░] 83%
 | Phase 03-lesson-player P02 | 8min | 2 tasks | 4 files |
 | Phase 03-lesson-player P03 | 4min | 2 tasks | 3 files |
 | Phase 05-progress-parent P01 | 11 | 2 tasks | 4 files |
+| Phase 05-progress-parent P03 | 213 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -80,6 +81,9 @@ Recent decisions affecting current work:
 - [Phase ?]: Used function() not arrow function in Howler vi.mock so new Howl() works as constructor in jsdom
 - [03-03]: justReplayedRef guard added to prevent double-play when REPLAY dispatch re-enters playing phase
 - [03-03]: act() wrapper required when calling Howl onend() directly in tests (triggers React state update outside event handler)
+- [Phase ?]: ProgressBar accuracy clamped to [0,1] before computing fill — corrupted DB values cannot overflow
+- [Phase ?]: ParentScreen synthesizes all 3 topics before render (hasData=false for missing) — no topic row ever absent
+- [Phase ?]: sortedLessons spreads before sort — imported curriculum array never mutated
 
 ### Pending Todos
 
@@ -99,6 +103,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-18T04:54:24.395Z
-Stopped at: Phase 4 UI-SPEC approved
+Last session: 2026-05-18T05:00:09.700Z
+Stopped at: Completed 05-03-PLAN.md
 Resume file: None

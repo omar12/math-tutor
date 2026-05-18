@@ -41,12 +41,12 @@
 ### Progress
 
 - [x] **PROG-01**: App tracks per-topic accuracy (addition, subtraction, word problems) across sessions
-- [ ] **PROG-02**: Practice sessions use error-adaptive repetition — topics with lower accuracy appear more frequently
+- [x] **PROG-02**: Practice sessions use error-adaptive repetition — topics with lower accuracy appear more frequently
 
 ### Parent Section
 
 - [ ] **PAR-01**: Parent section is accessible from the main screen behind a 4-digit PIN
-- [ ] **PAR-02**: Parent dashboard shows accuracy per topic (addition, subtraction, word problems)
+- [x] **PAR-02**: Parent dashboard shows accuracy per topic (addition, subtraction, word problems)
 
 ### PWA
 
@@ -121,9 +121,9 @@
 | FEED-03 | Phase 4 | Pending |
 | FEED-04 | Phase 4 | Pending |
 | PROG-01 | Phase 5 | Complete |
-| PROG-02 | Phase 5 | Pending |
+| PROG-02 | Phase 5 | Complete |
 | PAR-01 | Phase 5 | Pending |
-| PAR-02 | Phase 5 | Pending |
+| PAR-02 | Phase 5 | Complete |
 | PWA-01 | Phase 6 | Pending |
 | PWA-02 | Phase 6 | Pending |
 

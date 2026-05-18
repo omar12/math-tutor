@@ -116,7 +116,7 @@ Plans:
 Plans:
 - [x] 05-01-PLAN.md — PracticeScreen session recording: correctCount/totalCount in state, Session write + TopicProgress upsert on celebration
 - [ ] 05-02-PLAN.md — PinScreen (CREATE + VERIFY mode, tap-only digit pad, PIN hash via db.ts helpers) and /pin route registration
-- [ ] 05-03-PLAN.md — ProgressBar component, ParentScreen dashboard (useLiveQuery, 3 topics, empty state, Done button), HomeScreen lock icon + adaptive lesson ordering
+- [x] 05-03-PLAN.md — ProgressBar component, ParentScreen dashboard (useLiveQuery, 3 topics, empty state, Done button), HomeScreen lock icon + adaptive lesson ordering
 
 ### Phase 6: PWA & Offline
 **Goal**: The app can be installed to the iPad home screen and works fully offline after the first load — no network required for any feature.
@@ -141,5 +141,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Curriculum & Content | 2/2 | Complete | 2026-05-13 |
 | 3. Lesson Player | 3/3 | Complete | 2026-05-16 |
 | 4. Practice Engine | 0/2 | Not started | - |
-| 5. Progress & Parent Section | 1/3 | In Progress|  |
+| 5. Progress & Parent Section | 2/3 | In Progress|  |
 | 6. PWA & Offline | 0/TBD | Not started | - |
