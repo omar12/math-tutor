@@ -3,13 +3,13 @@ import { MemoryRouter } from 'react-router'
 import App from './App'
 
 describe('App routing', () => {
-  it('renders HomeScreen at /', () => {
+  it('renders HomeScreen at /', async () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <App />
       </MemoryRouter>
     )
-    expect(screen.getByText('Start Learning')).toBeInTheDocument()
+    expect(await screen.findByText('Start Learning')).toBeInTheDocument()
   })
 
   it('renders LessonScreen at /lesson', () => {
@@ -31,21 +31,21 @@ describe('App routing', () => {
     expect(screen.getByLabelText(/problem 1 of/i)).toBeInTheDocument()
   })
 
-  it('renders ParentScreen at /parent', () => {
+  it('renders ParentScreen at /parent', async () => {
     render(
       <MemoryRouter initialEntries={['/parent']}>
         <App />
       </MemoryRouter>
     )
-    expect(screen.getByText('Parent View')).toBeInTheDocument()
+    expect(await screen.findByText('Parent Dashboard')).toBeInTheDocument()
   })
 
-  it('redirects unknown path to HomeScreen', () => {
+  it('redirects unknown path to HomeScreen', async () => {
     render(
       <MemoryRouter initialEntries={['/unknown']}>
         <App />
       </MemoryRouter>
     )
-    expect(screen.getByText('Start Learning')).toBeInTheDocument()
+    expect(await screen.findByText('Start Learning')).toBeInTheDocument()
   })
 })
