@@ -4,14 +4,14 @@ milestone: v1.0
 milestone_name: milestone
 status: verifying
 stopped_at: Completed 05-03-PLAN.md
-last_updated: "2026-05-18T05:00:09.708Z"
+last_updated: "2026-05-18T05:01:16.755Z"
 last_activity: 2026-05-18
 progress:
   total_phases: 6
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 12
-  completed_plans: 11
-  percent: 67
+  completed_plans: 12
+  percent: 83
 ---
 
 # Project State
@@ -30,7 +30,7 @@ Plan: 3 of 3 in Phase 3 — COMPLETE
 Status: Phase complete — ready for verification
 Last activity: 2026-05-18
 
-Progress: [█████████░] 92%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -57,6 +57,7 @@ Progress: [█████████░] 92%
 | Phase 03-lesson-player P03 | 4min | 2 tasks | 3 files |
 | Phase 05-progress-parent P01 | 11 | 2 tasks | 4 files |
 | Phase 05-progress-parent P03 | 213 | 2 tasks | 6 files |
+| Phase 05-progress-parent P02 | 265 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -84,6 +85,7 @@ Recent decisions affecting current work:
 - [Phase ?]: ProgressBar accuracy clamped to [0,1] before computing fill — corrupted DB values cannot overflow
 - [Phase ?]: ParentScreen synthesizes all 3 topics before render (hasData=false for missing) — no topic row ever absent
 - [Phase ?]: sortedLessons spreads before sort — imported curriculum array never mutated
+- [Phase ?]: useLiveQuery returns undefined for both loading and record-not-found; mapping via .then(r => r ?? null) makes loading vs CREATE mode unambiguous
 
 ### Pending Todos
 
@@ -103,6 +105,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-18T05:00:09.700Z
+Last session: 2026-05-18T05:01:13.379Z
 Stopped at: Completed 05-03-PLAN.md
 Resume file: None
