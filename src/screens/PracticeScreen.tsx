@@ -4,10 +4,59 @@ import { ConfettiScreen } from '../components/ConfettiScreen'
 import { FeedbackSlot } from '../components/FeedbackSlot'
 import { MultipleChoiceWidget } from '../components/MultipleChoiceWidget'
 import { DigitGridWidget } from '../components/DigitGridWidget'
-import { problems } from '../curriculum/index'
-import type { Problem } from '../curriculum/types'
+import { lessons, problems } from '../curriculum/index'
+import type { Problem, Topic } from '../curriculum/types'
+import { db, toISODateString } from '../db/db'
 
 const MAX_DIGITS = 3
+
+/**
+ * Records a completed practice session to IndexedDB and immediately upserts
+ * TopicProgress by aggregating all sessions for the topic. Both writes are
+ * wrapped in a single Dexie transaction — atomically succeeds or fails together.
+ *
+ * Exported for testing. Do not call directly outside PracticeScreen.
+ */
+export async function recordSessionAndUpdateProgress(
+  lessonId: string,
+  topic: Topic,
+  grade: 1 | 2 | 3,
+  correctCount: number,
+  totalCount: number
+): Promise<void> {
+  // D-11: Guard — do not write if no problems were answered
+  if (totalCount === 0) return
+
+  await db.transaction('rw', [db.sessions, db.topicProgress], async () => {
+    // D-12: Write the session record
+    await db.sessions.add({
+      lessonId,
+      topic,
+      grade,
+      date: toISODateString(new Date()),
+      correctCount,
+      totalCount,
+    })
+
+    // D-13, D-17: Pure aggregate — re-aggregate from all sessions for this topic
+    const allSessionsForTopic = await db.sessions
+      .where('topic')
+      .equals(topic)
+      .toArray()
+
+    const totalCorrect = allSessionsForTopic.reduce((sum, s) => sum + s.correctCount, 0)
+    const totalAnswered = allSessionsForTopic.reduce((sum, s) => sum + s.totalCount, 0)
+    const accuracy = totalAnswered > 0 ? totalCorrect / totalAnswered : 0
+
+    // D-13: Upsert TopicProgress (put() = insert or overwrite by primary key)
+    await db.topicProgress.put({
+      topic,
+      accuracy,
+      attemptCount: allSessionsForTopic.length,
+      lastPracticed: toISODateString(new Date()),
+    })
+  })
+}
 
 type PracticePhase = 'answering' | 'revealing' | 'celebration'
 
@@ -56,6 +105,9 @@ export default function PracticeScreen() {
   const { lessonId } = useParams<{ lessonId?: string }>()
   const navigate = useNavigate()
 
+  // Resolve lesson metadata (topic, grade) for session write
+  const currentLesson = lessons.find(l => l.id === lessonId)
+
   const problemPool = useMemo<Problem[]>(() => {
     const pool = problems.filter(p => p.lessonId === lessonId)
     if (pool.length === 0 && import.meta.env.DEV) {
@@ -76,6 +128,9 @@ export default function PracticeScreen() {
 
   const progressRef = useRef<HTMLDivElement>(null)
   const correctAnswerTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  // T-5-P04: hasRecorded guard — prevents duplicate session writes on React re-renders
+  // during the celebration phase.
+  const hasRecorded = useRef(false)
 
   const currentProblem = problemPool[state.problemIndex]
 
@@ -135,6 +190,27 @@ export default function PracticeScreen() {
       if (correctAnswerTimerRef.current) clearTimeout(correctAnswerTimerRef.current)
     }
   }, [])
+
+  // D-11, D-12, D-13: Write Session + upsert TopicProgress when celebration is reached.
+  // hasRecorded ref prevents duplicate writes if React re-renders during celebration.
+  // .catch ensures celebration renders even if the DB write fails (T-5-P03).
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (state.phase !== 'celebration' || !currentLesson || hasRecorded.current) return
+    hasRecorded.current = true
+    recordSessionAndUpdateProgress(
+      lessonId!,
+      currentLesson.topic,
+      currentLesson.grade,
+      state.correctCount,
+      state.totalCount
+    ).catch(err => {
+      console.error('[PracticeScreen] session write failed', err)
+    })
+    return () => {
+      hasRecorded.current = false
+    }
+  }, [state.phase]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (problemPool.length === 0) {
     return <ConfettiScreen onStartPractice={() => navigate('/')} />

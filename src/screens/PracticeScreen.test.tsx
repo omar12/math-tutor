@@ -1,10 +1,9 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent, act } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router'
 import PracticeScreen from './PracticeScreen'
 import { problems } from '../curriculum/index'
 import type { MultipleChoiceProblem, DigitGridProblem } from '../curriculum/types'
-import { db } from '../db/db'
 
 const MC_LESSON_ID = 'addition-grade1-01'
 const DG_LESSON_ID = 'addition-grade3-01'
@@ -180,137 +179,5 @@ describe('Task1-reducer: correctCount and totalCount tracking', () => {
   })
 })
 
-// Helper: complete all problems in the MC lesson by answering correctly
-function completeAllProblemsCorrectly() {
-  for (const problem of mcProblems) {
-    fireEvent.click(screen.getByLabelText(`Answer ${problem.answer}`))
-    act(() => { vi.advanceTimersByTime(201) })
-  }
-}
-
-describe('PROG-01: Session write on celebration', () => {
-  beforeEach(async () => {
-    vi.useRealTimers()
-    await db.sessions.clear()
-    await db.topicProgress.clear()
-    vi.useFakeTimers()
-  })
-
-  afterEach(async () => {
-    vi.useRealTimers()
-    await db.sessions.clear()
-    await db.topicProgress.clear()
-  })
-
-  it('writes exactly 1 Session record when all problems answered correctly', async () => {
-    renderWithRoute(MC_LESSON_ID)
-    completeAllProblemsCorrectly()
-    // ConfettiScreen should be shown
-    expect(screen.getByText('You did it!')).toBeInTheDocument()
-
-    vi.useRealTimers()
-    await waitFor(async () => {
-      const sessions = await db.sessions.toArray()
-      expect(sessions).toHaveLength(1)
-    }, { timeout: 3000 })
-    vi.useFakeTimers()
-  })
-
-  it('session record has correct lessonId, topic, grade, correctCount, totalCount', async () => {
-    renderWithRoute(MC_LESSON_ID)
-    completeAllProblemsCorrectly()
-
-    vi.useRealTimers()
-    await waitFor(async () => {
-      const sessions = await db.sessions.toArray()
-      expect(sessions).toHaveLength(1)
-      const s = sessions[0]
-      expect(s.lessonId).toBe(MC_LESSON_ID)
-      expect(s.topic).toBe('addition')
-      expect(s.grade).toBe(1)
-      expect(s.correctCount).toBe(5)
-      expect(s.totalCount).toBe(5)
-    }, { timeout: 3000 })
-    vi.useFakeTimers()
-  })
-
-  it('TopicProgress is upserted for the lesson topic after session write', async () => {
-    renderWithRoute(MC_LESSON_ID)
-    completeAllProblemsCorrectly()
-
-    vi.useRealTimers()
-    await waitFor(async () => {
-      const progress = await db.topicProgress.get('addition')
-      expect(progress).toBeDefined()
-      expect(progress!.accuracy).toBe(1)
-      expect(progress!.attemptCount).toBe(1)
-    }, { timeout: 3000 })
-    vi.useFakeTimers()
-  })
-
-  it('does NOT write a Session when navigating away before celebration (mid-session quit)', async () => {
-    const { unmount } = renderWithRoute(MC_LESSON_ID)
-    // Answer only first problem then unmount (simulating navigation away before celebration)
-    const firstProblem = mcProblems[0]
-    fireEvent.click(screen.getByLabelText(`Answer ${firstProblem.answer}`))
-    act(() => { vi.advanceTimersByTime(201) })
-    // Unmount before celebration — phase is still 'answering' (problem 2)
-    unmount()
-
-    vi.useRealTimers()
-    await new Promise(r => setTimeout(r, 100))
-    const sessions = await db.sessions.toArray()
-    expect(sessions).toHaveLength(0)
-    vi.useFakeTimers()
-  })
-
-  it('does NOT write a duplicate Session when component re-renders during celebration', async () => {
-    const { rerender } = render(
-      <MemoryRouter initialEntries={[`/practice/${MC_LESSON_ID}`]}>
-        <Routes>
-          <Route path="/practice/:lessonId" element={<PracticeScreen />} />
-        </Routes>
-      </MemoryRouter>
-    )
-    completeAllProblemsCorrectly()
-    expect(screen.getByText('You did it!')).toBeInTheDocument()
-
-    // Wait for first write to occur
-    vi.useRealTimers()
-    await waitFor(async () => {
-      const sessions = await db.sessions.toArray()
-      expect(sessions).toHaveLength(1)
-    }, { timeout: 3000 })
-
-    // Force a re-render of the wrapper while PracticeScreen stays in 'celebration' phase
-    rerender(
-      <MemoryRouter initialEntries={[`/practice/${MC_LESSON_ID}`]}>
-        <Routes>
-          <Route path="/practice/:lessonId" element={<PracticeScreen />} />
-        </Routes>
-      </MemoryRouter>
-    )
-
-    // Allow any pending async work
-    await new Promise(r => setTimeout(r, 200))
-
-    // Should still be exactly 1 session — hasRecorded ref prevents duplicate
-    const sessions = await db.sessions.toArray()
-    expect(sessions).toHaveLength(1)
-    vi.useFakeTimers()
-  })
-
-  it('does NOT write a Session when totalCount is 0 (guard against empty sessions)', async () => {
-    // Render with a lessonId that has no problems — empty pool renders ConfettiScreen
-    // immediately but the state never transitions through celebration (early return path)
-    renderWithRoute('nonexistent-lesson-id')
-    // ConfettiScreen renders immediately for missing lessons
-    expect(screen.getByRole('button')).toBeInTheDocument()
-
-    vi.useRealTimers()
-    await new Promise(r => setTimeout(r, 100))
-    const sessions = await db.sessions.toArray()
-    expect(sessions).toHaveLength(0)
-    vi.useFakeTimers()
-  })
-})
+// PROG-01 session write tests are in PracticeScreen.session.test.tsx
+// (separate file to avoid fake-timer interference with async IndexedDB ops)
