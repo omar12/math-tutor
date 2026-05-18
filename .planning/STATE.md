@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: Completed 05-03-PLAN.md
-last_updated: "2026-05-18T05:01:16.755Z"
-last_activity: 2026-05-18
+status: completed
+stopped_at: Phase 6 context gathered
+last_updated: "2026-05-18T05:16:36.449Z"
+last_activity: 2026-05-17
 progress:
   total_phases: 6
   completed_phases: 5
@@ -21,24 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-12)
 
 **Core value:** A kid sits down, does a lesson, practices, and the parent can see exactly what their child understands and what they don't — without any accounts or setup friction.
-**Current focus:** Phase 3 — Lesson Player
+**Current focus:** Phase 6 — PWA & Offline
 
 ## Current Position
 
-Phase: 3 of 6 (Lesson Player) — PLANNED, ready to execute
-Plan: 3 of 3 in Phase 3 — COMPLETE
-Status: Phase complete — ready for verification
-Last activity: 2026-05-18
+Phase: 5 of 6 (Progress & Parent Section) — COMPLETE (verified 2026-05-17)
+Plan: 3 of 3 in Phase 5 — COMPLETE
+Status: Phase 5 complete — ready for Phase 6
+Last activity: 2026-05-17
 
-Progress: [██████████] 100%
+Progress: [████████░░] 83%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 2
+- Total plans completed: 12
 - Average duration: ~30 min/plan
-- Total execution time: ~1 hour
 
 **By Phase:**
 
@@ -82,10 +81,11 @@ Recent decisions affecting current work:
 - [Phase ?]: Used function() not arrow function in Howler vi.mock so new Howl() works as constructor in jsdom
 - [03-03]: justReplayedRef guard added to prevent double-play when REPLAY dispatch re-enters playing phase
 - [03-03]: act() wrapper required when calling Howl onend() directly in tests (triggers React state update outside event handler)
-- [Phase ?]: ProgressBar accuracy clamped to [0,1] before computing fill — corrupted DB values cannot overflow
-- [Phase ?]: ParentScreen synthesizes all 3 topics before render (hasData=false for missing) — no topic row ever absent
-- [Phase ?]: sortedLessons spreads before sort — imported curriculum array never mutated
-- [Phase ?]: useLiveQuery returns undefined for both loading and record-not-found; mapping via .then(r => r ?? null) makes loading vs CREATE mode unambiguous
+- [05-03]: ProgressBar accuracy clamped to [0,1] before computing fill — corrupted DB values cannot overflow
+- [05-03]: ParentScreen synthesizes all 3 topics before render (hasData=false for missing) — no topic row ever absent
+- [05-03]: sortedLessons spreads before sort — imported curriculum array never mutated
+- [05-02]: useLiveQuery returns undefined for both loading and record-not-found; mapping via .then(r => r ?? null) makes loading vs CREATE mode unambiguous
+- [05-01]: Separate *.session.test.tsx for IndexedDB tests that need real timers — avoids vi.useFakeTimers() interference
 
 ### Pending Todos
 
@@ -105,6 +105,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-18T05:01:13.379Z
-Stopped at: Completed 05-03-PLAN.md
-Resume file: None
+Last session: 2026-05-18T05:16:36.440Z
+Stopped at: Phase 6 context gathered
+Resume file: .planning/phases/06-pwa-offline/06-CONTEXT.md
