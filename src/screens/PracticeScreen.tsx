@@ -17,6 +17,8 @@ interface PracticeState {
   attemptCount: number
   composedDigits: string
   phraseIndex: number
+  correctCount: number
+  totalCount: number
 }
 
 type PracticeAction =
@@ -30,7 +32,7 @@ type PracticeAction =
 function practiceReducer(state: PracticeState, action: PracticeAction): PracticeState {
   switch (action.type) {
     case 'CORRECT_ANSWER':
-      return { ...state, phase: 'revealing', composedDigits: '' }
+      return { ...state, phase: 'revealing', composedDigits: '', correctCount: state.correctCount + 1, totalCount: state.totalCount + 1 }
     case 'WRONG_ANSWER':
       return { ...state, attemptCount: state.attemptCount + 1, composedDigits: '', phraseIndex: state.phraseIndex + 1 }
     case 'ADVANCE':
@@ -44,7 +46,7 @@ function practiceReducer(state: PracticeState, action: PracticeAction): Practice
     case 'BACKSPACE':
       return { ...state, composedDigits: state.composedDigits.slice(0, -1) }
     case 'BEGIN_REVEAL':
-      return { ...state, phase: 'revealing' }
+      return { ...state, phase: 'revealing', totalCount: state.totalCount + 1 }
     default:
       return state
   }
@@ -68,6 +70,8 @@ export default function PracticeScreen() {
     attemptCount: 0,
     composedDigits: '',
     phraseIndex: 0,
+    correctCount: 0,
+    totalCount: 0,
   })
 
   const progressRef = useRef<HTMLDivElement>(null)
