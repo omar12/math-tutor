@@ -114,7 +114,7 @@ Plans:
 **Wave 2** *(parallel — both blocked on Wave 1 completion)* — 05-02: PinScreen (CREATE + VERIFY mode, digit-dot display, hashPin/storePinHash/verifyPin), /pin route in App.tsx (PAR-01); 05-03: ProgressBar component, ParentScreen replacement with useLiveQuery, HomeScreen lock icon + adaptive lesson ordering (PROG-02, PAR-02)
 
 Plans:
-- [ ] 05-01-PLAN.md — PracticeScreen session recording: correctCount/totalCount in state, Session write + TopicProgress upsert on celebration
+- [x] 05-01-PLAN.md — PracticeScreen session recording: correctCount/totalCount in state, Session write + TopicProgress upsert on celebration
 - [ ] 05-02-PLAN.md — PinScreen (CREATE + VERIFY mode, tap-only digit pad, PIN hash via db.ts helpers) and /pin route registration
 - [ ] 05-03-PLAN.md — ProgressBar component, ParentScreen dashboard (useLiveQuery, 3 topics, empty state, Done button), HomeScreen lock icon + adaptive lesson ordering
 
@@ -141,5 +141,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Curriculum & Content | 2/2 | Complete | 2026-05-13 |
 | 3. Lesson Player | 3/3 | Complete | 2026-05-16 |
 | 4. Practice Engine | 0/2 | Not started | - |
-| 5. Progress & Parent Section | 0/3 | Not started | - |
+| 5. Progress & Parent Section | 1/3 | In Progress|  |
 | 6. PWA & Offline | 0/TBD | Not started | - |

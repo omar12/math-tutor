@@ -40,7 +40,7 @@
 
 ### Progress
 
-- [ ] **PROG-01**: App tracks per-topic accuracy (addition, subtraction, word problems) across sessions
+- [x] **PROG-01**: App tracks per-topic accuracy (addition, subtraction, word problems) across sessions
 - [ ] **PROG-02**: Practice sessions use error-adaptive repetition — topics with lower accuracy appear more frequently
 
 ### Parent Section
@@ -120,7 +120,7 @@
 | FEED-02 | Phase 4 | Pending |
 | FEED-03 | Phase 4 | Pending |
 | FEED-04 | Phase 4 | Pending |
-| PROG-01 | Phase 5 | Pending |
+| PROG-01 | Phase 5 | Complete |
 | PROG-02 | Phase 5 | Pending |
 | PAR-01 | Phase 5 | Pending |
 | PAR-02 | Phase 5 | Pending |
