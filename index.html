@@ -8,6 +8,15 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <meta name="color-scheme" content="light" />
+    <!-- PWA: theme color (Android + Safari tab tint) -->
+    <meta name="theme-color" content="#FF6B35" />
+    <!-- PWA: Safari standalone mode (required for fullscreen install on iPadOS) -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Math Time" />
+    <!-- PWA: Apple touch icon (Safari uses this for home screen icon, ignores manifest icons) -->
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <!-- PWA: Manifest link is injected automatically by vite-plugin-pwa at build time -->
     <title>Math Tutor</title>
   </head>
   <body>
