@@ -127,8 +127,15 @@ Plans:
   1. Safari shows the "Add to Home Screen" option and the installed app launches with no browser chrome (standalone mode)
   2. After first load, toggling the device to Airplane Mode and relaunching the app from the home screen shows the full app with no network errors
   3. Offline mode supports the full lesson and practice flow — no features are degraded or hidden when offline
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+
+**Wave 1** — 06-01: Icon generation, vite-plugin-pwa config, index.html Apple meta tags, SW registration, TypeScript types, PWA config tests
+
+**Wave 2** *(blocked on Wave 1 completion)* — 06-02: Production build verification + iPad Safari offline/standalone human checkpoint
+
+Plans:
+- [ ] 06-01-PLAN.md — Icon PNG generation, VitePWA plugin config, Apple meta tags, registerSW, vite-plugin-pwa/client types, pwa.test.ts
+- [ ] 06-02-PLAN.md — Production build verification, generate-icons script, iPad Safari installability and offline mode checkpoint
 
 ## Progress
 
@@ -142,4 +149,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Lesson Player | 3/3 | Complete | 2026-05-16 |
 | 4. Practice Engine | 0/2 | Not started | - |
 | 5. Progress & Parent Section | 3/3 | Complete   | 2026-05-18 |
-| 6. PWA & Offline | 0/TBD | Not started | - |
+| 6. PWA & Offline | 0/2 | Not started | - |
