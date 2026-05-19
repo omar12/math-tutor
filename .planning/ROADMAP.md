@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 3: Lesson Player** - Audio manager, narration playback, guided worked example, tap-to-replay
 - [ ] **Phase 4: Practice Engine** - Multiple choice, digit grid input, feedback escalation, session celebration
 - [x] **Phase 5: Progress & Parent Section** - Per-topic accuracy tracking, adaptive repetition, PIN-gated parent dashboard (completed 2026-05-18)
-- [ ] **Phase 6: PWA & Offline** - Web App Manifest, Service Worker, full offline capability
+- [x] **Phase 6: PWA & Offline** - Web App Manifest, Service Worker, full offline capability (executed 2026-05-18; iPad verification deferred)
 
 ## Phase Details
 
@@ -135,7 +135,7 @@ Plans:
 
 Plans:
 - [x] 06-01-PLAN.md — Icon PNG generation, VitePWA plugin config, Apple meta tags, registerSW, vite-plugin-pwa/client types, pwa.test.ts
-- [ ] 06-02-PLAN.md — Production build verification, generate-icons script, iPad Safari installability and offline mode checkpoint
+- [x] 06-02-PLAN.md — Production build verification, generate-icons script, iPad Safari installability and offline mode checkpoint (build verified; iPad deferred)
 
 ## Progress
 
@@ -149,4 +149,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Lesson Player | 3/3 | Complete | 2026-05-16 |
 | 4. Practice Engine | 0/2 | Not started | - |
 | 5. Progress & Parent Section | 3/3 | Complete   | 2026-05-18 |
-| 6. PWA & Offline | 1/2 | In Progress|  |
+| 6. PWA & Offline | 2/2 | Executed (iPad TBD) |  |
