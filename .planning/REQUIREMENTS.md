@@ -50,8 +50,8 @@
 
 ### PWA
 
-- [ ] **PWA-01**: App can be installed via "Add to Home Screen" on iPad (PWA with Web App Manifest)
-- [ ] **PWA-02**: App works fully offline after first load via Service Worker
+- [x] **PWA-01**: App can be installed via "Add to Home Screen" on iPad (PWA with Web App Manifest)
+- [x] **PWA-02**: App works fully offline after first load via Service Worker
 
 ## v2 Requirements
 
@@ -124,8 +124,8 @@
 | PROG-02 | Phase 5 | Complete |
 | PAR-01 | Phase 5 | Complete |
 | PAR-02 | Phase 5 | Complete |
-| PWA-01 | Phase 6 | Pending |
-| PWA-02 | Phase 6 | Pending |
+| PWA-01 | Phase 6 | Complete |
+| PWA-02 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 24 total

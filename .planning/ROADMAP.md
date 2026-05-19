@@ -134,7 +134,7 @@ Plans:
 **Wave 2** *(blocked on Wave 1 completion)* — 06-02: Production build verification + iPad Safari offline/standalone human checkpoint
 
 Plans:
-- [ ] 06-01-PLAN.md — Icon PNG generation, VitePWA plugin config, Apple meta tags, registerSW, vite-plugin-pwa/client types, pwa.test.ts
+- [x] 06-01-PLAN.md — Icon PNG generation, VitePWA plugin config, Apple meta tags, registerSW, vite-plugin-pwa/client types, pwa.test.ts
 - [ ] 06-02-PLAN.md — Production build verification, generate-icons script, iPad Safari installability and offline mode checkpoint
 
 ## Progress
@@ -149,4 +149,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Lesson Player | 3/3 | Complete | 2026-05-16 |
 | 4. Practice Engine | 0/2 | Not started | - |
 | 5. Progress & Parent Section | 3/3 | Complete   | 2026-05-18 |
-| 6. PWA & Offline | 0/2 | Not started | - |
+| 6. PWA & Offline | 1/2 | In Progress|  |
