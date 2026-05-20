@@ -9,7 +9,7 @@ describe('App routing', () => {
         <App />
       </MemoryRouter>
     )
-    expect(await screen.findByText('Start Learning')).toBeInTheDocument()
+    expect(await screen.findByText('Math Time!')).toBeInTheDocument()
   })
 
   it('renders LessonScreen at /lesson', () => {
@@ -46,6 +46,6 @@ describe('App routing', () => {
         <App />
       </MemoryRouter>
     )
-    expect(await screen.findByText('Start Learning')).toBeInTheDocument()
+    expect(await screen.findByText('Math Time!')).toBeInTheDocument()
   })
 })
