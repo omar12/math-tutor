@@ -1,10 +1,11 @@
 ---
 phase: 5
 slug: progress-parent
-status: draft
-nyquist_compliant: false
-wave_0_complete: false
+status: complete
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-05-17
+audited: 2026-05-19
 ---
 
 # Phase 5 — Validation Strategy
@@ -38,12 +39,12 @@ created: 2026-05-17
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| 05-01-01 | 01 | 1 | PROG-01 | — | Session write only on celebration (not mid-session) | unit | `npx vitest run src/db/db.test.ts` | ✅ | ⬜ pending |
-| 05-01-02 | 01 | 1 | PROG-01 | — | TopicProgress recalculated from raw sessions | unit | `npx vitest run src/db/db.test.ts` | ✅ | ⬜ pending |
-| 05-01-03 | 01 | 1 | PAR-01 | T-5-01 | PIN hash stored, never plaintext | unit | `npx vitest run src/db/db.test.ts` | ✅ | ⬜ pending |
-| 05-02-01 | 02 | 2 | PAR-01 | T-5-01 | Wrong PIN shows error, stays locked | unit | `npx vitest run src/screens/PinScreen.test.tsx` | ❌ W0 | ⬜ pending |
-| 05-02-02 | 02 | 2 | PAR-02 | — | Empty state shown when no sessions | unit | `npx vitest run src/screens/ParentScreen.test.tsx` | ❌ W0 | ⬜ pending |
-| 05-02-03 | 02 | 2 | PROG-02 | — | Weakest topic lesson surfaced first on HomeScreen | unit | `npx vitest run src/screens/HomeScreen.test.tsx` | ❌ W0 | ⬜ pending |
+| 05-01-01 | 01 | 1 | PROG-01 | — | Session write only on celebration (not mid-session) | unit | `npx vitest run src/screens/PracticeScreen.session.test.tsx` | ✅ | ✅ green |
+| 05-01-02 | 01 | 1 | PROG-01 | — | TopicProgress recalculated from raw sessions | unit | `npx vitest run src/db/db.test.ts` | ✅ | ✅ green |
+| 05-01-03 | 01 | 1 | PAR-01 | T-5-01 | PIN hash stored, never plaintext | unit | `npx vitest run src/screens/PinScreen.test.tsx` | ✅ | ✅ green |
+| 05-02-01 | 02 | 2 | PAR-01 | T-5-01 | Wrong PIN shows error, stays locked | unit | `npx vitest run src/screens/PinScreen.test.tsx` | ✅ | ✅ green |
+| 05-02-02 | 02 | 2 | PAR-02 | — | Empty state shown when no sessions | unit | `npx vitest run src/screens/ParentScreen.test.tsx` | ✅ | ✅ green |
+| 05-02-03 | 02 | 2 | PROG-02 | — | Weakest topic lesson surfaced first on HomeScreen | unit | `npx vitest run src/screens/HomeScreen.test.tsx` | ✅ | ✅ green |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
@@ -51,9 +52,9 @@ created: 2026-05-17
 
 ## Wave 0 Requirements
 
-- [ ] `src/screens/PinScreen.test.tsx` — stubs for PAR-01 PIN entry flows (create, verify, wrong PIN)
-- [ ] `src/screens/ParentScreen.test.tsx` — stubs for PAR-02 dashboard (empty state, accuracy display)
-- [ ] `src/screens/HomeScreen.test.tsx` — stubs for PROG-02 adaptive ordering
+- [x] `src/screens/PinScreen.test.tsx` — PAR-01 PIN entry flows (create, verify, wrong PIN, rate-limit guard)
+- [x] `src/screens/ParentScreen.test.tsx` — PAR-02 dashboard (empty state, accuracy display, all topics present)
+- [x] `src/screens/HomeScreen.test.tsx` — PROG-02 adaptive ordering, weakest-topic badge, completion ring
 
 *Existing infrastructure (Vitest + `@testing-library/react` + fake-indexeddb) covers all phase requirements — no new packages needed.*
 
@@ -71,11 +72,23 @@ created: 2026-05-17
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
-- [ ] No watch-mode flags
-- [ ] Feedback latency < 15s
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] All tasks have `<automated>` verify or Wave 0 dependencies
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references
+- [x] No watch-mode flags
+- [x] Feedback latency < 15s
+- [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending
+**Approval:** 2026-05-19
+
+---
+
+## Validation Audit 2026-05-19
+
+| Metric | Count |
+|--------|-------|
+| Gaps found | 6 (stale doc — all tests existed and passed) |
+| Resolved | 6 |
+| Escalated | 0 |
+
+**Notes:** Wave 0 test files were created during phase execution but VALIDATION.md was never updated from draft state. All 302 suite tests green at audit time. Corrected test command for 05-01-01 (session write coverage lives in `PracticeScreen.session.test.tsx`, not `db.test.ts`). Corrected 05-01-03 command to reference `PinScreen.test.tsx` where hash length assertion lives.
