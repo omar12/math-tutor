@@ -1,11 +1,11 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.0
-milestone_name: milestone
-status: complete
-stopped_at: Phase 7 shipped — pushed to main
-last_updated: "2026-05-19T23:00:00Z"
-last_activity: 2026-05-19
+milestone_name: MVP
+status: shipped
+stopped_at: v1.0 milestone closed — archived 2026-05-20
+last_updated: "2026-05-20T00:00:00Z"
+last_activity: 2026-05-20
 progress:
   total_phases: 7
   completed_phases: 7
@@ -18,10 +18,10 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-05-12)
+See: .planning/PROJECT.md (updated 2026-05-20)
 
 **Core value:** A kid sits down, does a lesson, practices, and the parent can see exactly what their child understands and what they don't — without any accounts or setup friction.
-**Current focus:** Phase 07 — lesson-catalog (VERIFIED)
+**Current focus:** Planning next milestone (v1.1)
 
 ## Current Position
 
