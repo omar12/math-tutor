@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 4: Practice Engine** - Multiple choice, digit grid input, feedback escalation, session celebration
 - [x] **Phase 5: Progress & Parent Section** - Per-topic accuracy tracking, adaptive repetition, PIN-gated parent dashboard (completed 2026-05-18)
 - [x] **Phase 6: PWA & Offline** - Web App Manifest, Service Worker, full offline capability (executed 2026-05-18; iPad verification deferred)
-- [ ] **Phase 7: Lesson Catalog** - Browsable lesson catalog on HomeScreen so kids can select any lesson by topic
+- [x] **Phase 7: Lesson Catalog** - Browsable lesson catalog on HomeScreen so kids can select any lesson by topic (completed 2026-05-20)
 
 ## Phase Details
 
@@ -151,7 +151,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 07-01-PLAN.md — Lesson catalog on HomeScreen (topic sections, lesson cards, completion + accuracy indicators, weakest-topic badge)
+- [x] 07-01-PLAN.md — Lesson catalog on HomeScreen (topic sections, lesson cards, completion + accuracy indicators, weakest-topic badge)
 
 ## Progress
 
@@ -166,4 +166,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 4. Practice Engine | 0/2 | Not started | - |
 | 5. Progress & Parent Section | 3/3 | Complete   | 2026-05-18 |
 | 6. PWA & Offline | 2/2 | Executed (iPad TBD) |  |
-| 7. Lesson Catalog | 0/1 | Pending | - |
+| 7. Lesson Catalog | 1/1 | Complete   | 2026-05-20 |
