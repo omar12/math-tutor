@@ -18,6 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 4: Practice Engine** - Multiple choice, digit grid input, feedback escalation, session celebration
 - [x] **Phase 5: Progress & Parent Section** - Per-topic accuracy tracking, adaptive repetition, PIN-gated parent dashboard (completed 2026-05-18)
 - [x] **Phase 6: PWA & Offline** - Web App Manifest, Service Worker, full offline capability (executed 2026-05-18; iPad verification deferred)
+- [ ] **Phase 7: Lesson Catalog** - Browsable lesson catalog on HomeScreen so kids can select any lesson by topic
 
 ## Phase Details
 
@@ -137,10 +138,25 @@ Plans:
 - [x] 06-01-PLAN.md — Icon PNG generation, VitePWA plugin config, Apple meta tags, registerSW, vite-plugin-pwa/client types, pwa.test.ts
 - [x] 06-02-PLAN.md — Production build verification, generate-icons script, iPad Safari installability and offline mode checkpoint (build verified; iPad deferred)
 
+### Phase 7: Lesson Catalog
+**Goal**: A kid can browse all lessons by topic from the home screen and tap any lesson to start it — not just the adaptive pick.
+**Mode:** mvp
+**Depends on**: Phase 5
+**Requirements**: (none — gap closure for discoverability)
+**Success Criteria** (what must be TRUE):
+  1. HomeScreen shows all lessons grouped by topic (Addition / Subtraction / Word Problems)
+  2. Each lesson card shows title, a completion ring when practiced, and an accuracy color dot (green ≥70%, blue <70%)
+  3. Weakest topic section has a "Needs practice" badge on its header
+  4. Tapping any lesson card navigates to that lesson's player
+**Plans**: 1 plan
+
+Plans:
+- [ ] 07-01-PLAN.md — Lesson catalog on HomeScreen (topic sections, lesson cards, completion + accuracy indicators, weakest-topic badge)
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -150,3 +166,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 4. Practice Engine | 0/2 | Not started | - |
 | 5. Progress & Parent Section | 3/3 | Complete   | 2026-05-18 |
 | 6. PWA & Offline | 2/2 | Executed (iPad TBD) |  |
+| 7. Lesson Catalog | 0/1 | Pending | - |
