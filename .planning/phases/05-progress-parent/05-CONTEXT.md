@@ -82,3 +82,23 @@ Requirements in scope: PROG-01, PROG-02, PAR-01, PAR-02
 - `--color-surface: #FFF8F0` (background)
 - `--color-on-surface: #1C1917` (text)
 </canonical_refs>
+
+---
+
+## Gap Closure: Lesson Catalog (discovered post-execution, 2026-05-19)
+
+**Context:** After executing phase 5, testing revealed no way to browse or select specific lessons. HomeScreen shows only a single "Start Learning" button (adaptive pick). This gap closure adds a lesson catalog to HomeScreen.
+
+### Lesson Catalog Layout
+- **D-LC-01:** HomeScreen replaces the single "Start Learning" button with a scrollable lesson catalog. Remy + "Math Time!" heading remain at top.
+- **D-LC-02:** Lessons organized into **3 topic sections**: Addition / Subtraction / Word Problems (matching parent dashboard topic order). Section headers use the topic name. Lesson cards listed under each section header.
+- **D-LC-03:** Lesson card shows: lesson title, completion ring (checkmark icon when at least one `db.sessions` record exists for that `lessonId`), accuracy dot (color from topic `TopicProgress` — green ≥70%, blue <70%, gray if no data). Accuracy is topic-level (from `db.topicProgress`), not per-lesson.
+- **D-LC-04:** Tapping a lesson card navigates to `/lesson/${lesson.id}`.
+- **D-LC-05:** Weakest topic section (lowest `accuracy` in `db.topicProgress`) gets a subtle **"Needs practice"** badge on the section header. No highlight if no `TopicProgress` data exists.
+- **D-LC-06:** Lesson order within each topic section: curriculum order (`lesson.order` ascending). No adaptive reordering within sections.
+- **D-LC-07:** Data sources: `useLiveQuery(() => db.sessions.toArray())` for per-lesson completion; `useLiveQuery(() => db.topicProgress.toArray())` for topic accuracy + weakest topic. Both are already available in HomeScreen.
+
+### What Does NOT Change
+- `/pin` lock icon stays top-right (D-01 preserved)
+- All routes unchanged
+- Parent dashboard, PIN flow, session recording — untouched
