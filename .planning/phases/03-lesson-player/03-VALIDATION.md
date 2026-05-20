@@ -1,10 +1,11 @@
 ---
 phase: 3
 slug: lesson-player
-status: draft
-nyquist_compliant: false
-wave_0_complete: false
+status: complete
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-05-15
+audited: 2026-05-19
 ---
 
 # Phase 3 — Validation Strategy
@@ -38,15 +39,15 @@ created: 2026-05-15
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| 03-01-01 | 01 | 1 | LESS-02 | — | N/A (npm install) | install | `node -e "require('howler')"` | ✅ | ⬜ pending |
-| 03-01-02 | 01 | 1 | LESS-02, LESS-04 | T-03-01 | onloaderror→onStepEnded prevents stuck state (D-06) | unit | `npx vitest run src/hooks/useLessonAudio.test.ts` | ❌ W0 | ⬜ pending |
-| 03-01-03 | 01 | 1 | LESS-02 | — | N/A (test setup) | unit | `npx vitest run src/db/db.test.ts` | ✅ | ⬜ pending |
-| 03-01-04 | 01 | 1 | LESS-02, LESS-04 | T-03-01 | onloaderror calls onStepEnded; unload on unmount | unit | `npx vitest run src/hooks/useLessonAudio.test.ts` | ❌ W0 | ⬜ pending |
-| 03-02-01 | 02 | 1 | LESS-01 | — | N/A (CSS only) | lint | `./node_modules/.bin/tsc --noEmit` | ✅ | ⬜ pending |
-| 03-02-02 | 02 | 1 | LESS-01, LESS-03 | — | Replay button 44px min touch target | unit | `./node_modules/.bin/tsc --noEmit` | ❌ W0 | ⬜ pending |
-| 03-02-03 | 02 | 1 | LESS-01 | — | ConfettiScreen 40 pieces, aria-hidden | unit | `./node_modules/.bin/tsc --noEmit` | ❌ W0 | ⬜ pending |
-| 03-03-01 | 03 | 2 | LESS-01, LESS-02, LESS-03, LESS-04 | T-03-03-01 | State transitions; no play before first tap | unit | `npx vitest run src/screens/LessonScreen.test.tsx` | ❌ W0 | ⬜ pending |
-| 03-03-02 | 03 | 2 | LESS-01, LESS-02, LESS-03, LESS-04 | T-03-03-01 | iOS unlock: play() before dispatch; onloaderror→AUDIO_ENDED | unit | `npx vitest run src/screens/LessonScreen.test.tsx` | ❌ W0 | ⬜ pending |
+| 03-01-01 | 01 | 1 | LESS-02 | — | N/A (npm install) | install | `node -e "require('howler')"` | ✅ | ✅ green |
+| 03-01-02 | 01 | 1 | LESS-02, LESS-04 | T-03-01 | onloaderror→onStepEnded prevents stuck state (D-06) | unit | `npx vitest run src/hooks/useLessonAudio.test.ts` | ✅ | ✅ green |
+| 03-01-03 | 01 | 1 | LESS-02 | — | N/A (test setup) | unit | `npx vitest run src/db/db.test.ts` | ✅ | ✅ green |
+| 03-01-04 | 01 | 1 | LESS-02, LESS-04 | T-03-01 | onloaderror calls onStepEnded; unload on unmount | unit | `npx vitest run src/hooks/useLessonAudio.test.ts` | ✅ | ✅ green |
+| 03-02-01 | 02 | 1 | LESS-01 | — | N/A (CSS only) | lint | `./node_modules/.bin/tsc --noEmit` | ✅ | ✅ green |
+| 03-02-02 | 02 | 1 | LESS-01, LESS-03 | — | Replay button 44px min touch target | unit | `./node_modules/.bin/tsc --noEmit` | ✅ | ✅ green |
+| 03-02-03 | 02 | 1 | LESS-01 | — | ConfettiScreen 40 pieces, aria-hidden | unit | `./node_modules/.bin/tsc --noEmit` | ✅ | ✅ green |
+| 03-03-01 | 03 | 2 | LESS-01, LESS-02, LESS-03, LESS-04 | T-03-03-01 | State transitions; no play before first tap | unit | `npx vitest run src/screens/LessonScreen.test.tsx` | ✅ | ✅ green |
+| 03-03-02 | 03 | 2 | LESS-01, LESS-02, LESS-03, LESS-04 | T-03-03-01 | iOS unlock: play() before dispatch; onloaderror→AUDIO_ENDED | unit | `npx vitest run src/screens/LessonScreen.test.tsx` | ✅ | ✅ green |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
@@ -54,9 +55,9 @@ created: 2026-05-15
 
 ## Wave 0 Requirements
 
-- [ ] `src/hooks/useLessonAudio.test.ts` — covers D-06 (onloaderror → AUDIO_ENDED), Howl count, unload on unmount (Plan 03-01 Task 4)
-- [ ] `src/screens/LessonScreen.test.tsx` — covers LESS-01, LESS-02, LESS-03, LESS-04 (Plan 03-03 Task 1)
-- [ ] Howler module mock in `src/test/setup.ts` — required for jsdom compatibility (Plan 03-01 Task 3)
+- [x] `src/hooks/useLessonAudio.test.ts` — covers D-06 (onloaderror → AUDIO_ENDED), Howl count, unload on unmount (Plan 03-01 Task 4)
+- [x] `src/screens/LessonScreen.test.tsx` — covers LESS-01, LESS-02, LESS-03, LESS-04 (Plan 03-03 Task 1)
+- [x] Howler module mock in `src/test/setup.ts` — required for jsdom compatibility (Plan 03-01 Task 3)
 
 ---
 
@@ -72,11 +73,23 @@ created: 2026-05-15
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
-- [ ] No watch-mode flags
-- [ ] Feedback latency < 30s
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] All tasks have `<automated>` verify or Wave 0 dependencies
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references
+- [x] No watch-mode flags
+- [x] Feedback latency < 30s (actual: ~7.5s, 302 tests)
+- [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending
+**Approval:** ✅ 2026-05-19
+
+---
+
+## Validation Audit 2026-05-19
+
+| Metric | Count |
+|--------|-------|
+| Gaps found | 5 (Wave 0 files missing) |
+| Resolved | 5 |
+| Escalated | 0 |
+| Total tests passing | 302 |
+| Suite runtime | 7.47s |
