@@ -5,11 +5,9 @@ import HomeScreen from './HomeScreen'
 import { db } from '../db/db'
 import type { ISODateString } from '../db/db'
 import { lessons } from '../curriculum/index'
-import { sortedLessons } from './HomeScreen'
 
 // Capture a route that records navigated path for assertions
 function renderHomeScreen() {
-  let navigatedTo = ''
   const NavigationCapture = () => {
     // This component renders at the navigated-to location
     return <div data-testid="navigated" data-path={window.location.pathname}>Navigated</div>

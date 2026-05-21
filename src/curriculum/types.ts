@@ -34,12 +34,12 @@ interface BaseProblem {
   answer: number          // Phase 4 compares user input to this with ===
 }
 
-interface MultipleChoiceProblem extends BaseProblem {
+export interface MultipleChoiceProblem extends BaseProblem {
   type: 'multiple-choice'
   choices: number[]       // unordered; Phase 4 shuffles at render time; always 4 choices
 }
 
-interface DigitGridProblem extends BaseProblem {
+export interface DigitGridProblem extends BaseProblem {
   type: 'digit-grid'
 }
 

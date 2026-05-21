@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { db, toISODateString } from './db'
+import { db } from './db'
 import { recordSessionAndUpdateProgress } from '../screens/PracticeScreen'
 
 beforeEach(async () => {

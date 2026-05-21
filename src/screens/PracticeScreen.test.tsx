@@ -3,7 +3,7 @@ import { render, screen, fireEvent, act } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router'
 import PracticeScreen from './PracticeScreen'
 import { problems } from '../curriculum/index'
-import type { MultipleChoiceProblem, DigitGridProblem } from '../curriculum/types'
+import type { MultipleChoiceProblem } from '../curriculum/types'
 
 const MC_LESSON_ID = 'addition-grade1-01'
 const DG_LESSON_ID = 'addition-grade3-01'
@@ -20,9 +20,6 @@ function renderWithRoute(lessonId: string) {
 
 const mcProblems = problems.filter(
   (p): p is MultipleChoiceProblem => p.lessonId === MC_LESSON_ID && p.type === 'multiple-choice'
-)
-const dgProblems = problems.filter(
-  (p): p is DigitGridProblem => p.lessonId === DG_LESSON_ID && p.type === 'digit-grid'
 )
 
 beforeEach(() => { vi.useFakeTimers() })

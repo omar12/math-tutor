@@ -274,7 +274,7 @@ export default function PracticeScreen() {
         <MultipleChoiceWidget
           choices={shuffledChoices}
           correctAnswer={currentProblem.answer}
-          phase={state.phase === 'celebration' ? 'answering' : state.phase}
+          phase={state.phase}
           onSubmit={choice => {
             if (choice === currentProblem.answer) {
               handleCorrectAnswer()
@@ -287,7 +287,7 @@ export default function PracticeScreen() {
         <DigitGridWidget
           composedDigits={state.composedDigits}
           correctAnswer={currentProblem.answer}
-          phase={state.phase === 'celebration' ? 'answering' : state.phase}
+          phase={state.phase}
           onDigit={handleDigit}
           onBackspace={handleBackspace}
           onSubmit={handleCheckAnswer}
