@@ -232,17 +232,20 @@ export default function PracticeScreen() {
         aria-label={`Problem ${state.problemIndex + 1} of ${problemPool.length}`}
         className="flex gap-2 pt-8"
       >
-        {problemPool.map((_, i) => (
-          <div
-            key={i}
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: '50%',
-              backgroundColor: i === state.problemIndex ? '#FF6B35' : 'rgba(255, 107, 53, 0.2)',
-            }}
-          />
-        ))}
+        {problemPool.map((_, i) =>
+          i === state.problemIndex ? (
+            <div
+              key={`active-${state.problemIndex}`}
+              className="dot-active-enter"
+              style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: 'var(--color-primary)' }}
+            />
+          ) : (
+            <div
+              key={i}
+              style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: 'color-mix(in srgb, var(--color-primary) 20%, transparent)' }}
+            />
+          )
+        )}
       </div>
 
       {/* Problem question */}

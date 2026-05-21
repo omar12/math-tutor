@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# Math Tutor — Kids Edition
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An iPad-optimized math tutor for kids in grades 1–3. Kids work through animated, narrated lessons followed by practice problems. Parents can check a PIN-protected dashboard to see exactly where their child is thriving and where they need more practice — no accounts, no backend, no setup friction.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Animated lessons with narration (addition, subtraction, word problems)
+- Practice problems with immediate, encouraging feedback
+- Parent dashboard behind a PIN — shows progress and problem areas
+- Fully local — all data stays on the device (no server, no accounts)
+- PWA-ready — installs to iPad home screen
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+React 19 · TypeScript · Vite · Tailwind CSS 4 · React Router 7 · Dexie (IndexedDB) · Howler.js · Motion
 
-## Expanding the ESLint configuration
+## Running Locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Prerequisites:** Node.js 18+
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open `http://localhost:5173` in your browser. For the best experience, use Safari on an iPad or enable iPad emulation in browser DevTools (768×1024 portrait).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Other Commands
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command | Description |
+|---------|-------------|
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run unit tests (Vitest) |
+
+## Project Structure
+
 ```
+src/
+  components/   Reusable UI components (widgets, mascot, progress bar)
+  screens/      Top-level route screens (Home, Lesson, Practice, Parent, PIN)
+  data/         Lesson content and math problem definitions
+  db/           Dexie database schema and hooks
+  context/      App-wide React context and state
+```
+
+## Notes
+
+- Designed for iPad Safari (touch-first, 44px minimum touch targets)
+- All progress stored in IndexedDB via Dexie — clearing browser data resets progress
+- Parent PIN is stored as a hash in localStorage

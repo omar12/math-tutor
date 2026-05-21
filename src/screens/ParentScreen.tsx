@@ -31,6 +31,18 @@ export default function ParentScreen() {
 
   const hasAnyData = progress.length > 0
 
+  const topicBars = TOPICS.map(({ key, label }) => {
+    const found = progress.find(p => p.topic === key)
+    return (
+      <ProgressBar
+        key={key}
+        label={label}
+        accuracy={found?.accuracy ?? 0}
+        hasData={Boolean(found)}
+      />
+    )
+  })
+
   return (
     <div
       className="w-full flex flex-col items-center bg-surface text-on-surface px-6 py-8 gap-6"
@@ -47,38 +59,13 @@ export default function ParentScreen() {
           <p className="text-xl text-center text-on-surface/60 max-w-sm">
             No practice sessions yet. Come back after your child completes a lesson!
           </p>
-          {/* Still render topic labels even in empty state */}
           <div className="w-full max-w-sm flex flex-col gap-4 mt-4">
-            {TOPICS.map(({ key, label }) => {
-              const found = progress.find(p => p.topic === key)
-              const hasData = Boolean(found)
-              const accuracy = found?.accuracy ?? 0
-              return (
-                <ProgressBar
-                  key={key}
-                  label={label}
-                  accuracy={accuracy}
-                  hasData={hasData}
-                />
-              )
-            })}
+            {topicBars}
           </div>
         </div>
       ) : (
         <div className="w-full max-w-sm flex flex-col gap-6 flex-1">
-          {TOPICS.map(({ key, label }) => {
-            const found = progress.find(p => p.topic === key)
-            const hasData = Boolean(found)
-            const accuracy = found?.accuracy ?? 0
-            return (
-              <ProgressBar
-                key={key}
-                label={label}
-                accuracy={accuracy}
-                hasData={hasData}
-              />
-            )
-          })}
+          {topicBars}
         </div>
       )}
 

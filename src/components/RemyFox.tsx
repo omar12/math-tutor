@@ -1,7 +1,7 @@
 export default function RemyFox({ className }: { className?: string }) {
   return (
     <svg
-      className={className}
+      className={`remy-idle${className ? ` ${className}` : ''}`}
       viewBox="0 0 120 120"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="Remy the Fox"

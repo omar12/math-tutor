@@ -26,7 +26,7 @@ export function ProgressBar({ label, accuracy, hasData }: ProgressBarProps) {
         <span className="text-lg font-semibold text-on-surface">{label}</span>
         <span className="text-lg font-semibold text-on-surface">{pct}%</span>
       </div>
-      <div className="h-4 rounded-full overflow-hidden" style={{ background: 'color-mix(in srgb, var(--color-on-surface) 10%, transparent)' }}>
+      <div className="h-4 rounded-full overflow-hidden bg-on-surface/10">
         <div
           role="progressbar"
           aria-valuenow={pct}

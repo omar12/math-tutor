@@ -1,5 +1,5 @@
 import { useReducer, useEffect, useRef } from 'react'
-import { useNavigate, useParams } from 'react-router'
+import { useNavigate, useParams, Navigate } from 'react-router'
 import RemyFox from '../components/RemyFox'
 import { StepCard } from '../components/StepCard'
 import { ConfettiScreen } from '../components/ConfettiScreen'
@@ -39,12 +39,14 @@ function lessonReducer(state: LessonState, action: LessonAction): LessonState {
 
 export default function LessonScreen() {
   const { lessonId } = useParams<{ lessonId?: string }>()
-  const lesson = lessons.find(l => l.id === lessonId) ?? lessons[0]
-  const steps = lesson.workedExample.steps
+  const lesson = lessons.find(l => l.id === lessonId)
+  const steps = lesson?.workedExample.steps ?? []
 
   const navigate = useNavigate()
   const [state, dispatch] = useReducer(lessonReducer, { phase: 'unlock', stepIndex: 0 })
   const howls = useLessonAudio(steps, () => dispatch({ type: 'AUDIO_ENDED' }))
+
+  if (!lesson) return <Navigate to="/" replace />
 
   // Ref guards: set to true by handlers that already called play() synchronously,
   // so the useEffect below skips the duplicate play() call.
@@ -91,7 +93,7 @@ export default function LessonScreen() {
   if (state.phase === 'unlock') {
     return (
       <div
-        className="flex flex-col items-center justify-center gap-8 bg-surface w-full"
+        className="relative flex flex-col items-center justify-center gap-8 bg-surface w-full"
         style={{ height: '100dvh', paddingBottom: 'env(safe-area-inset-bottom)', touchAction: 'manipulation' }}
         onClick={handleUnlockTap}
         role="button"
@@ -99,6 +101,18 @@ export default function LessonScreen() {
         onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleUnlockTap() }}
         aria-label="Tap to start lesson"
       >
+        {/* Back button — lets a child exit before the lesson starts */}
+        <button
+          className="absolute top-4 left-4 min-h-[44px] min-w-[44px] flex items-center justify-center text-on-surface/30 active:text-on-surface/60"
+          style={{ touchAction: 'manipulation' }}
+          aria-label="Back to lessons"
+          onClick={e => { e.stopPropagation(); navigate('/') }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M19 12H5" />
+            <path d="M12 19l-7-7 7-7" />
+          </svg>
+        </button>
         <RemyFox className="w-48 h-48" />
         <h1 className="text-3xl font-bold text-on-surface text-center px-6">{lesson.title}</h1>
         <p className="text-xl text-on-surface/60">Tap anywhere to start</p>
@@ -108,6 +122,11 @@ export default function LessonScreen() {
 
   // --- Celebration screen ---
   if (state.phase === 'celebration') {
+    return <ConfettiScreen onStartPractice={() => navigate(`/practice/${lesson.id}`)} />
+  }
+
+  // Guard: malformed curriculum data — no steps means nothing to play
+  if (steps.length === 0) {
     return <ConfettiScreen onStartPractice={() => navigate(`/practice/${lesson.id}`)} />
   }
 
@@ -125,17 +144,20 @@ export default function LessonScreen() {
         className="flex gap-2"
         aria-label={`Step ${state.stepIndex + 1} of ${totalSteps}`}
       >
-        {steps.map((_, i) => (
-          <div
-            key={i}
-            style={{
-              width: 12,
-              height: 12,
-              borderRadius: '50%',
-              backgroundColor: i === state.stepIndex ? '#FF6B35' : 'rgba(255, 107, 53, 0.2)',
-            }}
-          />
-        ))}
+        {steps.map((_, i) =>
+          i === state.stepIndex ? (
+            <div
+              key={`active-${state.stepIndex}`}
+              className="dot-active-enter"
+              style={{ width: 12, height: 12, borderRadius: '50%', backgroundColor: 'var(--color-primary)' }}
+            />
+          ) : (
+            <div
+              key={i}
+              style={{ width: 12, height: 12, borderRadius: '50%', backgroundColor: 'color-mix(in srgb, var(--color-primary) 20%, transparent)' }}
+            />
+          )
+        )}
       </div>
 
       {/* StepCard with entrance animation — key on stepIndex forces remount on step change */}

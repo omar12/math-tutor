@@ -178,7 +178,7 @@ export default function HomeScreen() {
                       </span>
 
                       {/* Lesson title */}
-                      <span className="flex-1 text-left text-base font-semibold text-on-surface">
+                      <span className="flex-1 min-w-0 truncate text-left text-base font-semibold text-on-surface">
                         {lesson.title}
                       </span>
 

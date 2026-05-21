@@ -22,7 +22,7 @@ export function StepCard({ text, equation, onReplay }: StepCardProps) {
           height="24"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#FF6B35"
+          stroke="var(--color-primary)"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

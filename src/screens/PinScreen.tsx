@@ -156,8 +156,21 @@ export default function PinScreen() {
         paddingTop: 'env(safe-area-inset-top)',
         paddingBottom: 'env(safe-area-inset-bottom)',
       }}
-      className="flex flex-col items-center justify-center bg-surface gap-8 px-6"
+      className="relative flex flex-col items-center justify-center bg-surface gap-8 px-6"
     >
+      {/* Back button — lets a child who tapped the lock icon return to lessons */}
+      <button
+        className="absolute top-4 left-4 min-h-[44px] min-w-[44px] flex items-center justify-center text-on-surface/30 active:text-on-surface/60"
+        style={{ touchAction: 'manipulation' }}
+        aria-label="Back to lessons"
+        onClick={() => navigate('/')}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M19 12H5" />
+          <path d="M12 19l-7-7 7-7" />
+        </svg>
+      </button>
+
       {/* Heading */}
       <h1 className="text-2xl font-bold text-on-surface">{heading}</h1>
 
@@ -183,7 +196,7 @@ export default function PinScreen() {
 
       {/* Error message */}
       {error && (
-        <p role="alert" className="text-red-500 text-sm text-center max-w-xs">
+        <p role="alert" className="text-primary text-sm text-center max-w-xs">
           {error}
         </p>
       )}
@@ -200,7 +213,7 @@ export default function PinScreen() {
               key={d}
               aria-label={`Digit ${d}`}
               disabled={isVerifying}
-              className="bg-white rounded-xl shadow-sm min-h-[64px] min-w-[64px] text-2xl font-bold text-on-surface active:opacity-80 disabled:opacity-40"
+              className="bg-white rounded-xl shadow-sm min-h-[64px] min-w-[64px] text-2xl font-bold text-on-surface transition-transform duration-100 active:opacity-80 active:scale-[0.95] disabled:opacity-40"
               style={{ touchAction: 'manipulation' }}
               onClick={() => handleDigit(d)}
             >
@@ -213,7 +226,7 @@ export default function PinScreen() {
         <button
           aria-label="Delete last digit"
           disabled={isVerifying}
-          className="bg-white rounded-xl shadow-sm min-h-[64px] min-w-[64px] flex items-center justify-center active:opacity-80 disabled:opacity-40"
+          className="bg-white rounded-xl shadow-sm min-h-[64px] min-w-[64px] flex items-center justify-center transition-transform duration-100 active:opacity-80 active:scale-[0.95] disabled:opacity-40"
           style={{ touchAction: 'manipulation' }}
           onClick={handleBackspace}
         >
@@ -222,7 +235,7 @@ export default function PinScreen() {
             height={24}
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#FF6B35"
+            stroke="var(--color-primary)"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -237,7 +250,7 @@ export default function PinScreen() {
         <button
           aria-label={`Digit 0`}
           disabled={isVerifying}
-          className="bg-white rounded-xl shadow-sm min-h-[64px] min-w-[64px] text-2xl font-bold text-on-surface active:opacity-80 disabled:opacity-40"
+          className="bg-white rounded-xl shadow-sm min-h-[64px] min-w-[64px] text-2xl font-bold text-on-surface transition-transform duration-100 active:opacity-80 active:scale-[0.95] disabled:opacity-40"
           style={{ touchAction: 'manipulation' }}
           onClick={() => handleDigit('0')}
         >
